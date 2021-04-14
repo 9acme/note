@@ -1,5 +1,5 @@
 module.exports = {
-  base: './',
+  base: './dist',
   dest: './dist',
   title: '学习笔记',
   themeConfig: {
