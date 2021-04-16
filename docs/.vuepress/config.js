@@ -1,5 +1,5 @@
 module.exports = {
-  base: 'https://cdn.jsdelivr.net/gh/Annarheimur/note/dist/',
+  base: 'https://cdn.jsdelivr.net/gh/Annarheimur/note@main/dist/',
   dest: './dist',
   title: '学习笔记',
   themeConfig: {
