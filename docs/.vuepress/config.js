@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/note/dist/',
+  base: 'https://cdn.jsdelivr.net/gh/Annarheimur/note/dist/',
   dest: './dist',
   title: '学习笔记',
   themeConfig: {
@@ -8,13 +8,8 @@ module.exports = {
       {
         title: 'webpack',
         collapsable: true,
-        children: [
-          'webpack/1.md',
-          'webpack/2.md',
-          'webpack/3.md'
-        ]
+        children: ['webpack/1.md', 'webpack/2.md', 'webpack/3.md']
       }
     ]
   }
-
-}
+};
