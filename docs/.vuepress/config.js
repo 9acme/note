@@ -14,27 +14,27 @@ module.exports = {
             title: '开发环境',
             collapsable: true,
             children: [
-              { title: 'aaa', path: 'webpack/1.md' },
-              { title: 'bbb', path: 'webpack/2.md' },
-              { title: 'ccc', path: 'webpack/3.md' }
+              { title: '打包样式资源', path: 'webpack/dev/1_style.md' },
+              { title: '打包html资源', path: 'webpack/dev/2_html.md' },
+              { title: 'ccc', path: 'webpack/dev/3.md' }
             ]
           },
           {
             title: '线上环境',
             collapsable: true,
             children: [
-              { title: 'aaa', path: 'webpack/1.md' },
-              { title: 'bbb', path: 'webpack/2.md' },
-              { title: 'ccc', path: 'webpack/3.md' }
+              { title: 'aaa', path: 'webpack/dev/1_style.md' },
+              { title: 'bbb', path: 'webpack/dev/1_style.md' },
+              { title: 'ccc', path: 'webpack/dev/3.md' }
             ]
           },
           {
             title: '优化',
             collapsable: true,
             children: [
-              { title: 'aaa', path: 'webpack/1.md' },
-              { title: 'bbb', path: 'webpack/2.md' },
-              { title: 'ccc', path: 'webpack/3.md' }
+              { title: 'aaa', path: 'webpack/dev/1_style.md' },
+              { title: 'bbb', path: 'webpack/dev/1_style.md' },
+              { title: 'ccc', path: 'webpack/dev/3.md' }
             ]
           }
         ]
