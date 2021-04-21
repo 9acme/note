@@ -8,7 +8,36 @@ module.exports = {
       {
         title: 'webpack',
         collapsable: true,
-        children: ['webpack/1.md', 'webpack/2.md', 'webpack/3.md']
+        sidebarDepth: 2,
+        children: [
+          {
+            title: '开发环境',
+            collapsable: true,
+            children: [
+              { title: 'aaa', path: 'webpack/1.md' },
+              { title: 'bbb', path: 'webpack/2.md' },
+              { title: 'ccc', path: 'webpack/3.md' }
+            ]
+          },
+          {
+            title: '线上环境',
+            collapsable: true,
+            children: [
+              { title: 'aaa', path: 'webpack/1.md' },
+              { title: 'bbb', path: 'webpack/2.md' },
+              { title: 'ccc', path: 'webpack/3.md' }
+            ]
+          },
+          {
+            title: '优化',
+            collapsable: true,
+            children: [
+              { title: 'aaa', path: 'webpack/1.md' },
+              { title: 'bbb', path: 'webpack/2.md' },
+              { title: 'ccc', path: 'webpack/3.md' }
+            ]
+          }
+        ]
       }
     ]
   },
