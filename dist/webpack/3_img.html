@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>开发环境下打包图片资源 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.86df4de4.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.94555398.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.bf4e75cf.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.8160339e.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/11.516aea01.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/12.7f70e4ee.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/3.f98c8c0f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.993e01d6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/5.0f136963.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/6.5ebb736c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/7.f50d5cd7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/8.46374ad0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/9.4de728e4.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.86df4de4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>开发环境</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/dist/webpack/1_style.html" class="sidebar-link">打包样式资源</a></li><li><a href="/note/dist/webpack/2_html.html" class="sidebar-link">打包html资源</a></li><li><a href="/note/dist/webpack/3_img.html" aria-current="page" class="active sidebar-link">打包图片资源</a></li><li><a href="/note/dist/webpack/4_other.html" class="sidebar-link">打包其他资源</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>线上环境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>优化</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="开发环境下打包图片资源"><a href="#开发环境下打包图片资源" class="header-anchor">#</a> 开发环境下打包图片资源</h1> <ol><li><p>下载loader</p> <blockquote><p>npm install --save-dev html-loader url-loader file-load</p></blockquote></li> <li><p>修改webpack.config.js</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        // 要使用多个 loader 处理用 use
+        use: ['style-loader', 'css-loader', 'less-loader']
+      },
+      {
+        // 问题：默认处理不了 html 中 img 图片
+        // 处理图片资源
+        test: /\.(jpg|png|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 74 * 1024,
+          // 问题：因为 url-loader 默认使用 es6 模块化解析，而 html-loader 引入图片是 commonjs
+          // 解析时会出问题：[object Module]
+          // 解决：关闭 url-loader 的 es6 模块化，使用 commonjs 解析
+          esModule: false,
+          // 给图片进行重命名
+          // [hash:10]取图片的 hash 的前 10 位
+          // [ext]取文件原来扩展名
+          name: '[hash:10].[ext]'
+        }
+      },
+      {
+        test: /\.html$/,
+        // 处理 html 文件的 img 图片（负责引入 img，从而能被 url-loader 进行处理）
+        loader: 'html-loader'
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ],
+  mode: 'development'
+};
+</code></pre></div><ol start="3"><li>运行webpack</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/dist/webpack/2_html.html" class="prev">
+        打包html资源
+      </a></span> <span class="next"><a href="/note/dist/webpack/4_other.html">
+        打包其他资源
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.94555398.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.bf4e75cf.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.8160339e.js" defer></script>
+  </body>
+</html>
