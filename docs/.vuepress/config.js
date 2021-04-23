@@ -17,7 +17,8 @@ module.exports = {
               { title: '打包样式资源', path: 'webpack/1_style.md' },
               { title: '打包html资源', path: 'webpack/2_html.md' },
               { title: '打包图片资源', path: 'webpack/3_img.md' },
-              { title: '打包其他资源', path: 'webpack/4_other.md' }
+              { title: '打包其他资源', path: 'webpack/4_other.md' },
+              { title: 'devServer', path: 'webpack/5_devServer.md' }
             ]
           },
           {
