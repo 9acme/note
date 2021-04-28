@@ -18,16 +18,21 @@ module.exports = {
               { title: '打包html资源', path: 'webpack/2_html.md' },
               { title: '打包图片资源', path: 'webpack/3_img.md' },
               { title: '打包其他资源', path: 'webpack/4_other.md' },
-              { title: 'devServer', path: 'webpack/5_devServer.md' }
+              { title: 'devServer', path: 'webpack/5_devServer.md' },
+              { title: '开发环境总配置', path: 'webpack/6_dev_config.md' }
             ]
           },
           {
             title: '线上环境',
             collapsable: true,
             children: [
-              { title: 'aaa', path: 'webpack/1_style.md' },
-              { title: 'bbb', path: 'webpack/1_style.md' },
-              { title: 'ccc', path: 'webpack/3_img.md' }
+              { title: '提取单独css', path: 'webpack/7_extract_css.md' },
+              { title: 'css兼容性', path: 'webpack/8_css_compatibility.md' },
+              { title: '压缩css', path: 'webpack/9_css_compress.md' },
+              { title: 'js语法检查', path: 'webpack/10_js_check.md' },
+              { title: 'js兼容性', path: 'webpack/11_js_compatibility.md' },
+              { title: 'html和js压缩', path: 'webpack/12_js_html_compress.md' },
+              { title: '生产环境总配置', path: 'webpack/13_prod_config.md' }
             ]
           },
           {
