@@ -45,6 +45,15 @@ module.exports = {
             ]
           }
         ]
+      },
+      {
+        title: 'javascript',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: [
+          { title: 'this', path: 'javascript/this.md' },
+          { title: 'ES6', path: 'javascript/es6.md' }
+        ]
       }
     ]
   },
