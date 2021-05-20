@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Node.js模块化教程 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.963ef9ab.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.91f6680f.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.0ab278eb.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/18.15e6a12d.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.46dec6de.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/11.d384a366.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/12.ef9df693.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/13.3e9ed993.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/14.3340c467.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/15.95c7d8f6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/16.a721d3c9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/17.b7fd770e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/19.d208f697.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/20.3be09bfa.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/21.fe8d89bd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/22.818e6d37.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/23.e7a75d14.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/24.310bfce4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/25.04d904a8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/26.5f96db50.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/27.bbb3c60b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/28.0709c9ac.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/29.3a65b8d3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/3.c19d0f87.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/30.d1589d0f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/31.306c2fbe.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/32.a6386972.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/33.d857806b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/34.09422767.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/35.69af3d7b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/36.eddfe617.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/37.538444b1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/38.e39d21cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.3e628688.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/5.7671f976.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/6.3e43cc9f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/7.0d70d496.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/8.feb100d9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/9.69445aec.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.963ef9ab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>开发环境</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/webpack/1_style.html" class="sidebar-link">打包样式资源</a></li><li><a href="/dist/webpack/2_html.html" class="sidebar-link">打包html资源</a></li><li><a href="/dist/webpack/3_img.html" class="sidebar-link">打包图片资源</a></li><li><a href="/dist/webpack/4_other.html" class="sidebar-link">打包其他资源</a></li><li><a href="/dist/webpack/5_devServer.html" class="sidebar-link">devServer</a></li><li><a href="/dist/webpack/6_dev_config.html" class="sidebar-link">开发环境总配置</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>线上环境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>优化</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="node-js模块化教程"><a href="#node-js模块化教程" class="header-anchor">#</a> Node.js模块化教程</h2> <ol><li>下载安装node.js</li> <li>创建项目结构</li></ol> <div class="language- extra-class"><pre class="language-text"><code>|-modules
+  |-module1.js
+  |-module2.js
+  |-module3.js
+|-app.js
+|-package.json
+  {
+    &quot;name&quot;: &quot;commonJS-node&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;
+  }
+</code></pre></div><ol start="3"><li>下载第三方模块</li></ol> <ul><li>npm install uniq --save</li></ul> <ol start="4"><li>模块化编码</li></ol> <ul><li>module1.js<div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  foo() {
+    console.log('moudle1 foo()')
+  }
+}
+</code></pre></div></li> <li>module2.js<div class="language- extra-class"><pre class="language-text"><code>module.exports = function () {
+  console.log('module2()')
+}
+</code></pre></div></li> <li>module3.js<div class="language- extra-class"><pre class="language-text"><code>exports.foo = function () {
+  console.log('module3 foo()')
+}
+
+exports.bar = function () {
+  console.log('module3 bar()')
+}
+</code></pre></div></li> <li>app.js<div class="language- extra-class"><pre class="language-text"><code>/**
+  1. 定义暴露模块:
+    module.exports = value;
+    exports.xxx = value;
+  2. 引入模块:
+    var module = require(模块名或模块路径);
+ */
+&quot;use strict&quot;;
+//引用模块
+let module1 = require('./modules/module1')
+let module2 = require('./modules/module2')
+let module3 = require('./modules/module3')
+
+let uniq = require('uniq')
+let fs = require('fs')
+
+//使用模块
+module1.foo()
+module2()
+module3.foo()
+module3.bar()
+
+console.log(uniq([1, 3, 1, 4, 3]))
+
+fs.readFile('app.js', function (error, data) {
+  console.log(data.toString())
+})
+</code></pre></div></li></ul> <ol start="5"><li>通过node运行app.js</li></ol> <ul><li>命令: node app.js</li> <li>工具: 右键--&gt;运行</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.91f6680f.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.0ab278eb.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/18.15e6a12d.js" defer></script>
+  </body>
+</html>

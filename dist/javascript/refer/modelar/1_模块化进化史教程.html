@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>模块化进化史教程 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.963ef9ab.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.91f6680f.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.0ab278eb.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/17.b7fd770e.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.46dec6de.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/11.d384a366.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/12.ef9df693.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/13.3e9ed993.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/14.3340c467.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/15.95c7d8f6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/16.a721d3c9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/18.15e6a12d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/19.d208f697.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/20.3be09bfa.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/21.fe8d89bd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/22.818e6d37.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/23.e7a75d14.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/24.310bfce4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/25.04d904a8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/26.5f96db50.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/27.bbb3c60b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/28.0709c9ac.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/29.3a65b8d3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/3.c19d0f87.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/30.d1589d0f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/31.306c2fbe.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/32.a6386972.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/33.d857806b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/34.09422767.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/35.69af3d7b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/36.eddfe617.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/37.538444b1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/38.e39d21cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.3e628688.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/5.7671f976.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/6.3e43cc9f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/7.0d70d496.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/8.feb100d9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/9.69445aec.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.963ef9ab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>开发环境</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/webpack/1_style.html" class="sidebar-link">打包样式资源</a></li><li><a href="/dist/webpack/2_html.html" class="sidebar-link">打包html资源</a></li><li><a href="/dist/webpack/3_img.html" class="sidebar-link">打包图片资源</a></li><li><a href="/dist/webpack/4_other.html" class="sidebar-link">打包其他资源</a></li><li><a href="/dist/webpack/5_devServer.html" class="sidebar-link">devServer</a></li><li><a href="/dist/webpack/6_dev_config.html" class="sidebar-link">开发环境总配置</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>线上环境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>优化</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="模块化进化史教程"><a href="#模块化进化史教程" class="header-anchor">#</a> 模块化进化史教程</h2> <ol><li>全局function模式</li></ol> <ul><li>module1.js<div class="language- extra-class"><pre class="language-text"><code>//数据
+let data = 'atguigu.com'
+
+//操作数据的函数
+function foo() {
+  console.log(`foo() ${data}`)
+}
+function bar() {
+  console.log(`bar() ${data}`)
+}
+</code></pre></div></li> <li>module2.js<div class="language- extra-class"><pre class="language-text"><code>let data2 = 'other data'
+
+function foo() {  //与另一个模块中的函数冲突了
+  console.log(`foo() ${data2}`)
+}
+</code></pre></div></li> <li>test1.html<div class="language- extra-class"><pre class="language-text"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;module1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;module2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+  let data = &quot;修改后的数据&quot;
+  foo()
+  bar()
+&lt;/script&gt;
+</code></pre></div></li> <li>说明:
+<ul><li>全局函数模式: 将不同的功能封装成不同的全局函数</li> <li>问题: Global被污染了, 很容易引起命名冲突</li></ul></li></ul> <ol start="2"><li>namespace模式</li></ol> <ul><li>module1.js<div class="language- extra-class"><pre class="language-text"><code>let myModule = {
+  data: 'atguigu.com',
+  foo() {
+    console.log(`foo() ${this.data}`)
+  },
+  bar() {
+    console.log(`bar() ${this.data}`)
+  }
+}
+</code></pre></div></li> <li>module2.js<div class="language- extra-class"><pre class="language-text"><code>let myModule2 = {
+  data: 'atguigu.com2222',
+  foo() {
+    console.log(`foo() ${this.data}`)
+  },
+  bar() {
+    console.log(`bar() ${this.data}`)
+  }
+}
+</code></pre></div></li> <li>test2.html<div class="language- extra-class"><pre class="language-text"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;module2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;module22.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  myModule.foo()
+  myModule.bar()
+
+  myModule2.foo()
+  myModule2.bar()
+
+  myModule.data = 'other data' //能直接修改模块内部的数据
+  myModule.foo()
+
+&lt;/script&gt;
+</code></pre></div></li> <li>说明
+<ul><li>namespace模式: 简单对象封装</li> <li>作用: 减少了全局变量</li> <li>问题: 不安全</li></ul></li></ul> <ol start="3"><li>IIFE模式</li></ol> <ul><li>module3.js<div class="language- extra-class"><pre class="language-text"><code>(function (window) {
+  //数据
+  let data = 'atguigu.com'
+
+  //操作数据的函数
+  function foo() { //用于暴露有函数
+    console.log(`foo() ${data}`)
+  }
+
+  function bar() {//用于暴露有函数
+    console.log(`bar() ${data}`)
+    otherFun() //内部调用
+  }
+
+  function otherFun() { //内部私有的函数
+    console.log('otherFun()')
+  }
+
+  //暴露行为
+  window.myModule = {foo, bar}
+})(window)
+</code></pre></div></li> <li>test3.html<div class="language- extra-class"><pre class="language-text"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;module3.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  myModule.foo()
+  myModule.bar()
+  //myModule.otherFun()  //myModule.otherFun is not a function
+  console.log(myModule.data) //undefined 不能访问模块内部数据
+  myModule.data = 'xxxx' //不是修改的模块内部的data
+  myModule.foo() //没有改变
+
+&lt;/script&gt;
+</code></pre></div></li> <li>说明:
+<ul><li>IIFE模式: 匿名函数自调用(闭包)</li> <li>IIFE : immediately-invoked function expression(立即调用函数表达式)</li> <li>作用: 数据是私有的, 外部只能通过暴露的方法操作</li> <li>问题: 如果当前这个模块依赖另一个模块怎么办?</li></ul></li></ul> <ol start="4"><li>IIFE模式增强</li></ol> <ul><li>引入jquery到项目中</li> <li>module4.js<div class="language- extra-class"><pre class="language-text"><code>(function (window, $) {
+  //数据
+  let data = 'atguigu.com'
+
+  //操作数据的函数
+  function foo() { //用于暴露有函数
+    console.log(`foo() ${data}`)
+    $('body').css('background', 'red')
+  }
+
+  function bar() {//用于暴露有函数
+    console.log(`bar() ${data}`)
+    otherFun() //内部调用
+  }
+
+  function otherFun() { //内部私有的函数
+    console.log('otherFun()')
+  }
+
+  //暴露行为
+  window.myModule = {foo, bar}
+})(window, jQuery)
+</code></pre></div></li> <li>test4.html<div class="language- extra-class"><pre class="language-text"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.10.1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;module4.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  myModule.foo()
+&lt;/script&gt;
+</code></pre></div></li> <li>说明
+<ul><li>IIFE模式增强 : 引入依赖</li> <li>这就是现代模块实现的基石</li></ul></li></ul> <ol start="5"><li>页面加载多个js的问题</li></ol> <ul><li>页面:<div class="language- extra-class"><pre class="language-text"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;module1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;module2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;module3.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;module4.js&quot;&gt;&lt;/script&gt;
+</code></pre></div></li> <li>说明
+<ul><li>一个页面需要引入多个js文件</li> <li>问题:
+<ul><li>请求过多</li> <li>依赖模糊</li> <li>难以维护</li></ul></li> <li>这些问题可以通过现代模块化编码和项目构建来解决</li></ul></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.91f6680f.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.0ab278eb.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/17.b7fd770e.js" defer></script>
+  </body>
+</html>

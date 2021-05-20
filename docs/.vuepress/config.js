@@ -52,7 +52,8 @@ module.exports = {
         sidebarDepth: 2,
         children: [
           { title: 'this', path: 'javascript/this.md' },
-          { title: 'ES6', path: 'javascript/es6.md' }
+          { title: 'ES6 - ES11', path: 'javascript/es6.md' },
+          { title: '模块化', path: 'javascript/module.md' }
         ]
       }
     ]
