@@ -37,6 +37,8 @@
    }
    ```
 
+
+
 ## const
 
 1. 应用场景
@@ -72,6 +74,8 @@
 3. 注意点
 
    - 对象属性修改和数组元素变化不会触发 const 错误(因为 const 存的是对象地址)
+
+
 
 ## 解构赋值
 
@@ -111,6 +115,8 @@
 
    - 频繁使用对象方法、数组元素，就可以使用解构赋值形式
 
+
+
 ## 模板字符串
 
 1. 应用场景
@@ -133,6 +139,8 @@
    let out = `${lovest}是我心目中最搞笑的演员!!`;
    ```
 
+
+
 ## 简化对象写法
 
 1. 使用方式
@@ -148,6 +156,8 @@
      }
    };
    ```
+
+
 
 ## 箭头函数
 
@@ -195,6 +205,8 @@
    console.log(pow(8));
    ```
 
+
+
 ## rest 参数
 
 1. 应用场景
@@ -204,6 +216,7 @@
 2. 使用方式
 
    ```javascript
+   //rest 数组
    // rest 参数必须要放到参数最后,  使用...符号
    function fn(a, b, ...args) {
      console.log(a);
@@ -211,11 +224,28 @@
      console.log(args);
    }
    fn(1, 2, 3, 4, 5, 6);
+
+   //rest 对象
+   function connect({ host, port, ...user }) {
+     console.log(host);
+     console.log(port);
+     console.log(user);
+   }
+
+   connect({
+     host: '127.0.0.1',
+     port: 3306,
+     username: 'root',
+     password: 'root',
+     type: 'master'
+   });
    ```
 
 3. 注意点
 
    - `...`符号被赋值时为 rest 参数, 赋值时为扩展运算符
+
+
 
 ## 扩展运行符
 
@@ -238,6 +268,8 @@
    };
    let gailun = { ...skillOne, ...skillTwo };
    ```
+
+
 
 ## Symbol
 
@@ -268,7 +300,12 @@
 
    // 2.Symbol 定义 的 对象属 性 不能 使 用 for…in 循 环遍 历 ，
    // 但是可以使用Reflect.ownKeys 来获取对象的所有键名
+
+   // 3. description获取symbol的描述
+   console.log(s2.description);
    ```
+
+
 
 ## 迭代器
 
@@ -314,12 +351,11 @@
 3. 原理
 
    - 第一步: 创建一个指针对象，指向当前数据结构的起始位置
-
    - 第二步: 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员
-
    - 第三步: 接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员
-
    - 第四步: 每调用 next 方法返回一个包含 value 和 done 属性的对象
+
+
 
 ## 生成器
 
@@ -374,11 +410,15 @@
 
    - 第二个 next 传入的参数是作为第一个 yield 的返回值
 
+
+
 ## Promise
 
 1. 应用场景
    - 异步编程的时候可以使用, 用来封装异步操作并可以获取其成功或失败的结果
 2. 使用方式(见 promise 源码)
+
+
 
 ## Set
 
@@ -392,37 +432,35 @@
    ```javascript
    //声明一个 set
    let s = new Set();
+
+   let s2 = new Set(['大事儿', '小事儿', '好事儿', '坏事儿', '小事儿']);
+
+   // 使用迭代器遍历
+   for (let v of s2) {
+     console.log(v);
+   }
+
+   //元素个数
+   console.log(s2.size);
+
+   //添加新的元素
+   s2.add('喜事儿');
+
+   //删除元素
+   s2.delete('坏事儿');
+
+   //检测
+   console.log(s2.has('糟心事'));
+
+   //清空
+   s2.clear();
+   console.log(s2);
+
+   // 数组去重
+   let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+   let result = [...new Set(arr)];
+   console.log(result);
    ```
-
-let s2 = new Set(['大事儿', '小事儿', '好事儿', '坏事儿', '小事儿']);
-
-// 使用迭代器遍历
-for (let v of s2) {
-console.log(v);
-}
-
-//元素个数
-console.log(s2.size);
-
-//添加新的元素
-s2.add('喜事儿');
-
-//删除元素
-s2.delete('坏事儿');
-
-//检测
-console.log(s2.has('糟心事'));
-
-//清空
-s2.clear();
-console.log(s2);
-
-// 数组去重
-let arr = [1,2,3,4,5,4,3,2,1];
-let result = [...new Set(arr)];
-console.log(result);
-
-````
 
 
 
@@ -430,44 +468,46 @@ console.log(result);
 
 1. 概述
 
-- 类似于对象，也是键值对的集合。但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
-- Map 也实现了iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。
+   - 类似于对象，也是键值对的集合。但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
+   - Map 也实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进行遍历。
 
 2. 使用方式
 
-```javascript
-//声明 Map
-let m = new Map();
+   ```javascript
+   //声明 Map
+   let m = new Map();
 
-//添加元素
-m.set('name','尚硅谷');
-m.set('change', function(){
-    console.log("我们可以改变你!!");
-});
-let key = {
-    school : 'ATGUIGU'
-};
-m.set(key, ['北京','上海','深圳']);
+   //添加元素
+   m.set('name','尚硅谷');
+   m.set('change', function(){
+       console.log("我们可以改变你!!");
+   });
+   let key = {
+       school : 'ATGUIGU'
+   };
+   m.set(key, ['北京','上海','深圳']);
 
-//size
-console.log(m.size);
+   //size
+   console.log(m.size);
 
-//删除
-m.delete('name');
+   //删除
+   m.delete('name');
 
-//获取
-console.log(m.get('change'));
-console.log(m.get(key));
+   //获取
+   console.log(m.get('change'));
+   console.log(m.get(key));
 
-//清空
-m.clear();
+   //清空
+   m.clear();
 
-//遍历
-for(let v of m){
-    console.log(v);
-}
-console.log(m);
-````
+   //遍历
+   for(let v of m){
+       console.log(v);
+   }
+   console.log(m);
+   ```
+
+
 
 ## class 类
 
@@ -476,6 +516,10 @@ console.log(m);
    ```javascript
    //父类, 声明类使用class
    class Phone {
+     //私有属性, 只能在类中使用   ?使用可以通过get set 访问
+     #age;
+     #weight;
+
      //构造方法, constructor定义构造函数初始化
      constructor(brand, color, price) {
        this.brand = brand;
@@ -555,6 +599,8 @@ console.log(m);
 
    - 类中的方法定义只能使用方法简写, 不能使用 function 的方式
 
+
+
 ## 数值扩展
 
 1. 使用方式(将一些数值方法封装成了 Number 下面的静态数值方法)
@@ -604,6 +650,8 @@ console.log(m);
    console.log(Math.sign(-20000));
    ```
 
+
+
 ## 对象扩展
 
 1. 使用方式
@@ -637,4 +685,198 @@ console.log(m);
    Object.setPrototypeOf(school, cities);
    console.log(Object.getPrototypeOf(school));
    console.log(school);
+
+   //4. 获取对象所有的值
+   //Object.values()方法返回一个给定对象的所有可枚举属性值的数组
+   console.log(Object.values(config1));
+
+   //5. Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组
+   //方便创建 Map
+   console.log(Object.entries(config1));
+
+   //6. 创建 Map
+   const m = new Map(Object.entries(config1));
+   console.log(m.get('host'));
+
+   //7. 对象属性的描述对象
+   console.log(Object.getOwnPropertyDescriptors(config1));
+
+   // 8.Object.fromEntries, 把二维数组转为对象
+   const m = new Map();
+   m.set('name','ATGUIGU');
+   const result = Object.fromEntries(m);
    ```
+
+
+
+## 数组扩展
+
+1. 使用方式
+
+   ```javascript
+   const mingzhu = ['西游记', '红楼梦', '三国演义', '水浒传'];
+
+   // 1. includes 方法用来检测数组中是否包含某个元素，返回布尔类型值
+   console.log(mingzhu.includes('西游记'));
+   console.log(mingzhu.includes('金瓶梅'));
+
+   // 2. ** 用来实现幂运算，功能与 Math.pow 结果相同
+   console.log(2 ** 10);
+   console.log(Math.pow(2, 10));
+
+   //3. flat将多维数组转化为低位数组
+   const arr = [1,2,3,4,[5,6,[7,8,9]]];
+   //参数为深度 是一个数字
+   console.log(arr.flat(2));
+
+   //4. flatMap
+   const arr = [1,2,3,4];
+   const result = arr.flatMap(item => [item * 10]);
+   console.log(result);
+   ```
+
+
+
+## 正则表达式扩展
+
+1. 使用方式
+
+   ```javascript
+   // 1. 正则表达式命名捕获组
+   let str = '<a href="http://www.atguigu.com">尚硅谷</a>';
+
+   // 使用符号『?<name>』,这样获取捕获结果可读性更强
+   const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
+   const result = reg.exec(str);
+   console.log(result.groups.url);
+   console.log(result.groups.text);
+
+   /* ********************************************* */
+
+   // 2. 断言
+   let assertStr = 'JS5211314你知道么555啦啦啦';
+
+   const reg1 = /\d+(?=啦)/; // 正向断言
+   const result1 = reg1.exec(assertStr);
+   console.log(result1);
+
+   const reg2 = /(?<=么)\d+/; // 反向断言
+   const result2 = reg2.exec(assertStr);
+   console.log(result2);
+
+   /* ********************************************* */
+
+   //3. 正则表达式 dotAll 模式
+   let dotAllStr = `
+              <ul>
+                  <li>
+                      <a>肖生克的救赎</a>
+                      <p>上映日期: 1994-09-10</p>
+                  </li>
+                  <li>
+                      <a>阿甘正传</a>
+                      <p>上映日期: 1994-07-06</p>
+                  </li>
+              </ul>
+   		`;
+
+   //正则表达式中点.匹配除回车外的任何单字符，
+   //标记『s』改变这种行为，允许行终止符出现
+   const reg3 = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+
+   //执行匹配
+   let result;
+   let data = [];
+   while ((result = reg3.exec(dotAllStr))) {
+     data.push({ title: result[1], time: result[2] });
+   }
+   console.log(data);
+
+   //4. String.prototype.matchAll
+   //返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器
+   const result = dotAllStr.matchAll(reg3);
+   for(let v of result){
+       console.log(v);
+   }
+   ```
+
+
+
+## 字符串扩展
+
+1. 使用方式
+
+   ```javascript
+   let str = '   iloveyou   ';
+
+   //1. trimStart 去掉字符串首部的空格
+   console.log(str.trimStart());
+
+   //2. trimStart 去掉字符串尾部的空格
+   console.log(str.trimEnd());
+   ```
+
+
+
+## 可选链操作符
+
+1. 使用方式
+
+   ```javascript
+   // ?. 可选链操作符
+   function main(config){
+       // const dbHost = config && config.db && config.db.host;
+       const dbHost = config?.db?.host;
+       console.log(dbHost);
+   }
+   main({
+       db: {
+           host:'192.168.1.100',
+           username: 'root'
+       },
+       cache: {
+           host: '192.168.1.200',
+           username:'admin'
+       }
+   })
+   ```
+
+
+
+## BigInt
+
+1. 使用方式
+
+   ```javascript
+   //大整形
+   // let n = 521n;
+   // console.log(n, typeof(n));
+
+   //函数
+   // let n = 123;
+   // console.log(BigInt(n));
+   // console.log(BigInt(1.2)); // 不能传入浮点数
+
+   //大数值运算
+   let max = Number.MAX_SAFE_INTEGER;
+   console.log(max);
+   console.log(max + 1);
+   console.log(max + 2);
+   console.log(BigInt(max))
+   console.log(BigInt(max) + BigInt(1))
+   console.log(BigInt(max) + BigInt(2))
+   ```
+
+
+
+## globalThis 对象
+
+1. 使用方式
+
+   ```javascript
+   //globalThis 任何位置都是指向的全局对象
+   console.log(globalThis);
+   ```
+
+
+

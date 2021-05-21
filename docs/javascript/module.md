@@ -91,13 +91,13 @@
      <script type="text/javascript">
        myModule.foo()
        myModule.bar()
-     
+
        myModule2.foo()
        myModule2.bar()
-     
+
        myModule.data = 'other data' //能直接修改模块内部的数据
        myModule.foo()
-     
+
      </script>
      ```
 
@@ -168,25 +168,25 @@
        (function(window, $) {
          //数据
          let data = 'atguigu.com';
-       
+
          //操作数据的函数
          function foo() {
            //用于暴露有函数
            console.log(`foo() ${data}`);
            $('body').css('background', 'red');
          }
-       
+
          function bar() {
            //用于暴露有函数
            console.log(`bar() ${data}`);
            otherFun(); //内部调用
          }
-       
+
          function otherFun() {
            //内部私有的函数
            console.log('otherFun()');
          }
-       
+
          //暴露行为
          window.myModule = { foo, bar };
        })(window, jQuery);
@@ -277,11 +277,11 @@
      /**
        理解: commonjs暴露的其实就是exports,
        	   因此可以给exports直接赋值或者给exports添加属性和方法
-     
+
        1. 定义暴露模块:
          module.exports = value;
          exports.xxx = value;
-     
+
        2. 引入模块:
          var module = require(模块名或模块路径);
       */
@@ -376,15 +376,15 @@
      let module1 = require('./module1');
      let module2 = require('./module2');
      let module3 = require('./module3');
-  
+
      let uniq = require('uniq');
-  
+
      //使用模块
      module1.foo();
      module2();
      module3.foo();
      module3.bar();
-  
+
      console.log(uniq([1, 3, 1, 4, 3]));
      ```
 
@@ -441,12 +441,12 @@
      // 传参
      define(['dataService', 'jquery'], function(dataService, $) {
        let name = 'Tom2';
-  
+
        function showMsg() {
          $('body').css('background', 'gray');
          alert(dataService.getMsg() + ', ' + name);
        }
-  
+
        return { showMsg };
      });
      ```
@@ -775,7 +775,7 @@
    <script type="text/javascript" src="js/lib/bundle.js"></script>
    ```
 
-   
+
 
 7. 引入第三方模块(jQuery)
 
@@ -789,3 +789,14 @@
      import $ from 'jquery';
      $('body').css('background', 'red');
      ```
+
+8. 动态import
+
+   ```javascript
+   import('文件路径').then(module => {
+   	module.hello();
+   });
+   ```
+
+
+
