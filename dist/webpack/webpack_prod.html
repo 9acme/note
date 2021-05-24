@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>生产环境 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.963ef9ab.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.a5350f9b.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.0ab278eb.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/26.ea53ddc8.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.420a40d9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/11.f0eb7acf.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/12.a921fa68.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/13.0102c677.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/14.84e07734.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/15.8964e3b1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/16.a721d3c9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/17.b7fd770e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/18.15e6a12d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/19.d208f697.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/20.502688b2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/21.188e4cd3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/22.818e6d37.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/23.e7a75d14.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/24.310bfce4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/25.7d1d32f7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/3.55a3afcc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.3e628688.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/5.7671f976.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/6.3e43cc9f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/7.121e2604.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/8.7dfe0379.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/9.870f96a0.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.963ef9ab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/webpack/webpack_dev.html" class="sidebar-link">开发环境</a></li><li><a href="/dist/webpack/webpack_prod.html" aria-current="page" class="active sidebar-link">生产环境</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#单独提取css文件" class="sidebar-link">单独提取css文件</a></li><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#css兼容" class="sidebar-link">css兼容</a></li><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#css压缩" class="sidebar-link">css压缩</a></li><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#js语法检查" class="sidebar-link">js语法检查</a></li><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#js兼容" class="sidebar-link">js兼容</a></li><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#js和html压缩" class="sidebar-link">js和html压缩</a></li><li class="sidebar-sub-header"><a href="/dist/webpack/webpack_prod.html#生产总配置" class="sidebar-link">生产总配置</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="生产环境"><a href="#生产环境" class="header-anchor">#</a> 生产环境</h1> <h2 id="单独提取css文件"><a href="#单独提取css文件" class="header-anchor">#</a> 单独提取css文件</h2> <ol><li><p>下载插件</p> <blockquote><p>npm install --save-dev mini-css-extract-plugin</p></blockquote></li> <li><p>修改webpack.config.js的配置</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          // 创建 style 标签，将样式放入
+          // 'style-loader',
+          // 这个 loader 取代 style-loader。作用：提取 js 中的 css 成单独文件
+          MiniCssExtractPlugin.loader,
+          // 将 css 文件整合到 js 文件中
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      // 对输出的 css 文件进行重命名
+      filename: 'css/built.css'
+    })
+  ],
+  mode: 'production'
+};
+</code></pre></div><ol start="3"><li>运行指令: webpack</li></ol> <h2 id="css兼容"><a href="#css兼容" class="header-anchor">#</a> css兼容</h2> <ol><li><p>下载loader</p> <blockquote><p>npm install --save-dev postcss-loader postcss-preset-env</p></blockquote></li> <li><p>修改webpack.config.js配置</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// process.env.NODE_ENV = 'envelopment';  //node环境
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            //loader配置
+            options: {
+              ident: 'postcss',
+              plugins: () =&gt; [
+                // postcss 的插件, node版本不同可能需要修改配置
+                require('postcss-preset-env')()
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/built.css'
+    })
+  ],
+  mode: 'production'
+};
+</code></pre></div><ol start="3"><li>修改package.json</li></ol> <div class="language- extra-class"><pre class="language-text"><code>// json文件不能有注释, 直接复制请删除注释
+//兼容哪些浏览器, 可以根据node环境去选择相应的配置
+//想知道更多详细配置, 去github搜索browserslist
+&quot;browserslist&quot;: {
+    //开发环境
+    &quot;development&quot;: [
+      &quot;last 1 chrome version&quot;,
+      &quot;last 1 firefox version&quot;,
+      &quot;last 1 safari version&quot;
+    ],
+    //生产环境
+    &quot;production&quot;: [
+      &quot;&gt;0.2%&quot;,
+      &quot;not dead&quot;,
+      &quot;not op_mini all&quot;
+    ]
+  }
+</code></pre></div><ol start="4"><li>运行webpack</li></ol> <h2 id="css压缩"><a href="#css压缩" class="header-anchor">#</a> css压缩</h2> <ol><li><p>下载插件</p> <blockquote><p>npm install --save-dev optimize-css-assets-webpack-plugin</p></blockquote></li> <li><p>修改webpack.config.js文件</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () =&gt; [require('postcss-preset-env')()]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: 'css/built.css'
+    }),
+
+    // 压缩 css
+    new OptimizeCssAssetsWebpackPlugin()
+  ],
+  mode: 'production'
+};
+</code></pre></div><ol start="3"><li>运行webpack</li></ol> <h2 id="js语法检查"><a href="#js语法检查" class="header-anchor">#</a> js语法检查</h2> <ol><li><p>下载包</p> <blockquote><p>npm install --save-dev eslint-loader eslint eslint-config-airbnb-base eslint-plugin-import</p></blockquote></li> <li><p>修改webpack.config.js配置文件</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    /*语法检查： eslint-loader eslint
+      注意：只检查自己写的源代码，第三方的库是不用检查的
+      设置检查规则：
+        package.json 中 eslintConfig 中设置~
+          &quot;eslintConfig&quot;: {
+             &quot;extends&quot;: &quot;airbnb-base&quot;
+          }
+
+      airbnb --&gt; eslint-config-airbnb-base eslint-plugin-import eslint
+     */
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          // 自动修复 eslint 的错误
+          fix: true
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ],
+  mode: 'production'
+};
+</code></pre></div><ol start="3"><li>修改package.json文件</li></ol> <div class="language- extra-class"><pre class="language-text"><code>//在package中增加该配置
+&quot;eslintConfig&quot;: {
+    &quot;extends&quot;: &quot;airbnb-base&quot;,
+    &quot;env&quot;: {
+      &quot;browser&quot;: true
+    }
+  }
+</code></pre></div><ol start="4"><li>运行webpack</li></ol> <h2 id="js兼容"><a href="#js兼容" class="header-anchor">#</a> js兼容</h2> <ol><li><p>下载loader(@babel/polyfill已废弃)</p> <blockquote><p>npm install --save-dev babel-loader @babel/core @babel/preset-env  core-js</p></blockquote></li> <li><p>修改webpack.config.js配置</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          // 预设：指示 babel 做怎么样的兼容性处理
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                // 按需加载
+                useBuiltIns: 'usage',
+                // 指定 core-js 版本
+                corejs: {
+                  version: 3
+                },
+                // 指定兼容性做到哪个版本浏览器
+                targets: {
+                  chrome: '60',
+                  firefox: '60',
+                  ie: '9',
+                  safari: '10',
+                  edge: '17'
+                }
+              }
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ],
+  mode: 'development'
+};
+</code></pre></div><ol start="3"><li>运行webpack</li></ol> <h2 id="js和html压缩"><a href="#js和html压缩" class="header-anchor">#</a> js和html压缩</h2> <ol><li><p>下载插件</p> <blockquote><p>npm install --save-dev html-webpack-plugin</p></blockquote></li> <li><p>修改webpack.config.js文件</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: []
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      // 压缩 html 代码
+      minify: {
+        // 移除空格
+        collapseWhitespace: true,
+        // 移除注释
+        removeComments: true
+      }
+    })
+  ],
+  //改为生产模式会自动压缩js
+  mode: 'production'
+};
+</code></pre></div><ol start="3"><li>运行webpack</li></ol> <h2 id="生产总配置"><a href="#生产总配置" class="header-anchor">#</a> 生产总配置</h2> <ol><li>修改webpack.config.js的配置</li></ol> <div class="language- extra-class"><pre class="language-text"><code>const { resolve } = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// 定义 nodejs 环境变量：决定使用 browserslist 的哪个环境
+process.env.NODE_ENV = 'production';
+
+// 复用 loader
+let commonCssLoader = [
+  MiniCssExtractPlugin.loader,
+  'css-loader',
+  {
+    // 还需要在 package.json 中定义 browserslist
+    loader: 'postcss-loader',
+    options: {
+      ident: 'postcss',
+      plugins: () =&gt; [require('postcss-preset-env')()]
+    }
+  }
+];
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'js/built.js',
+    path: resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [...commonCssLoader]
+      },
+      {
+        test: /\.less$/,
+        use: [...commonCssLoader, 'less-loader']
+      },
+      /*正常来讲，一个文件只能被一个 loader 处理。
+        当一个文件要被多个 loader 处理，那么一定要指定 loader 执行的先后顺序：
+        先执行 eslint 在执行 babel
+      */
+      {
+        // 在 package.json 中 eslintConfig --&gt; airbnb
+        test: /\.js$/,
+        exclude: /node_modules/,
+        // 优先执行
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        options: {
+          fix: true
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'usage',
+                corejs: {
+                  version: 3
+                },
+                targets: {
+                  chrome: '60',
+                  firefox: '60',
+                  ie: '9',
+                  safari: '10',
+                  edge: '17'
+                }
+              }
+            ]
+          ]
+        }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 73 * 1024,
+          name: '[hash:10].[ext]',
+          outputPath: 'imgs'
+        }
+      },
+      {
+        exclude: /\.(html|css|less|js|png|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash:10].[ext]',
+          outputPath: 'media'
+        }
+      }
+    ]
+  },
+  plugins: [
+    new OptimizeCssAssetsWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true
+      }
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/built.css'
+    })
+  ],
+  mode: 'production'
+};
+</code></pre></div><ol start="2"><li>在package.json中添加browserslist属性</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&quot;browserslist&quot;: {
+    &quot;development&quot;: [
+      &quot;last 1 chrome version&quot;,
+      &quot;last 1 firefox version&quot;,
+      &quot;last 1 safari version&quot;
+    ],
+    &quot;production&quot;: [
+      &quot;&gt;0.2%&quot;,
+      &quot;not dead&quot;,
+      &quot;not op_mini all&quot;
+    ]
+}
+</code></pre></div><ol start="3"><li>在package.json中添加eslintConfig属性</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&quot;eslintConfig&quot;: {
+    &quot;extends&quot;: &quot;airbnb-base&quot;,
+    &quot;env&quot;: {
+      &quot;browser&quot;: true
+    }
+}
+</code></pre></div><ol start="4"><li>运行webpack</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.a5350f9b.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.0ab278eb.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/26.ea53ddc8.js" defer></script>
+  </body>
+</html>
