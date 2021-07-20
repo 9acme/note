@@ -29,6 +29,12 @@ module.exports = {
           { title: 'ES6 - ES11', path: 'javascript/es6.md' },
           { title: '模块化', path: 'javascript/module.md' }
         ]
+      },
+      {
+        title: 'typescript',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: 'typescript/typescript.md'
       }
     ],
     // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
