@@ -416,7 +416,149 @@
 
 1. 应用场景
    - 异步编程的时候可以使用, 用来封装异步操作并可以获取其成功或失败的结果
-2. 使用方式(见 promise 源码)
+
+2. promise源码解析
+
+   - 整体流程图
+    ![整体流程图](../assent/promise-entirety.svg)
+   - 同步与异步操作的区别
+    ![整体流程图](../assent/promise-async-synch.svg)
+   - promise构造函数
+    ```JavaScript
+    function Promise(executor) {
+      // promise状态
+      this.PromiseState = 'pending';
+      // promise结果
+      this.PromiseResult = null;
+      // 异步操作时将then方法中的回调函数压入该数组
+      this.callBack = [];
+      //保存实例的this
+      const self = this;
+
+      function resolve(value) {
+        //用于判断只允许修改一次
+        if (self.PromiseState === 'pending') {
+          //改变状态
+          self.PromiseState = 'fulfilled';
+          //设置对象结果值
+          self.PromiseResult = value;
+
+          // promise包含的是异步操作
+          // 当resolve方法是异步执行时, 返回的promise对象是pedding状态
+          // 而promise对象的then方法是同步的, 所以将then方法中的回调函数保存到callBack数组中
+          // 以便异步执行到resolve时调用then方法中的onResolve回调函数
+          setTimeout(() => {
+            self.callBack.forEach(item => {
+              item.onResolve(value);
+            });
+          });
+        }
+      }
+
+      function reject(error) {
+        //用于判断只允许修改一次
+        if (self.PromiseState === 'pending') {
+          //改变状态
+          self.PromiseState = 'rejected';
+          //设置对象结果值
+          self.PromiseResult = error;
+
+          //promise包含的是异步操作
+          setTimeout(() => {
+            self.callBack.forEach(item => {
+              item.onReject(error);
+            });
+          });
+        }
+      }
+
+      //处理异常, 进行失败调用
+      try {
+        executor(resolve, reject);
+      } catch (error) {
+        reject(error);
+      }
+    }
+    ```
+    - promise中then方法与canch方法解析
+    ```JavaScript
+    // then是同步的
+    Promise.prototype.then = function (onResolve, onReject) {
+      var self = this;
+
+      // 判断失败回调函数是否是方法, 如果不是则创建默认
+      // 作用: 传递reject状态, 以便catch方法统一处理reject状态
+      if (typeof onReject !== 'function') {
+        onReject = err => {
+          throw err;
+        };
+      }
+
+      // 判断成功回调函数是否是方法, 如果不是则创建默认
+      if (typeof onResolve !== 'function') {
+        onResolve = value => {
+          return value;
+        };
+      }
+
+      return new Promise((resolve, reject) => {
+        // 封装函数
+        function callback(type) {
+          try {
+            // 调用then方法传入的回调函数
+            let result = type(self.PromiseResult);
+            // 判断传入的回调函数是不是promise
+            if (result instanceof Promise) {
+              result.then(
+                value => {
+                  resolve(value);
+                },
+                fail => {
+                  reject(fail);
+                }
+              );
+            } else {
+              // 如果不是promise则修改状态[成功]
+              resolve(result);
+            }
+          } catch (error) {
+            reject(error);
+          }
+        }
+
+        if (this.PromiseState === 'fulfilled') {
+          setTimeout(() => {
+            callback(onResolve);
+          });
+        }
+
+        if (this.PromiseState === 'rejected') {
+          setTimeout(() => {
+            callback(onReject);
+          });
+        }
+
+        if (this.PromiseState === 'pending') {
+          this.callBack.push({
+            onResolve: function () {
+              setTimeout(() => {
+                callback(onResolve);
+              });
+            },
+            onReject: function () {
+              setTimeout(() => {
+                callback(onReject);
+              });
+            }
+          });
+        }
+      });
+    };
+
+    Promise.prototype.catch = function (onRejected) {
+      return this.then(undefined, onRejected);
+    };
+    ```
 
 
 
