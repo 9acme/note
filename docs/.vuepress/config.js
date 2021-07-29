@@ -35,6 +35,38 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         path: 'typescript/typescript.md'
+      },
+      {
+        title: 'java',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: [{ title: 'java基础', path: 'java/javaSE.md' }]
+      },
+      {
+        title: '自定义工具库',
+        collapsable: true,
+        children: [
+          'JS工具库/05_函数相关',
+          'JS工具库/06_数组相关',
+          'JS工具库/07_对象相关',
+          'JS工具库/08_字符串相关',
+          'JS工具库/09_手写继承',
+          'JS工具库/10_手写带委托的事件监听',
+          'JS工具库/11_手写ajax请求函数',
+          'JS工具库/12_手写事件总线',
+          'JS工具库/13_手写消息订阅与发布'
+        ]
+      },
+      {
+        title: '发布NPM包', // 标题
+        collapsable: true, // 下级列表不可折叠
+        children: [
+          // 下级列表
+          'JS工具库/01_工具函数库说明',
+          'JS工具库/02_创建工具包项目',
+          'JS工具库/03_发布到npm中央仓库',
+          'JS工具库/04_使用自定义工具包'
+        ]
       }
     ],
     // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接

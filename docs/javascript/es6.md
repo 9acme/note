@@ -420,9 +420,9 @@
 2. promise源码解析
 
    - 整体流程图
-    ![整体流程图](../assent/promise-entirety.svg)
+    ![整体流程图](../../assent/promise/promise-entirety.svg)
    - 同步与异步操作的区别
-    ![整体流程图](../assent/promise-async-synch.svg)
+    ![整体流程图](../../assent/promise/promise-async-synch.svg)
    - promise构造函数
     ```JavaScript
     function Promise(executor) {
