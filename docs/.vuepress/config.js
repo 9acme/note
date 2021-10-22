@@ -40,7 +40,15 @@ module.exports = {
         title: 'java',
         collapsable: true,
         sidebarDepth: 2,
-        children: [{ title: 'java基础', path: 'java/javaSE.md' }]
+        children: [
+          { title: '概述', path: 'javaSE/1_概述.md' },
+          { title: '变量', path: 'javaSE/2_变量标识符保留字.md' },
+          { title: '运算符', path: 'javaSE/3_运算符.md' },
+          { title: '流程控制', path: 'javaSE/4_流程控制.md' },
+          { title: '数组', path: 'javaSE/5_数组.md' },
+          { title: '异常', path: 'javaSE/9_异常.md' },
+          { title: '多线程', path: 'javaSE/10_多线程.md' }
+        ]
       },
       {
         title: '自定义工具库',
