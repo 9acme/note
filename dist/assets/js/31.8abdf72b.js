@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[31],{477:function(t,n,e){"use strict";e.r(n);var s=e(46),l=Object(s.a)({},(function(){var t=this.$createElement,n=this._self._c||t;return n("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[n("p",[this._v("为学\n天下事有难易乎？\n为之，则难者亦易矣；\n不为，则易者亦难矣")])])}),[],!1,null,null,null);n.default=l.exports}}]);
