@@ -1,215 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>数组 | 学习笔记</title>
-    <meta name="generator" content="VuePress 1.8.2" />
-
-    <meta name="description" content="" />
-
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.6499bbea.css" as="style" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.91a6766d.js" as="script" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.95d93e54.js" as="script" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.f3ebf147.js" as="script" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.a4aad7b0.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/11.31ab5ab0.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/12.a4279cad.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/13.9613dbb6.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/14.8cf1d11b.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/15.84811b97.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/16.83256341.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/17.7d5d9132.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/18.9c113aed.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/19.72327d92.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/20.007e8d1a.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/21.51565453.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/22.5e280bb1.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/23.82d125eb.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/24.75f9e322.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/25.3beaf299.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/26.b2e703d6.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/27.2e0a1210.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/28.3bf8bb06.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/29.777255d7.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/3.811c6b0a.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/30.e3117132.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/31.0603ee1d.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/32.14a0785a.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/33.9b24fb95.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/34.c502c6ef.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/35.2b9a22f9.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/36.d81f12a2.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/37.7ba5692a.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/38.bb410a83.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/39.90f464aa.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/40.cc6266de.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/41.a1794064.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/42.aa85a517.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/43.3c8ef7e3.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/44.8998f8f8.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/45.9bbebc56.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/46.717e09b4.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/47.b75d89b5.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/5.c774466e.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/6.8dbfbe7b.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/7.38d9a1d3.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/8.8bc129ed.js" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/9.e4bca262.js" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.6499bbea.css" />
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.3f48a97c.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.2ad6929a.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.95d93e54.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.73a4d656.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/10.961eae6a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/11.bb6e82eb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/12.626acf8b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/13.9613dbb6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/14.b24ad75e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/15.a332b217.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/16.9ec483e7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/17.7d5d9132.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/18.a666cb57.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/19.2ffaed10.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/20.cc8cb798.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/21.2975db44.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/22.3820585a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/23.8eadf979.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/24.a4cb8dbb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/25.0f176f67.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/26.4e49eb56.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/27.2e0a1210.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/28.d66b194c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/29.f8c0f3da.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/3.bebf133d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/30.1316e008.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/31.8324bae3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/32.de021276.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/33.15fe9ba3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/34.ef4a0d7d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/35.40c4f46b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/36.798a70c5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/37.7ba5692a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/38.e3f83a46.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/39.07c23cd7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/40.4377b2ca.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/41.238c7797.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/42.8d4516dc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/43.f57da9a3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/44.58e1b868.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/45.e6b87ad6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/46.717e09b4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/47.032365f1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/5.ef92f1e1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/6.3c74aba2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/7.59ca6057.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/8.b4bb2c30.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/9.294db654.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/css/0.styles.3f48a97c.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true">
-      <div class="theme-container">
-        <header class="navbar">
-          <div class="sidebar-button">
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
-              <path
-                fill="currentColor"
-                d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-              ></path>
-            </svg>
-          </div>
-          <a href="/dist/" class="home-link router-link-active"
-            ><!---->
-            <span class="site-name">学习笔记</span></a
-          >
-          <div class="links">
-            <div class="search-box">
-              <input aria-label="Search" autocomplete="off" spellcheck="false" value="" />
-              <!---->
-            </div>
-            <!---->
-          </div>
-        </header>
-        <div class="sidebar-mask"></div>
-        <aside class="sidebar">
-          <!---->
-          <ul class="sidebar-links">
-            <li>
-              <section class="sidebar-group collapsable depth-0">
-                <p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p>
-                <!---->
-              </section>
-            </li>
-            <li>
-              <section class="sidebar-group collapsable depth-0">
-                <p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p>
-                <!---->
-              </section>
-            </li>
-            <li><a href="/dist/typescript/typescript.html" class="sidebar-link">typescript</a></li>
-            <li>
-              <section class="sidebar-group collapsable depth-0">
-                <p class="sidebar-heading open"><span>java</span> <span class="arrow down"></span></p>
-                <ul class="sidebar-links sidebar-group-items">
-                  <li><a href="/dist/javaSE/1_概述.html" class="sidebar-link">概述</a></li>
-                  <li><a href="/dist/javaSE/2_变量标识符保留字.html" class="sidebar-link">变量</a></li>
-                  <li><a href="/dist/javaSE/3_运算符.html" class="sidebar-link">运算符</a></li>
-                  <li><a href="/dist/javaSE/4_流程控制.html" class="sidebar-link">流程控制</a></li>
-                  <li>
-                    <a href="/dist/javaSE/5_数组.html" class="active sidebar-link">数组</a>
-                    <ul class="sidebar-sub-headers">
-                      <li class="sidebar-sub-header">
-                        <a href="/dist/javaSE/5_数组.html#_1-数组的概述" class="sidebar-link">1. 数组的概述</a>
-                        <ul class="sidebar-sub-headers">
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-1-数组的理解" class="sidebar-link">1.1 数组的理解</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-2-相关概念" class="sidebar-link">1.2 相关概念</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-3-特点" class="sidebar-link">1.3 特点</a></li>
-                        </ul>
-                      </li>
-                      <li class="sidebar-sub-header">
-                        <a href="/dist/javaSE/5_数组.html#_2-一维数组" class="sidebar-link">2. 一维数组</a>
-                        <ul class="sidebar-sub-headers">
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-1-使用" class="sidebar-link">2.1 使用</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-2-代码案例" class="sidebar-link">2.2 代码案例</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-3-内存的简化结构" class="sidebar-link">2.3 内存的简化结构</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-4-内存解析" class="sidebar-link">2.4 内存解析</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-5-练习" class="sidebar-link">2.5 练习</a></li>
-                        </ul>
-                      </li>
-                      <li class="sidebar-sub-header">
-                        <a href="/dist/javaSE/5_数组.html#_3-多维数组" class="sidebar-link">3. 多维数组</a>
-                        <ul class="sidebar-sub-headers">
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-1-介绍" class="sidebar-link">3.1 介绍</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-2-代码案例" class="sidebar-link">3.2 代码案例</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-3-内存解析" class="sidebar-link">3.3 内存解析</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-4-练习" class="sidebar-link">3.4 练习</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-5-面试题目" class="sidebar-link">3.5 面试题目</a></li>
-                        </ul>
-                      </li>
-                      <li class="sidebar-sub-header">
-                        <a href="/dist/javaSE/5_数组.html#_4-数组中涉及到的常见算法" class="sidebar-link">4. 数组中涉及到的常见算法</a>
-                        <ul class="sidebar-sub-headers">
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-1-数组元素的赋值" class="sidebar-link">4.1 数组元素的赋值</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-2-数组元素的基本操作" class="sidebar-link">4.2 数组元素的基本操作</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-3-数组元素的基本操作2" class="sidebar-link">4.3 数组元素的基本操作2</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-4-数组的复制、反转、查找" class="sidebar-link">4.4 数组的复制、反转、查找</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-5-数组元素的排序算法" class="sidebar-link">4.5 数组元素的排序算法</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-6-十大内部排序算法" class="sidebar-link">4.6 十大内部排序算法</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-7-算法的-5-大特征" class="sidebar-link">4.7 算法的 5 大特征</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-8-冒泡排序-重要" class="sidebar-link">4.8 冒泡排序(重要)</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-9-快速排序" class="sidebar-link">4.9 快速排序</a></li>
-                          <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-10-排序算法性能对比" class="sidebar-link">4.10 排序算法性能对比</a></li>
-                        </ul>
-                      </li>
-                      <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_5-arrays-工具类的使用" class="sidebar-link">5. Arrays 工具类的使用</a></li>
-                      <li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_6-数组使用中的常见异常" class="sidebar-link">6. 数组使用中的常见异常</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="/dist/javaSE/9_异常.html" class="sidebar-link">异常</a></li>
-                  <li><a href="/dist/javaSE/10_多线程.html" class="sidebar-link">多线程</a></li>
-                </ul>
-              </section>
-            </li>
-            <li>
-              <section class="sidebar-group collapsable depth-0">
-                <p class="sidebar-heading"><span>自定义工具库</span> <span class="arrow right"></span></p>
-                <!---->
-              </section>
-            </li>
-            <li>
-              <section class="sidebar-group collapsable depth-0">
-                <p class="sidebar-heading"><span>发布NPM包</span> <span class="arrow right"></span></p>
-                <!---->
-              </section>
-            </li>
-          </ul>
-        </aside>
-        <main class="page">
-          <div class="theme-default-content content__default">
-            <h1 id="数组"><a href="#数组" class="header-anchor">#</a> 数组</h1>
-            <h2 id="_1-数组的概述"><a href="#_1-数组的概述" class="header-anchor">#</a> 1. 数组的概述</h2>
-            <h3 id="_1-1-数组的理解"><a href="#_1-1-数组的理解" class="header-anchor">#</a> 1.1 数组的理解</h3>
-            <blockquote><p>数组(Array)，是多个相同类型数据按一定顺序排列的集合，并使用一个名字命名，并通过编号的方式对这些数据进行统一管理。</p></blockquote>
-            <h3 id="_1-2-相关概念"><a href="#_1-2-相关概念" class="header-anchor">#</a> 1.2 相关概念</h3>
-            <ul>
-              <li>数组名</li>
-              <li>元素</li>
-              <li>下标(角标、索引)</li>
-              <li>数组的长度：元素的个数</li>
-            </ul>
-            <h3 id="_1-3-特点"><a href="#_1-3-特点" class="header-anchor">#</a> 1.3 特点</h3>
-            <ul>
-              <li>数组属于引用类型的变量。数组的元素，既可以是基本数据类型，也可以是引用数据类型。</li>
-              <li>创建数组对象会在内存中开辟一整块连续的空间；</li>
-              <li>数组的长度一旦确定，就不能修改;</li>
-              <li>数组是有序排列的。</li>
-            </ul>
-            <h2 id="_2-一维数组"><a href="#_2-一维数组" class="header-anchor">#</a> 2. 一维数组</h2>
-            <h3 id="_2-1-使用"><a href="#_2-1-使用" class="header-anchor">#</a> 2.1 使用</h3>
-            <p>
-              ​ ① 一维数组的声明和初始化 ​ ② 如何调用数组的指定位置的元素 ​ ③ 如何获取数组的长度 ​ ④ 如何遍历数组 ​ ⑤ 数组元素的默认初始化值：见ArrayTest1.java ​ ⑥
-              数组的内存解析：见ArrayTest1.java
-            </p>
-            <h3 id="_2-2-代码案例"><a href="#_2-2-代码案例" class="header-anchor">#</a> 2.2 代码案例</h3>
-            <ul>
-              <li>
-                <p>代码案例1</p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayTest</span> <span class="token punctuation">{</span>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/typescript/typescript.html" class="sidebar-link">typescript</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>java</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/javaSE/1_概述.html" class="sidebar-link">概述</a></li><li><a href="/dist/javaSE/2_变量标识符保留字.html" class="sidebar-link">变量</a></li><li><a href="/dist/javaSE/3_运算符.html" class="sidebar-link">运算符</a></li><li><a href="/dist/javaSE/4_流程控制.html" class="sidebar-link">流程控制</a></li><li><a href="/dist/javaSE/5_数组.html" class="active sidebar-link">数组</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-数组的概述" class="sidebar-link">1.  数组的概述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-1-数组的理解" class="sidebar-link">1.1 数组的理解</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-2-相关概念" class="sidebar-link">1.2 相关概念</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_1-3-特点" class="sidebar-link">1.3 特点</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-一维数组" class="sidebar-link">2. 一维数组</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-1-使用" class="sidebar-link">2.1 使用</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-2-代码案例" class="sidebar-link">2.2 代码案例</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-3-内存的简化结构" class="sidebar-link">2.3 内存的简化结构</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-4-内存解析" class="sidebar-link">2.4 内存解析</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_2-5-练习" class="sidebar-link">2.5 练习</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-多维数组" class="sidebar-link">3. 多维数组</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-1-介绍" class="sidebar-link">3.1 介绍</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-2-代码案例" class="sidebar-link">3.2 代码案例</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-3-内存解析" class="sidebar-link">3.3 内存解析</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-4-练习" class="sidebar-link">3.4 练习</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_3-5-面试题目" class="sidebar-link">3.5 面试题目</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-数组中涉及到的常见算法" class="sidebar-link">4. 数组中涉及到的常见算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-1-数组元素的赋值" class="sidebar-link">4.1 数组元素的赋值</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-2-数组元素的基本操作" class="sidebar-link">4.2 数组元素的基本操作</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-3-数组元素的基本操作2" class="sidebar-link">4.3 数组元素的基本操作2</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-4-数组的复制、反转、查找" class="sidebar-link">4.4 数组的复制、反转、查找</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-5-数组元素的排序算法" class="sidebar-link">4.5 数组元素的排序算法</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-6-十大内部排序算法" class="sidebar-link">4.6 十大内部排序算法</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-7-算法的-5-大特征" class="sidebar-link">4.7 算法的 5 大特征</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-8-冒泡排序-重要" class="sidebar-link">4.8 冒泡排序(重要)</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-9-快速排序" class="sidebar-link">4.9 快速排序</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_4-10-排序算法性能对比" class="sidebar-link">4.10 排序算法性能对比</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_5-arrays-工具类的使用" class="sidebar-link">5.  Arrays 工具类的使用</a></li><li class="sidebar-sub-header"><a href="/dist/javaSE/5_数组.html#_6-数组使用中的常见异常" class="sidebar-link">6. 数组使用中的常见异常</a></li></ul></li><li><a href="/dist/javaSE/9_异常.html" class="sidebar-link">异常</a></li><li><a href="/dist/javaSE/10_多线程.html" class="sidebar-link">多线程</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自定义工具库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>发布NPM包</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="数组"><a href="#数组" class="header-anchor">#</a> 数组</h1> <h2 id="_1-数组的概述"><a href="#_1-数组的概述" class="header-anchor">#</a> 1.  数组的概述</h2> <h3 id="_1-1-数组的理解"><a href="#_1-1-数组的理解" class="header-anchor">#</a> 1.1 数组的理解</h3> <blockquote><p>数组(Array)，是多个相同类型数据按一定顺序排列的集合，并使用一个名字命名，并通过编号的方式对这些数据进行统一管理。</p></blockquote> <h3 id="_1-2-相关概念"><a href="#_1-2-相关概念" class="header-anchor">#</a> 1.2 相关概念</h3> <ul><li>数组名</li> <li>元素</li> <li>下标(角标、索引)</li> <li>数组的长度：元素的个数</li></ul> <h3 id="_1-3-特点"><a href="#_1-3-特点" class="header-anchor">#</a> 1.3 特点</h3> <ul><li>数组属于引用类型的变量。数组的元素，既可以是基本数据类型，也可以是引用数据类型。</li> <li>创建数组对象会在内存中开辟一整块连续的空间；</li> <li>数组的长度一旦确定，就不能修改;</li> <li>数组是有序排列的。</li></ul> <h2 id="_2-一维数组"><a href="#_2-一维数组" class="header-anchor">#</a> 2. 一维数组</h2> <h3 id="_2-1-使用"><a href="#_2-1-使用" class="header-anchor">#</a> 2.1 使用</h3> <p>​	① 一维数组的声明和初始化
+​	② 如何调用数组的指定位置的元素
+​	③ 如何获取数组的长度
+​	④ 如何遍历数组
+​	⑤ 数组元素的默认初始化值：见ArrayTest1.java
+​	⑥ 数组的内存解析：见ArrayTest1.java</p> <h3 id="_2-2-代码案例"><a href="#_2-2-代码案例" class="header-anchor">#</a> 2.2 代码案例</h3> <ul><li><p>代码案例1</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayTest</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
 		<span class="token comment">//1. 一维数组的声明和初始化</span>
@@ -261,13 +69,7 @@
 
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-              <li>
-                <p>代码案例2</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div></li> <li><p>代码案例2</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * ⑤ 数组元素的默认初始化值
  * 		&gt; 数组元素是整形：0
  * 		&gt; 数组元素是浮点型：0.0
@@ -320,32 +122,13 @@
 
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h3 id="_2-3-内存的简化结构"><a href="#_2-3-内存的简化结构" class="header-anchor">#</a> 2.3 内存的简化结构</h3>
-            <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr1.dc5ce7c6.png" alt="数组" /></p>
-            <h3 id="_2-4-内存解析"><a href="#_2-4-内存解析" class="header-anchor">#</a> 2.4 内存解析</h3>
-            <div class="language-java extra-class">
-              <pre
-                class="language-java"
-              ><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div></li></ul> <h3 id="_2-3-内存的简化结构"><a href="#_2-3-内存的简化结构" class="header-anchor">#</a> 2.3 内存的简化结构</h3> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr1.dc5ce7c6.png" alt="数组"></p> <h3 id="_2-4-内存解析"><a href="#_2-4-内存解析" class="header-anchor">#</a> 2.4 内存解析</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> “刘德华”<span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> “张学友”<span class="token punctuation">;</span>
 arr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>arr1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//null</span>
-</code></pre>
-            </div>
-            <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr2.fdd579c8.png" alt="数组" /></p>
-            <blockquote><p>按照图中步骤，最后数组内存解析完成，数组内部值为null。</p></blockquote>
-            <h3 id="_2-5-练习"><a href="#_2-5-练习" class="header-anchor">#</a> 2.5 练习</h3>
-            <ul>
-              <li>
-                <p>练习1</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr2.fdd579c8.png" alt="数组"></p> <blockquote><p>按照图中步骤，最后数组内存解析完成，数组内部值为null。</p></blockquote> <h3 id="_2-5-练习"><a href="#_2-5-练习" class="header-anchor">#</a> 2.5 练习</h3> <ul><li><p>练习1</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 升景坊单间短期出租4个月，550元/月（水电煤公摊，网费35元/月），空调、卫生间、厨房齐全。
  * 屋内均是IT行业人士，喜欢安静。所以要求来租者最好是同行或者刚毕业的年轻人，爱干净、安静。
  * eclipse代码一键格式规范化：Ctrl+Shift+F
@@ -361,13 +144,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;联系方式：&quot;</span> <span class="token operator">+</span> tel<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-              <li>
-                <p>练习2</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div></li> <li><p>练习2</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 2. 从键盘读入学生成绩，找出最高分，并输出学生成绩等级。
  * 成绩&gt;=最高分-10    等级为’A’   
  * 成绩&gt;=最高分-20    等级为’B’
@@ -415,25 +192,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h2 id="_3-多维数组"><a href="#_3-多维数组" class="header-anchor">#</a> 3. 多维数组</h2>
-            <h3 id="_3-1-介绍"><a href="#_3-1-介绍" class="header-anchor">#</a> 3.1 介绍</h3>
-            <ul>
-              <li><p>Java 语言里提供了支持多维数组的语法。</p></li>
-              <li>
-                <p>如果说可以把一维数组当成几何中的线性图形，那么二维数组就相当于是一个表格，像下图Excel中的表格一样。</p>
-                <p>-<img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr3.c29c5b18.png" alt="数组" /></p>
-              </li>
-            </ul>
-            <h3 id="_3-2-代码案例"><a href="#_3-2-代码案例" class="header-anchor">#</a> 3.2 代码案例</h3>
-            <ul>
-              <li>
-                <p>代码案例1</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div></li></ul> <h2 id="_3-多维数组"><a href="#_3-多维数组" class="header-anchor">#</a> 3. 多维数组</h2> <h3 id="_3-1-介绍"><a href="#_3-1-介绍" class="header-anchor">#</a> 3.1 介绍</h3> <ul><li><p>Java 语言里提供了支持多维数组的语法。</p></li> <li><p>如果说可以把一维数组当成几何中的线性图形，那么二维数组就相当于是一个表格，像下图Excel中的表格一样。</p> <p>-<img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr3.c29c5b18.png" alt="数组"></p></li></ul> <h3 id="_3-2-代码案例"><a href="#_3-2-代码案例" class="header-anchor">#</a> 3.2 代码案例</h3> <ul><li><p>代码案例1</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 二维数组的使用
  *
  * 1.理解
@@ -453,8 +212,8 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 		<span class="token comment">//1.二维数组的声明和初始化</span>
 		<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-		<span class="token comment">//静态初始化</span>
-		<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+		<span class="token comment">//静态初始化(由于github上报错, 因此先注释)</span>
+		<span class="token comment">//int[][] arr1 = new int[][]{{1,2,3},{4,5,6},{7,8,9}};</span>
 		<span class="token comment">//动态初始化1</span>
 		<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 		<span class="token comment">//动态初始化2</span>
@@ -463,7 +222,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token comment">//错误的情况</span>
 		<span class="token comment">//String[][] arr4 = new String[][];</span>
 		<span class="token comment">//String[][] arr5 = new String[][4];</span>
-		<span class="token comment">//'String[][] arr6 = new String[4][3]{{1,2,3},{4,5,6},{7,8,9}}';</span>
+		<span class="token comment">//String[][] arr6 = new String[4][3]{{1,2,3},{4,5,6},{7,8,9}};</span>
 
 		<span class="token comment">//正确的情况：</span>
 		<span class="token keyword">int</span> arr4<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -491,13 +250,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-              <li>
-                <p>代码案例2</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div></li> <li><p>代码案例2</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 二维数组的使用：
  * 	规定：二维数组分为外层数组的元素，内层数组的元素
  * 	int[][] arr = new int[4][3];
@@ -541,78 +294,27 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token comment">//System.out.println(arr3[1][0]);	//报错</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h3 id="_3-3-内存解析"><a href="#_3-3-内存解析" class="header-anchor">#</a> 3.3 内存解析</h3>
-            <ul>
-              <li>
-                <p>案例1</p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div></li></ul> <h3 id="_3-3-内存解析"><a href="#_3-3-内存解析" class="header-anchor">#</a> 3.3 内存解析</h3> <ul><li><p>案例1</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
-</code></pre>
-                </div>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr4.90e8adca.png" alt="数组" /></p>
-              </li>
-              <li>
-                <p>案例2</p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr4<span class="token operator">=</span> newint<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr4.90e8adca.png" alt="数组"></p></li> <li><p>案例2</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr4<span class="token operator">=</span> newint<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>arr4<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//null</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>arr4<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//报错</span>
 arr4<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr4<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
 arr4<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
-                </div>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr5.d6c610b5.png" alt="数组" /></p>
-              </li>
-              <li>
-                <p>案例3</p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr5.d6c610b5.png" alt="数组"></p></li> <li><p>案例3</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//null</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//报异常</span>
-</code></pre>
-                </div>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr6.ffb98211.png" alt="数组" /></p>
-              </li>
-              <li>
-                <p>案例4</p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1<span class="token operator">=</span> newint<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr6.ffb98211.png" alt="数组"></p></li> <li><p>案例4</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1<span class="token operator">=</span> newint<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 arr1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
 arr1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-</code></pre>
-                </div>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr7.32436405.png" alt="数组" /></p>
-              </li>
-            </ul>
-            <h3 id="_3-4-练习"><a href="#_3-4-练习" class="header-anchor">#</a> 3.4 练习</h3>
-            <ul>
-              <li>
-                <p>练习1</p>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr8.65e3e164.png" alt="数组" /></p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayEver1</span> <span class="token punctuation">{</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr7.32436405.png" alt="数组"></p></li></ul> <h3 id="_3-4-练习"><a href="#_3-4-练习" class="header-anchor">#</a> 3.4 练习</h3> <ul><li><p>练习1</p> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr8.65e3e164.png" alt="数组"></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayEver1</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 		<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 		<span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	<span class="token comment">//记录总和</span>
@@ -624,18 +326,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-              <li>
-                <p>练习2</p>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr9.09085425.png" alt="数组" /></p>
-              </li>
-              <li>
-                <p>练习3</p>
-                <p>使用二维数组打印一个 10 行杨辉三角。</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div></li> <li><p>练习2</p> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr9.09085425.png" alt="数组"></p></li> <li><p>练习3</p> <p>使用二维数组打印一个 10 行杨辉三角。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 【提示】
  * 1. 第一行有 1 个元素, 第 n 行有 n 个元素
  * 2. 每一行的第一个元素和最后一个元素都是 1
@@ -672,16 +363,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h3 id="_3-5-面试题目"><a href="#_3-5-面试题目" class="header-anchor">#</a> 3.5 面试题目</h3>
-            <ul>
-              <li>
-                <p>创建一个长度为 6 的 int 型数组，要求取值为 1-30，同时元素值各不相同</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">//此题只做了解，初学不必精通。</span>
+</code></pre></div></li></ul> <h3 id="_3-5-面试题目"><a href="#_3-5-面试题目" class="header-anchor">#</a> 3.5 面试题目</h3> <ul><li><p>创建一个长度为 6 的 int 型数组，要求取值为 1-30，同时元素值各不相同</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//此题只做了解，初学不必精通。</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayEver3</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 		<span class="token comment">// 方式一：</span>
@@ -727,16 +409,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h2 id="_4-数组中涉及到的常见算法"><a href="#_4-数组中涉及到的常见算法" class="header-anchor">#</a> 4. 数组中涉及到的常见算法</h2>
-            <h3 id="_4-1-数组元素的赋值"><a href="#_4-1-数组元素的赋值" class="header-anchor">#</a> 4.1 数组元素的赋值</h3>
-            <div class="language-java extra-class">
-              <pre
-                class="language-java"
-              ><code><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span><span class="token punctuation">;</span>
+</code></pre></div></li></ul> <h2 id="_4-数组中涉及到的常见算法"><a href="#_4-数组中涉及到的常见算法" class="header-anchor">#</a> 4. 数组中涉及到的常见算法</h2> <h3 id="_4-1-数组元素的赋值"><a href="#_4-1-数组元素的赋值" class="header-anchor">#</a> 4.1 数组元素的赋值</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span><span class="token punctuation">;</span>
 <span class="token comment">/*
  * 此题了解！！！
  *
@@ -813,11 +486,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-            </div>
-            <h3 id="_4-2-数组元素的基本操作"><a href="#_4-2-数组元素的基本操作" class="header-anchor">#</a> 4.2 数组元素的基本操作</h3>
-            <div class="language-java extra-class">
-              <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div><h3 id="_4-2-数组元素的基本操作"><a href="#_4-2-数组元素的基本操作" class="header-anchor">#</a> 4.2 数组元素的基本操作</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 算法的考察：求数值型数组中元素的最大值、最小值、平均数、总和等
  *
  * 定义一个 int 型的一维数组，包含 10 个元素，分别赋一些随机整数，
@@ -871,11 +540,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;平均数：&quot;</span> <span class="token operator">+</span> avgVales<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-            </div>
-            <h3 id="_4-3-数组元素的基本操作2"><a href="#_4-3-数组元素的基本操作2" class="header-anchor">#</a> 4.3 数组元素的基本操作2</h3>
-            <div class="language-java extra-class">
-              <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div><h3 id="_4-3-数组元素的基本操作2"><a href="#_4-3-数组元素的基本操作2" class="header-anchor">#</a> 4.3 数组元素的基本操作2</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 使用简单数组
  * (1)创建一个名为 ArrayTest 的类，在 main()方法中声明 array1 和 array2 两个变量，他们是 int[]类型的数组。
  * (2)使用大括号{}，把 array1 初始化为 8 个素数：2,3,5,7,11,13,17,19。
@@ -912,13 +577,7 @@ arr1 <span class="token operator">=</span> <span class="token keyword">new</span
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-            </div>
-            <ul>
-              <li>
-                <p>思考：上述 array1 和 array2 是什么关系？</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">//array1 和 array2 地址值相同，都指向了堆空间的唯一的一个数组实体。</span>
+</code></pre></div><ul><li><p>思考：上述 array1 和 array2 是什么关系？</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//array1 和 array2 地址值相同，都指向了堆空间的唯一的一个数组实体。</span>
 <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array1<span class="token punctuation">,</span>array2<span class="token punctuation">;</span>
 array1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 array2 <span class="token operator">=</span> array1<span class="token punctuation">;</span>
@@ -927,33 +586,14 @@ array2 <span class="token operator">=</span> array1<span class="token punctuatio
 		array2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr10.dcf70c69.png" alt="数组" /></p>
-              </li>
-              <li>
-                <p>拓展：修改题目，实现 array2 对 array1 数组的复制</p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array1<span class="token punctuation">,</span>array2<span class="token punctuation">;</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr10.dcf70c69.png" alt="数组"></p></li> <li><p>拓展：修改题目，实现 array2 对 array1 数组的复制</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array1<span class="token punctuation">,</span>array2<span class="token punctuation">;</span>
 array1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token comment">//数组的复制</span>
 array2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>array1<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> array2<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 	array2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> array1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr11.02e383bc.png" alt="数组" /></p>
-              </li>
-            </ul>
-            <h3 id="_4-4-数组的复制、反转、查找"><a href="#_4-4-数组的复制、反转、查找" class="header-anchor">#</a> 4.4 数组的复制、反转、查找</h3>
-            <ul>
-              <li>
-                <p>复制、反转</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr11.02e383bc.png" alt="数组"></p></li></ul> <h3 id="_4-4-数组的复制、反转、查找"><a href="#_4-4-数组的复制、反转、查找" class="header-anchor">#</a> 4.4 数组的复制、反转、查找</h3> <ul><li><p>复制、反转</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 算法的考察：数组的复制、反转、查找(线性查找、二分法查找)
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayTest3</span> <span class="token punctuation">{</span>
@@ -1010,16 +650,7 @@ array2 <span class="token operator">=</span> <span class="token keyword">new</sp
 
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-              <li>
-                <p>二分法查找算法</p>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr12.11c36309.png" alt="数组" /></p>
-                <div class="language-java extra-class">
-                  <pre
-                    class="language-java"
-                  ><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayTest3</span> <span class="token punctuation">{</span>
+</code></pre></div></li> <li><p>二分法查找算法</p> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr12.11c36309.png" alt="数组"></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayTest3</span> <span class="token punctuation">{</span>
 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 		<span class="token comment">//二分法查找：</span>
 		<span class="token comment">//前提：所要查找的数组必须有序</span>
@@ -1048,130 +679,10 @@ array2 <span class="token operator">=</span> <span class="token keyword">new</sp
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h3 id="_4-5-数组元素的排序算法"><a href="#_4-5-数组元素的排序算法" class="header-anchor">#</a> 4.5 数组元素的排序算法</h3>
-            <ul>
-              <li>
-                排序：假设含有 n 个记录的序列为{R1，R2，…,Rn},其相应的关键字序列为{K1，K2，…,Kn}。将这些记录重新排序为{Ri1,Ri2,…,Rin},使得相应的关键字值满足条
-                Ki1&lt;=Ki2&lt;=…&lt;=Kin,这样的一种操作称为排序。
-                <ul>
-                  <li>通常来说，排序的目的是快速查找。</li>
-                </ul>
-              </li>
-              <li>
-                衡量排序算法的优劣：
-                <ul>
-                  <li><strong>时间复杂度</strong>：分析关键字的比较次数和记录的移动次数</li>
-                  <li>空间复杂度：分析排序算法中需要多少辅助内存</li>
-                  <li><strong>稳定性</strong>：若两个记录 A 和 B 的关键字值相等，但排序后 A、B 的先后次序保持不变，则称这种排序算法是稳定的。</li>
-                </ul>
-              </li>
-              <li>
-                排序算法分类：<strong>内部排序</strong>和<strong>外部排序</strong>。
-                <ul>
-                  <li>内部排序：整个排序过程不需要借助于外部存储器（如磁盘等），所有排序操作都在内存中完成。</li>
-                  <li>
-                    外部排序：参与排序的数据非常多，数据量非常大，计算机无法把整个排序过程放在内存中完成，必须借助于外部存储器（如磁盘）。外部排序最常见的是多路归并排序。可以认为外部排序是由多次内部排序组成。
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <h3 id="_4-6-十大内部排序算法"><a href="#_4-6-十大内部排序算法" class="header-anchor">#</a> 4.6 十大内部排序算法</h3>
-            <ul>
-              <li>
-                <p>选择排序</p>
-                <ul>
-                  <li>直接选择排序、堆排序</li>
-                </ul>
-              </li>
-              <li>
-                <p>交换排序</p>
-                <ul>
-                  <li><strong>冒泡排序、快速排序</strong></li>
-                </ul>
-              </li>
-              <li>
-                <p>插入排序</p>
-                <ul>
-                  <li>直接插入排序、折半插入排序、Shell 排序</li>
-                </ul>
-              </li>
-              <li><p>归并排序</p></li>
-              <li><p>桶式排序</p></li>
-              <li>
-                <p>基数排序</p>
-                <p>
-                  详细操作，见《<a href="https://shimo.im/docs/TcdrXydwCTHY866T" target="_blank" rel="noopener noreferrer"
-                    >附录：尚硅谷_宋红康_排序算法.pdf<span
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        focusable="false"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 100 100"
-                        width="15"
-                        height="15"
-                        class="icon outbound"
-                      >
-                        <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
-                        <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
-                      </svg>
-                      <span class="sr-only">(opens new window)</span></span
-                    ></a
-                  >》
-                </p>
-              </li>
-            </ul>
-            <h3 id="_4-7-算法的-5-大特征"><a href="#_4-7-算法的-5-大特征" class="header-anchor">#</a> 4.7 算法的 5 大特征</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th style="text-align:center;"><strong>输入（Input）</strong></th>
-                  <th><strong>有 0 个或多个输入数据，这些输入必须有清楚的描述和定义</strong></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align:center;">输出（Output）</td>
-                  <td>至少有 1 个或多个输出结果，不可以没有输出结果</td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">有穷性（有限性，Finiteness）</td>
-                  <td>算法在有限的步骤之后会自动结束而不会无限循环，并且每一个步骤可以在可接受的时间内完成</td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">确定性（明确性，Definiteness）</td>
-                  <td>算法中的每一步都有确定的含义，不会出现二义性</td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">可行性（有效性，Effectiveness）</td>
-                  <td>算法的每一步都是清楚且可行的，能让用户用纸笔计算而求出答案</td>
-                </tr>
-              </tbody>
-            </table>
-            <blockquote>
-              <p>
-                说明：满足确定性的算法也称为：确定性算法。现在人们也关注更广泛的概念，例如考虑各种非确定性的算法，如并行算法、概率算法等。另外，人们也关注并不要求终止的计算描述，这种描述有时被称为过程（procedure）。
-              </p>
-            </blockquote>
-            <h3 id="_4-8-冒泡排序-重要"><a href="#_4-8-冒泡排序-重要" class="header-anchor">#</a> 4.8 冒泡排序(重要)</h3>
-            <ul>
-              <li>
-                <p>基本思想</p>
-                <p>
-                  通过对待排序序列从前向后，依次比较相邻元素的排序码，若发现逆序则交换，使排序码较大的元素逐渐从前部移向后部。因为排序的过程中，各元素不断接近自己的位置，如果一趟比较下来没有进行过交换，就说明序列有序，
-                  因此要在排序过程中设置一个标志swap判断元素是否进行过交换。从而减少不必要的比较。
-                </p>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr13.33a947c7.gif" alt="数组" /></p>
-              </li>
-              <li>
-                <p>代码实现</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div></li></ul> <h3 id="_4-5-数组元素的排序算法"><a href="#_4-5-数组元素的排序算法" class="header-anchor">#</a> 4.5 数组元素的排序算法</h3> <ul><li>排序：假设含有 n 个记录的序列为{R1，R2，…,Rn},其相应的关键字序列为{K1，K2，…,Kn}。将这些记录重新排序为{Ri1,Ri2,…,Rin},使得相应的关键字值满足条 Ki1&lt;=Ki2&lt;=…&lt;=Kin,这样的一种操作称为排序。
+<ul><li>通常来说，排序的目的是快速查找。</li></ul></li> <li>衡量排序算法的优劣：
+<ul><li><strong>时间复杂度</strong>：分析关键字的比较次数和记录的移动次数</li> <li>空间复杂度：分析排序算法中需要多少辅助内存</li> <li><strong>稳定性</strong>：若两个记录 A 和 B 的关键字值相等，但排序后 A、B 的先后次序保持不变，则称这种排序算法是稳定的。</li></ul></li> <li>排序算法分类：<strong>内部排序</strong>和<strong>外部排序</strong>。
+<ul><li>内部排序：整个排序过程不需要借助于外部存储器（如磁盘等），所有排序操作都在内存中完成。</li> <li>外部排序：参与排序的数据非常多，数据量非常大，计算机无法把整个排序过程放在内存中完成，必须借助于外部存储器（如磁盘）。外部排序最常见的是多路归并排序。可以认为外部排序是由多次内部排序组成。</li></ul></li></ul> <h3 id="_4-6-十大内部排序算法"><a href="#_4-6-十大内部排序算法" class="header-anchor">#</a> 4.6 十大内部排序算法</h3> <ul><li><p>选择排序</p> <ul><li>直接选择排序、堆排序</li></ul></li> <li><p>交换排序</p> <ul><li><strong>冒泡排序、快速排序</strong></li></ul></li> <li><p>插入排序</p> <ul><li>直接插入排序、折半插入排序、Shell 排序</li></ul></li> <li><p>归并排序</p></li> <li><p>桶式排序</p></li> <li><p>基数排序</p> <p>详细操作，见《<a href="https://shimo.im/docs/TcdrXydwCTHY866T" target="_blank" rel="noopener noreferrer">附录：尚硅谷_宋红康_排序算法.pdf<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>》</p></li></ul> <h3 id="_4-7-算法的-5-大特征"><a href="#_4-7-算法的-5-大特征" class="header-anchor">#</a> 4.7 算法的 5 大特征</h3> <table><thead><tr><th style="text-align:center;"><strong>输入（Input）</strong></th> <th><strong>有 0 个或多个输入数据，这些输入必须有清楚的描述和定义</strong></th></tr></thead> <tbody><tr><td style="text-align:center;">输出（Output）</td> <td>至少有 1 个或多个输出结果，不可以没有输出结果</td></tr> <tr><td style="text-align:center;">有穷性（有限性，Finiteness）</td> <td>算法在有限的步骤之后会自动结束而不会无限循环，并且每一个步骤可以在可接受的时间内完成</td></tr> <tr><td style="text-align:center;">确定性（明确性，Definiteness）</td> <td>算法中的每一步都有确定的含义，不会出现二义性</td></tr> <tr><td style="text-align:center;">可行性（有效性，Effectiveness）</td> <td>算法的每一步都是清楚且可行的，能让用户用纸笔计算而求出答案</td></tr></tbody></table> <blockquote><p>说明：满足确定性的算法也称为：确定性算法。现在人们也关注更广泛的概念，例如考虑各种非确定性的算法，如并行算法、概率算法等。另外，人们也关注并不要求终止的计算描述，这种描述有时被称为过程（procedure）。</p></blockquote> <h3 id="_4-8-冒泡排序-重要"><a href="#_4-8-冒泡排序-重要" class="header-anchor">#</a> 4.8 冒泡排序(重要)</h3> <ul><li><p>基本思想</p> <p>通过对待排序序列从前向后，依次比较相邻元素的排序码，若发现逆序则交换，使排序码较大的元素逐渐从前部移向后部。因为排序的过程中，各元素不断接近自己的位置，如果一趟比较下来没有进行过交换，就说明序列有序， 因此要在排序过程中设置一个标志swap判断元素是否进行过交换。从而减少不必要的比较。</p> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr13.33a947c7.gif" alt="数组"></p></li> <li><p>代码实现</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 数组的冒泡排序的实现
  *
  */</span>
@@ -1198,36 +709,7 @@ array2 <span class="token operator">=</span> <span class="token keyword">new</sp
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h3 id="_4-9-快速排序"><a href="#_4-9-快速排序" class="header-anchor">#</a> 4.9 快速排序</h3>
-            <blockquote>
-              <p>
-                快速排序（Quick Sort）由图灵奖获得者Tony
-                Hoare发明，被列为20世纪十大算法之一，是迄今为止所有内排序算法中速度最快的一种。冒泡排序的升级版，交换排序的一种。快速排序的时间复杂度为O(nlog(n))。
-              </p>
-            </blockquote>
-            <ul>
-              <li>
-                <p><strong>排序思想</strong>:</p>
-                <ol>
-                  <li>从数列中挑出一个元素，称为&quot;基准&quot;（pivot），</li>
-                  <li>
-                    重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
-                  </li>
-                  <li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
-                  <li>
-                    递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。
-                  </li>
-                </ol>
-                <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr14.c411339b.gif" alt="数组" /></p>
-              </li>
-              <li>
-                <p>代码实现</p>
-                <div class="language-java extra-class">
-                  <pre class="language-java"><code><span class="token comment">/**
+</code></pre></div></li></ul> <h3 id="_4-9-快速排序"><a href="#_4-9-快速排序" class="header-anchor">#</a> 4.9 快速排序</h3> <blockquote><p>快速排序（Quick Sort）由图灵奖获得者Tony Hoare发明，被列为20世纪十大算法之一，是迄今为止所有内排序算法中速度最快的一种。冒泡排序的升级版，交换排序的一种。快速排序的时间复杂度为O(nlog(n))。</p></blockquote> <ul><li><p><strong>排序思想</strong>:</p> <ol><li>从数列中挑出一个元素，称为&quot;基准&quot;（pivot），</li> <li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li> <li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li> <li>递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</li></ol> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr14.c411339b.gif" alt="数组"></p></li> <li><p>代码实现</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
   * 快速排序
   * 通过一趟排序将待排序记录分割成独立的两部分，其中一部分记录的关键字均比另一部分关键字小，
   * 则分别对这两部分继续进行排序，直到整个序列有序。
@@ -1272,70 +754,7 @@ array2 <span class="token operator">=</span> <span class="token keyword">new</sp
 		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;排序之后：\n&quot;</span> <span class="token operator">+</span> <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span>Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-                </div>
-              </li>
-            </ul>
-            <h3 id="_4-10-排序算法性能对比"><a href="#_4-10-排序算法性能对比" class="header-anchor">#</a> 4.10 排序算法性能对比</h3>
-            <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr15.b01b38d7.png" alt="数组" /></p>
-            <ul>
-              <li>
-                <strong>各种内部排序方法性能比较</strong>
-                <ol>
-                  <li>从平均时间而言：快速排序最佳。但在最坏情况下时间性能不如堆排序和归并排序。</li>
-                  <li>
-                    从算法简单性看：由于直接选择排序、直接插入排序和冒泡排序的算法比较简单，将其认为是简单算法。对于Shell排序、堆排序、快速排序和归并排序算法，其算法比较复杂，认为是复杂排序。
-                  </li>
-                  <li>从稳定性看：直接插入排序、冒泡排序和归并排序是稳定的；而直接选择排序、快速排序、Shell排序和堆排序是不稳定排序</li>
-                  <li>从待排序的记录数n的大小看，n较小时，宜采用简单排序；而n较大时宜采用改进排序。</li>
-                </ol>
-              </li>
-              <li>
-                <strong>排序算法的选择</strong>
-                <ul>
-                  <li>若n较小(如n≤50)，可采用直接插入或直接选择排序。当记录规模较小时，直接插入排序较好；否则因为直接选择移动的记录数少于直接插入，应选直接选择排序为宜。</li>
-                  <li>若文件初始状态基本有序(指正序)，则应选用直接插入、冒泡或随机的快速排序为宜；</li>
-                  <li>若n较大，则应采用时间复杂度为O(nlgn)的排序方法：快速排序、堆排序或归并排序。</li>
-                </ul>
-              </li>
-            </ul>
-            <h2 id="_5-arrays-工具类的使用"><a href="#_5-arrays-工具类的使用" class="header-anchor">#</a> 5. Arrays 工具类的使用</h2>
-            <blockquote><p>java.util.Arrays类即为操作数组的工具类，包含了用来操作数组（比如排序和搜索）的各种方法。</p></blockquote>
-            <table>
-              <thead>
-                <tr>
-                  <th>1</th>
-                  <th>boolean equals(int[] a,int[] b)</th>
-                  <th>判断两个数组是否相等。</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2</td>
-                  <td>String toString(int[] a)</td>
-                  <td>输出数组信息。</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>void fill(int[] a,int val)</td>
-                  <td>将指定值填充到数组之中。</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>void sort(int[] a)</td>
-                  <td>对数组进行排序。</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>int binarySearch(int[] a,int key)</td>
-                  <td>对排序后的数组进行二分法检索指定的值。</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="language-java extra-class">
-              <pre
-                class="language-java"
-              ><code><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Arrays</span><span class="token punctuation">;</span>
+</code></pre></div></li></ul> <h3 id="_4-10-排序算法性能对比"><a href="#_4-10-排序算法性能对比" class="header-anchor">#</a> 4.10 排序算法性能对比</h3> <p><img src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/img/5-arr15.b01b38d7.png" alt="数组"></p> <ul><li><strong>各种内部排序方法性能比较</strong> <ol><li>从平均时间而言：快速排序最佳。但在最坏情况下时间性能不如堆排序和归并排序。</li> <li>从算法简单性看：由于直接选择排序、直接插入排序和冒泡排序的算法比较简单，将其认为是简单算法。对于Shell排序、堆排序、快速排序和归并排序算法，其算法比较复杂，认为是复杂排序。</li> <li>从稳定性看：直接插入排序、冒泡排序和归并排序是稳定的；而直接选择排序、快速排序、Shell排序和堆排序是不稳定排序</li> <li>从待排序的记录数n的大小看，n较小时，宜采用简单排序；而n较大时宜采用改进排序。</li></ol></li> <li><strong>排序算法的选择</strong> <ul><li>若n较小(如n≤50)，可采用直接插入或直接选择排序。当记录规模较小时，直接插入排序较好；否则因为直接选择移动的记录数少于直接插入，应选直接选择排序为宜。</li> <li>若文件初始状态基本有序(指正序)，则应选用直接插入、冒泡或随机的快速排序为宜；</li> <li>若n较大，则应采用时间复杂度为O(nlgn)的排序方法：快速排序、堆排序或归并排序。</li></ul></li></ul> <h2 id="_5-arrays-工具类的使用"><a href="#_5-arrays-工具类的使用" class="header-anchor">#</a> 5.  Arrays 工具类的使用</h2> <blockquote><p>java.util.Arrays类即为操作数组的工具类，包含了用来操作数组（比如排序和搜索）的各种方法。</p></blockquote> <table><thead><tr><th>1</th> <th>boolean equals(int[] a,int[] b)</th> <th>判断两个数组是否相等。</th></tr></thead> <tbody><tr><td>2</td> <td>String toString(int[] a)</td> <td>输出数组信息。</td></tr> <tr><td>3</td> <td>void fill(int[] a,int val)</td> <td>将指定值填充到数组之中。</td></tr> <tr><td>4</td> <td>void sort(int[] a)</td> <td>对数组进行排序。</td></tr> <tr><td>5</td> <td>int binarySearch(int[] a,int key)</td> <td>对排序后的数组进行二分法检索指定的值。</td></tr></tbody></table> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Arrays</span><span class="token punctuation">;</span>
 <span class="token comment">/*
  * java.util.Arrays:作数组的工具类，包含了用来操作数组（比如排序和搜索）的各种方法。
  */</span>
@@ -1369,11 +788,7 @@ array2 <span class="token operator">=</span> <span class="token keyword">new</sp
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-            </div>
-            <h2 id="_6-数组使用中的常见异常"><a href="#_6-数组使用中的常见异常" class="header-anchor">#</a> 6. 数组使用中的常见异常</h2>
-            <div class="language-java extra-class">
-              <pre class="language-java"><code><span class="token comment">/*
+</code></pre></div><h2 id="_6-数组使用中的常见异常"><a href="#_6-数组使用中的常见异常" class="header-anchor">#</a> 6. 数组使用中的常见异常</h2> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/*
  * 数组中的常见异常：
  * 1.数组角标越界的异常:ArrayIndexOutOfBoundsException
  *
@@ -1409,23 +824,10 @@ array2 <span class="token operator">=</span> <span class="token keyword">new</sp
 		<span class="token comment">//情况三:</span>
 		<span class="token comment">//String[] arr3 = new String[]{&quot;AA&quot;,&quot;QQ&quot;,&quot;YY&quot;,&quot;XX&quot;,&quot;TT&quot;,&quot;KK&quot;};</span>
 		<span class="token comment">//arr3[0] = null;</span>
-		<span class="token comment">//System.out.println(arr3[0].toString());		</span>
+		<span class="token comment">//System.out.println(arr3[0].toString());</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-            </div>
-          </div>
-          <footer class="page-edit">
-            <!---->
-            <!---->
-          </footer>
-          <!---->
-        </main>
-      </div>
-      <div class="global-ui"></div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.91a6766d.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.95d93e54.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.f3ebf147.js" defer></script>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/app.2ad6929a.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/2.95d93e54.js" defer></script><script src="https://cdn.jsdelivr.net/gh/annarheimur/note/dist/assets/js/4.73a4d656.js" defer></script>
   </body>
 </html>
