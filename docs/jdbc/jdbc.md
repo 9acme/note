@@ -1070,19 +1070,19 @@ public void update(Connection conn ,String sql, Object... args) {
 
 - 查看当前的隔离级别:
 
-  ```mysql
+  ```sql
   SELECT @@tx_isolation;
   ```
 
 - 设置当前 mySQL 连接的隔离级别:
 
-  ```mysql
+  ```sql
   set  transaction isolation level read committed;
   ```
 
 - 设置数据库系统的全局的隔离级别:
 
-  ```mysql
+  ```sql
   set global transaction isolation level read committed;
   ```
 
@@ -1090,13 +1090,13 @@ public void update(Connection conn ,String sql, Object... args) {
 
   - 创建mysql数据库用户：
 
-    ```mysql
+    ```sql
     create user tom identified by 'abc123';
     ```
 
   - 授予权限
 
-    ```mysql
+    ```sql
     #授予通过网络方式登录的tom用户，对所有库所有表的全部权限，密码设为abc123.
     grant all privileges on *.* to tom@'%'  identified by 'abc123';
 
