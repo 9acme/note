@@ -115,7 +115,7 @@ mysql_plugin工具用来配置MySQL服务器插件，现已被删除，可使用
 
 假设我现在有这样一个数据表，它显示了某购物网站在每个城市每个区的销售额：
 
-```mysql
+```sql
 CREATE TABLE sales(
 id INT PRIMARY KEY AUTO_INCREMENT,
 city VARCHAR(15),
@@ -134,7 +134,7 @@ VALUES
 
 查询：
 
-```mysql
+```sql
 mysql> SELECT * FROM sales;
 +----+------+--------+-------------+
 | id | city | county | sales_value |
@@ -153,7 +153,7 @@ mysql> SELECT * FROM sales;
 
 第一步，计算总销售金额，并存入临时表 a：
 
-```mysql
+```sql
 CREATE TEMPORARY TABLE a       -- 创建临时表
 SELECT SUM(sales_value) AS sales_value -- 计算总计金额
 FROM sales;
@@ -161,7 +161,7 @@ FROM sales;
 
 查看一下临时表 a ：
 
-```mysql
+```sql
 mysql> SELECT * FROM a;
 +-------------+
 | sales_value |
@@ -173,7 +173,7 @@ mysql> SELECT * FROM a;
 
 第二步，计算每个城市的销售总额并存入临时表 b：
 
-```mysql
+```sql
 CREATE TEMPORARY TABLE b    -- 创建临时表
 SELECT city,SUM(sales_value) AS sales_value  -- 计算城市销售合计
 FROM sales
@@ -182,7 +182,7 @@ GROUP BY city;
 
 查看临时表 b ：
 
-```mysql
+```sql
 mysql> SELECT * FROM b;
 +------+-------------+
 | city | sales_value |
@@ -195,7 +195,7 @@ mysql> SELECT * FROM b;
 
 第三步，计算各区的销售占所在城市的总计金额的比例，和占全部销售总计金额的比例。我们可以通过下面的连接查询获得需要的结果：
 
-```mysql
+```sql
 mysql> SELECT s.city AS 城市,s.county AS 区,s.sales_value AS 区销售额,
     -> b.sales_value AS 市销售额,s.sales_value/b.sales_value AS 市比率,
     -> a.sales_value AS 总销售额,s.sales_value/a.sales_value AS 总比率
@@ -218,7 +218,7 @@ mysql> SELECT s.city AS 城市,s.county AS 区,s.sales_value AS 区销售额,
 
 同样的查询，如果用窗口函数，就简单多了。我们可以用下面的代码来实现：
 
-```mysql
+```sql
 mysql> SELECT city AS 城市,county AS 区,sales_value AS 区销售额,
     -> SUM(sales_value) OVER(PARTITION BY city) AS 市销售额,  -- 计算市销售额
     -> sales_value/SUM(sales_value) OVER(PARTITION BY city) AS 市比率,
@@ -260,13 +260,13 @@ MySQL官方网站窗口函数的网址为https://dev.mysql.com/doc/refman/8.0/en
 
 窗口函数的语法结构是：
 
-```mysql
+```sql
 函数 OVER（[PARTITION BY 字段名 ORDER BY 字段名 ASC|DESC]）
 ```
 
 或者是：
 
-```mysql
+```sql
 函数 OVER 窗口名 … WINDOW 窗口名 AS （[PARTITION BY 字段名 ORDER BY 字段名 ASC|DESC]）
 ```
 
@@ -282,7 +282,7 @@ MySQL官方网站窗口函数的网址为https://dev.mysql.com/doc/refman/8.0/en
 
 创建表：
 
-```mysql
+```sql
 CREATE TABLE goods(
 id INT PRIMARY KEY AUTO_INCREMENT,
 category_id INT,
@@ -297,7 +297,7 @@ upper_time DATETIME
 
 添加数据：
 
-```mysql
+```sql
 INSERT INTO goods(category_id,category,NAME,price,stock,upper_time)
 VALUES
 (1, '女装/女士精品', 'T恤', 39.90, 1000, '2020-11-10 00:00:00'),
@@ -324,7 +324,7 @@ ROW_NUMBER()函数能够对数据中的序号进行顺序显示。
 
 举例：查询 goods 数据表中每个商品分类下价格降序排列的各个商品信息。
 
-```mysql
+```sql
 mysql> SELECT ROW_NUMBER() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_num,
     -> id, category_id, category, NAME, price, stock
     -> FROM goods;
@@ -349,7 +349,7 @@ mysql> SELECT ROW_NUMBER() OVER(PARTITION BY category_id ORDER BY price DESC) AS
 
 举例：查询 goods 数据表中每个商品分类下价格最高的3种商品信息。
 
-```mysql
+```sql
 mysql> SELECT *
     -> FROM (
     ->  SELECT ROW_NUMBER() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_num,
@@ -377,7 +377,7 @@ mysql> SELECT *
 
 举例：使用RANK()函数获取 goods 数据表中各类别的价格从高到低排序的各商品信息。
 
-```
+```sql
 mysql> SELECT RANK() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_num,
     -> id, category_id, category, NAME, price, stock
     -> FROM goods;
@@ -402,7 +402,7 @@ mysql> SELECT RANK() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_n
 
 举例：使用RANK()函数获取 goods 数据表中类别为“女装/女士精品”的价格最高的4款商品信息。
 
-```mysql
+```sql
 mysql> SELECT *
     -> FROM(
     ->  SELECT RANK() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_num,
@@ -428,7 +428,7 @@ DENSE_RANK()函数对序号进行并列排序，并且不会跳过重复的序�
 
 举例：使用DENSE_RANK()函数获取 goods 数据表中各类别的价格从高到低排序的各商品信息。
 
-```
+```sql
 mysql> SELECT DENSE_RANK() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_num,
     -> id, category_id, category, NAME, price, stock
     -> FROM goods;
@@ -453,7 +453,7 @@ mysql> SELECT DENSE_RANK() OVER(PARTITION BY category_id ORDER BY price DESC) AS
 
 举例：使用DENSE_RANK()函数获取 goods 数据表中类别为“女装/女士精品”的价格最高的4款商品信息。
 
-```mysql
+```sql
 mysql> SELECT *
     -> FROM(
     ->  SELECT DENSE_RANK() OVER(PARTITION BY category_id ORDER BY price DESC) AS row_num,
@@ -479,7 +479,7 @@ mysql> SELECT *
 
 PERCENT_RANK()函数是等级值百分比函数。按照如下方式进行计算。
 
-```mysql
+```sql
  (rank - 1) / (rows - 1)
 ```
 
@@ -487,7 +487,7 @@ PERCENT_RANK()函数是等级值百分比函数。按照如下方式进行计算
 
 举例：计算 goods 数据表中名称为“女装/女士精品”的类别下的商品的PERCENT_RANK值。
 
-```mysql
+```sql
 #写法一：
 SELECT RANK() OVER (PARTITION BY category_id ORDER BY price DESC) AS r,
 PERCENT_RANK() OVER (PARTITION BY category_id ORDER BY price DESC) AS pr,
@@ -520,7 +520,7 @@ CUME_DIST()函数主要用于查询小于或等于某个值的比例。
 
 举例：查询goods数据表中小于或等于当前价格的比例。
 
-```mysql
+```sql
 mysql> SELECT CUME_DIST() OVER(PARTITION BY category_id ORDER BY price ASC) AS cd,
     -> id, category, NAME, price
     -> FROM goods;
@@ -551,7 +551,7 @@ LAG(expr,n)函数返回当前行的前n行的expr的值。
 
 举例：查询goods数据表中前一个商品价格与当前商品价格的差值。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price, pre_price, price - pre_price AS diff_price
     -> FROM (
     ->  SELECT  id, category, NAME, price,LAG(price,1) OVER w AS pre_price
@@ -582,7 +582,7 @@ LEAD(expr,n)函数返回当前行的后n行的expr的值。
 
 举例：查询goods数据表中后一个商品价格与当前商品价格的差值。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, behind_price, price,behind_price - price AS diff_price
     -> FROM(
     ->  SELECT id, category, NAME, price,LEAD(price, 1) OVER w AS behind_price
@@ -614,7 +614,7 @@ FIRST_VALUE(expr)函数返回第一个expr的值。
 
 举例：按照价格排序，查询第1个商品的价格信息。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price, stock,FIRST_VALUE(price) OVER w AS first_price
     -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+---------------+------------+---------+-------+-------------+
@@ -642,7 +642,7 @@ LAST_VALUE(expr)函数返回最后一个expr的值。
 
 举例：按照价格排序，查询最后一个商品的价格信息。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price, stock,LAST_VALUE(price) OVER w AS last_price
     -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+---------------+------------+---------+-------+------------+
@@ -672,7 +672,7 @@ NTH_VALUE(expr,n)函数返回第n个expr的值。
 
 举例：查询goods数据表中排名第2和第3的价格信息。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price,NTH_VALUE(price,2) OVER w AS second_price,
     -> NTH_VALUE(price,3) OVER w AS third_price
     -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
@@ -701,7 +701,7 @@ NTILE(n)函数将分区中的有序数据分为n个桶，记录桶编号。
 
 举例：将goods表中的商品按照价格分为3组。
 
-```mysql
+```sql
 mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
     -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+----+---------------+------------+---------+
@@ -737,7 +737,7 @@ mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
 
 普通公用表表达式的语法结构是：
 
-```mysql
+```sql
 WITH CTE名称
 AS （子查询）
 SELECT|DELETE|UPDATE 语句;
@@ -747,7 +747,7 @@ SELECT|DELETE|UPDATE 语句;
 
 举例：查询员工所在的部门的详细信息。
 
-```mysql
+```sql
 mysql> SELECT * FROM departments
     -> WHERE department_id IN (
     ->                  SELECT DISTINCT department_id
@@ -773,7 +773,7 @@ mysql> SELECT * FROM departments
 
 这个查询也可以用普通公用表表达式的方式完成：
 
-```mysql
+```sql
 mysql> WITH emp_dept_id
     -> AS (SELECT DISTINCT department_id FROM employees)
     -> SELECT *
@@ -803,7 +803,7 @@ mysql> WITH emp_dept_id
 
 递归公用表表达式也是一种公用表表达式，只不过，除了普通公用表表达式的特点以外，它还有自己的特点，就是**可以调用自己**。它的语法结构是：
 
-```mysql
+```sql
 WITH RECURSIVE
 CTE名称 AS （子查询）
 SELECT|DELETE|UPDATE 语句;
@@ -839,7 +839,7 @@ SELECT|DELETE|UPDATE 语句;
 
 **代码实现：**
 
-```mysql
+```sql
 WITH RECURSIVE cte
 AS
 (
