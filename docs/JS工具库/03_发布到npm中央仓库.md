@@ -51,7 +51,7 @@
 - 注册地址: https://www.npmjs.com/
 - 关键信息: 用户名/密码/邮箱(<font color='red'>需要验证</font>)
 
-![image-20201204150917555](../../assent/jsutils/image-20201204150917555.png)
+![image-20201204150917555](https://cdn.jsdelivr.net/gh/9acme/assets@note/jsutils/image-20201204150917555.png)
 
 ## 3.4.添加用户
 
@@ -59,17 +59,17 @@
 - 登陆npm仓库
 - 依次指定用户名/密码/邮箱
 
-![image-20201204151301849](../../assent/jsutils/image-20201204151301849.png)
+![image-20201204151301849](https://cdn.jsdelivr.net/gh/9acme/assets@note/jsutils/image-20201204151301849.png)
 
 ## 3.5.发布仓库
 
 - 执行: npm publish
 
-![image-20201210143938993](../../assent/jsutils/image-20201210143938993.png)
+![image-20201210143938993](https://cdn.jsdelivr.net/gh/9acme/assets@note/jsutils/image-20201210143938993.png)
 
 - 发布失败, 原因是库的名称重复了, 修改name为一个唯一值, 再发布
 
-![image-20201204153505733](../../assent/jsutils/image-20201204153505733.png)
+![image-20201204153505733](https://cdn.jsdelivr.net/gh/9acme/assets@note/jsutils/image-20201204153505733.png)
 
 
 

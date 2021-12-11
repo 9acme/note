@@ -14,13 +14,13 @@
 
 - 不同的数据库生产厂商都支持SQL语句，但都有特有内容。
 
-<img src="../../assent/mysql/SQLisputonghua.jpg" alt="SQLisputonghua" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/SQLisputonghua.jpg" alt="SQLisputonghua" style="zoom:67%;" />
 
 ### 1.2 SQL语言排行榜
 
 自从 SQL 加入了 TIOBE 编程语言排行榜，就一直保持在 Top 10。
 
-<img src="../../assent/mysql/image-20211014230114639.png" alt="image-20211014230114639" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/image-20211014230114639.png" alt="image-20211014230114639" style="zoom:80%;" />
 
 ### 1.3 SQL 分类
 
@@ -159,7 +159,7 @@ SELECT *
 FROM   departments;
 ```
 
-![1554950890895](../../assent/mysql/1554950890895.png)
+![1554950890895](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554950890895.png)
 
 > 一般情况下，除非需要使用表中所有的字段数据，最好不要使用通配符‘*’。使用通配符虽然可以节省输入查询语句的时间，但是获取不需要的列数据通常会降低查询和所使用的应用程序的效率。通配符的优势是，当不知道所需要的列的名称时，可以通过它获取它们。
 >
@@ -172,7 +172,7 @@ SELECT department_id, location_id
 FROM   departments;
 ```
 
-![1554950947969](../../assent/mysql/1554950947969.png)
+![1554950947969](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554950947969.png)
 
 > MySQL中的SQL语句是不区分大小写的，因此SELECT和select的作用是相同的，但是，许多开发人员习惯将关键字大写、数据列和表名小写，读者也应该养成一个良好的编程习惯，这样写出来的代码更容易阅读和维护。
 
@@ -191,9 +191,9 @@ FROM   departments;
   FROM   employees;
   ```
 
-  ![1554951616598](../../assent/mysql/1554951616598.png)
+  ![1554951616598](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951616598.png)
 
-  ![1554951622467](../../assent/mysql/1554951622467.png)
+  ![1554951622467](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951622467.png)
 
 
 
@@ -202,9 +202,9 @@ FROM   departments;
   FROM   employees;
   ```
 
-![1554951648377](../../assent/mysql/1554951648377.png)
+![1554951648377](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951648377.png)
 
-![1554951655368](../../assent/mysql/1554951655368.png)
+![1554951655368](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951655368.png)
 
 ### 3.3 去除重复行
 
@@ -215,9 +215,9 @@ SELECT department_id
 FROM   employees;
 ```
 
-![1554951711115](../../assent/mysql/1554951711115.png)
+![1554951711115](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951711115.png)
 
-![1554951715923](../../assent/mysql/1554951715923.png)
+![1554951715923](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951715923.png)
 
 **在SELECT语句中使用关键字DISTINCT去除重复行**
 
@@ -226,9 +226,9 @@ SELECT DISTINCT department_id
 FROM   employees;
 ```
 
-![1554951796570](../../assent/mysql/1554951796570.png)
+![1554951796570](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951796570.png)
 
-![1554951801044](../../assent/mysql/1554951801044.png)
+![1554951801044](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554951801044.png)
 
 针对于：
 
@@ -352,7 +352,7 @@ mysql> desc employees;
 
 - 背景：
 
-![1554952199742](../../assent/mysql/1554952199742.png)
+![1554952199742](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554952199742.png)
 
 - 语法：
 
@@ -374,7 +374,7 @@ FROM   employees
 WHERE  department_id = 90 ;
 ```
 
-![1554952277028](../../assent/mysql/1554952277028.png)
+![1554952277028](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/1554952277028.png)
 
 
 

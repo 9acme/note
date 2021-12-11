@@ -172,7 +172,7 @@ mysql> desc test_int3;
 - FLOAT 表示单精度浮点数；
 - DOUBLE 表示双精度浮点数；
 
-![image-20211007173312237](../../assent/mysql/image-20211007173312237.png)
+![image-20211007173312237](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/image-20211007173312237.png)
 
 - REAL默认就是 DOUBLE。如果你把 SQL 模式设定为启用“`REAL_AS_FLOAT`”，那 么，MySQL 就认为 REAL 是 FLOAT。如果要启用“REAL_AS_FLOAT”，可以通过以下 SQL 语句实现：
 
@@ -740,7 +740,7 @@ mysql> SELECT UNIX_TIMESTAMP();
 
 MySQL中，文本字符串总体上分为`CHAR`、`VARCHAR`、`TINYTEXT`、`TEXT`、`MEDIUMTEXT`、`LONGTEXT`、`ENUM`、`SET`等类型。
 
-![image-20211012003508730](../../assent/mysql/image-20211012003508730.png)
+![image-20211012003508730](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/image-20211012003508730.png)
 
 ### 7.1 CHAR与VARCHAR类型
 
@@ -1104,7 +1104,7 @@ mysql> SELECT *
     -> FROM test_json;
 ```
 
-![image-20211104192516324](../../assent/mysql/image-20211104192516324.png)
+![image-20211104192516324](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/image-20211104192516324.png)
 
 当需要检索JSON类型的字段中数据的某个具体值时，可以使用“->”和“->>”符号。
 
@@ -1134,13 +1134,13 @@ MySQL的空间数据类型（Spatial Data Type）对应于OpenGIS类，包括单
 
 下面展示几种常见的几何图形元素：
 
-![image-20211104192912988](../../assent/mysql/image-20211104192912988.png)
+![image-20211104192912988](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/image-20211104192912988.png)
 
 - MultiPoint、MultiLineString、MultiPolygon、GeometryCollection 这4种类型都是集合类，是多个Point、LineString或Polygon组合而成。
 
 下面展示的是多个同类或异类几何图形元素的组合：
 
-![image-20211104193330204](../../assent/mysql/image-20211104193330204.png)
+![image-20211104193330204](https://cdn.jsdelivr.net/gh/9acme/assets@note/mysql/image-20211104193330204.png)
 
 ## 13. 小结及选择建议
 
