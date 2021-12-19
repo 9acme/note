@@ -107,6 +107,30 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         path: 'jdbc/jdbc.md'
+      },
+      {
+        title: 'spring',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: 'spring/spring.md'
+      },
+      {
+        title: 'springMVC',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: 'springMVC/springMVC.md'
+      },
+      {
+        title: 'mybatis',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: 'mybatis/mybatis.md'
+      },
+      {
+        title: 'maven',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: 'maven/maven.md'
       }
     ],
     // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
