@@ -63,20 +63,6 @@ module.exports = {
         ]
       },
       {
-        title: 'java',
-        collapsable: true,
-        sidebarDepth: 2,
-        children: [
-          { title: '概述', path: 'javaSE/1_概述.md' },
-          { title: '变量', path: 'javaSE/2_变量标识符保留字.md' },
-          { title: '运算符', path: 'javaSE/3_运算符.md' },
-          { title: '流程控制', path: 'javaSE/4_流程控制.md' },
-          { title: '数组', path: 'javaSE/5_数组.md' },
-          { title: '异常', path: 'javaSE/9_异常.md' },
-          { title: '多线程', path: 'javaSE/10_多线程.md' }
-        ]
-      },
-      {
         title: 'mysql',
         collapsable: true,
         sidebarDepth: 2,
@@ -101,6 +87,35 @@ module.exports = {
           { title: '触发器', path: 'mysql/第17章_触发器.md' },
           { title: 'MySQL8其它新特性', path: 'mysql/第18章_MySQL8其它新特性.md' }
         ]
+      },
+      {
+        title: 'java',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: [
+          { title: '概述', path: 'javaSE/1_Java语言概述.md' },
+          { title: '变量', path: 'javaSE/2_变量、标识符、保留字.md' },
+          { title: '运算符', path: 'javaSE/3_运算符.md' },
+          { title: '流程控制', path: 'javaSE/4_程序流程控制.md' },
+          { title: '数组', path: 'javaSE/5_数组.md' },
+          { title: '面向对象', path: 'javaSE/6_面向对象.md' },
+          { title: '异常', path: 'javaSE/7_异常.md' },
+          { title: '多线程', path: 'javaSE/8_多线程.md' },
+          { title: '常用类', path: 'javaSE/9_常用类.md' },
+          { title: '枚举与注解', path: 'javaSE/10_枚举与注解.md' },
+          { title: '集合', path: 'javaSE/11_集合.md' },
+          { title: '泛型', path: 'javaSE/12_泛型.md' },
+          { title: 'IO流', path: 'javaSE/13_IO流.md' },
+          { title: '网络编程', path: 'javaSE/14_网络编程.md' },
+          { title: '反射与动态代理', path: 'javaSE/15_反射与动态代理.md' },
+          { title: 'Java8新特性', path: 'javaSE/16_Java8新特性.md' }
+        ]
+      },
+      {
+        title: 'javaWeb',
+        collapsable: true,
+        sidebarDepth: 2,
+        path: 'javaWeb/javaWeb.md'
       },
       {
         title: 'JDBC',
