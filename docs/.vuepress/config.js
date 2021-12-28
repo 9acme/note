@@ -159,7 +159,7 @@ module.exports = {
     if (NODE_ENV === 'production') {
       return {
         output: {
-          publicPath: 'https://cdn.jsdelivr.net/gh/annarheimur/note/dist/'
+          publicPath: 'https://cdn.jsdelivr.net/gh/9acme/note/dist/'
         }
       };
     }
