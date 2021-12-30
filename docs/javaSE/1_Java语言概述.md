@@ -127,12 +127,12 @@
 
 *   对于不同的平台，有不同的虚拟机。
 
-*   只有某平台提供了对应的java虚拟机，java程序才可在此平台运行。\[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传![](https://img-blog.csdnimg.cn/img_convert/6e8896a4581137887d6ed13d38b73f66.png#pic_center)
+*   只有某平台提供了对应的java虚拟机，java程序才可在此平台运行。\[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/6e8896a4581137887d6ed13d38b73f66.png#pic_center)
 
 
 *   Java虚拟机机制屏蔽了底层运行平台的差别，实现了“一次编译，到处运行”。\[外链图片转存失败,源站可能有防盗在这里插入!链机制,建描述\]议将图片上https://传(imblog-dnimg.cn/img\_convert/UEET6e8896a45811378ed13d38b7df66.png#pic\_center344)(#pic\_center)\]
 
-![](https://img-blog.csdnimg.cn/img_convert/abf0d61fe5dd61e668aa92ab901f348c.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/abf0d61fe5dd61e668aa92ab901f348c.png#pic_center)
 
 > 2、垃圾收集机制(Garbage Collection)
 
@@ -154,9 +154,9 @@
 
 > 2、**简单而言，使用JDK的开发工具完成的java程序，交给JRE去运行。**
 
-![](https://img-blog.csdnimg.cn/img_convert/20075dab3d919bd54a90ec98fc82b7f3.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/20075dab3d919bd54a90ec98fc82b7f3.png)
 
-![](https://img-blog.csdnimg.cn/img_convert/2382a6067e10992fe6323fd8ca97cac8.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/2382a6067e10992fe6323fd8ca97cac8.png)
 
 *   **JDK = JRE + 开发工具集（例如Javac编译工具等）**
 
@@ -177,9 +177,9 @@
 
 *   **path**：windows系统执行命令时要搜寻的路径。
 
-*   在dos命令行中敲入javac，出现错误提示：![](https://img-blog.csdnimg.cn/img_convert/c900d6c75ef2078149a1045a0f343942.png#pic_center)
+*   在dos命令行中敲入javac，出现错误提示：![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/c900d6c75ef2078149a1045a0f343942.png#pic_center)
 
-*   错误原因：当前执行的程序在当前目录下如果不存在，windows系统会在系统中已有的一个名为path的环境变量指定的目录中查找。如果仍未找到，会出现以上的错误提示。所以进入到jdk安装路径\\bin目录下，执行javac，会看到javac参数提示信息。![](https://img-blog.csdnimg.cn/img_convert/5c2630449dc7a4f60ba17a431980fa4f.png#pic_center)
+*   错误原因：当前执行的程序在当前目录下如果不存在，windows系统会在系统中已有的一个名为path的环境变量指定的目录中查找。如果仍未找到，会出现以上的错误提示。所以进入到jdk安装路径\\bin目录下，执行javac，会看到javac参数提示信息。![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/5c2630449dc7a4f60ba17a431980fa4f.png#pic_center)
 
 
 > 5、**每次执行java 的工具都要进入到bin目录下，非常麻烦。可不可以在任何目录下都可以执行java的工具呢？**
@@ -190,15 +190,15 @@
     *   编辑path 环境变量，在变量值开始处加上java工具所在目录，后面用“; ”和其他值分隔开即可。
     *   打开DOS命令行，任意目录下敲入javac。如果出现javac的参数信息，配置成功。
     *   注：具体操作流程，参看https://www.yuque.com/nizhegechouloudetuboshu/library/rc1889
-        ![](https://img-blog.csdnimg.cn/img_convert/c78660cfe449e1b1b51c1b12b8470e96.png)
+        ![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/c78660cfe449e1b1b51c1b12b8470e96.png)
 
 > 6、验证是否成功
 
-![](https://img-blog.csdnimg.cn/img_convert/6a195cb5259d9c185cd4b7781b76b106.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/6a195cb5259d9c185cd4b7781b76b106.png#pic_center)
 
-![](https://img-blog.csdnimg.cn/img_convert/170650625f1265f31f53379b27a8db97.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/170650625f1265f31f53379b27a8db97.png#pic_center)
 
-![](https://img-blog.csdnimg.cn/img_convert/8307134ff7360e1d70d8be6724ed0afa.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/8307134ff7360e1d70d8be6724ed0afa.png#pic_center)
 
 > 7、选择合适的文本编辑器或IDE 开发
 
@@ -232,7 +232,7 @@ public class Test {
 
 > 1、通过javac命令对该java 文件进行**编译**。
 
-![](https://img-blog.csdnimg.cn/img_convert/2c072f1e5ec967df1b02beaf70d1dcf1.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/2c072f1e5ec967df1b02beaf70d1dcf1.png)
 
 *   有了java源文件，通过编译器将其编译成JVM可以识别的字节码文件。
 *   在该源文件目录下，通过javac编译工具对Test.java文件进行编译。
@@ -243,10 +243,10 @@ public class Test {
 *   有了可执行的java程序(Test.class字节码文件)
 
 *   通过运行工具java.exe对字节码文件进行执行。
-    ![](https://img-blog.csdnimg.cn/img_convert/c27fd728fb6db61d8fd522357b4bdaf2.png)
+    ![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/c27fd728fb6db61d8fd522357b4bdaf2.png)
 
 *   出现提示：缺少一个名称为main的方法。
-    ![](https://img-blog.csdnimg.cn/img_convert/afe414c099e4d039bc7c22adcbcab2f1.png)
+    ![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/afe414c099e4d039bc7c22adcbcab2f1.png)
 
 *   因为一个程序的执行需要一个起始点或者入口，所以在Test类中的加入**public static void main(String\[\] args){}**
 
@@ -255,14 +255,14 @@ public class Test {
 *   发现没有编译失败，但也没有任何效果，因为并没有告诉JVM要帮我们做什么事情，也就是没有可以具体执行的语句。
 
 *   想要和JVM来个互动，只要在main方法中加入一句System.out.println(“Hello World");因为程序进行改动，所以再重新编译，运行即可。
-    ![](https://img-blog.csdnimg.cn/img_convert/c66193345f2d1a177603d354d48907a0.png)
+    ![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/c66193345f2d1a177603d354d48907a0.png)
 
 
 ## 07、 常见问题及解决方法
 
 > 1、问题1
 
-![](https://img-blog.csdnimg.cn/img_convert/21405196fc370e48bfd4247e5a2088c8.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/21405196fc370e48bfd4247e5a2088c8.png)
 
 *   源文件名不存在或者写错
 *   当前路径错误
@@ -270,20 +270,20 @@ public class Test {
 
 > 2、问题2
 
-![](https://img-blog.csdnimg.cn/img_convert/97b255fe4dc63b70f5259e833fd55cb3.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/97b255fe4dc63b70f5259e833fd55cb3.png)
 
 *   类文件名写错，尤其文件名与类名不一致时，要小心
 *   类文件不在当前路径下，或者不在classpath指定路径下
 
 > 3、问题3
 
-![](https://img-blog.csdnimg.cn/img_convert/272715798cf8aefd9286fbcce22d24db.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/272715798cf8aefd9286fbcce22d24db.png)
 
 *   声明为public的类应与文件名一致，否知编译失败
 
 > 4、问题4
 
-![](https://img-blog.csdnimg.cn/img_convert/7587bdd3ec2293649bdea89f7625bae4.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/7587bdd3ec2293649bdea89f7625bae4.png)
 
 *   编译失败，注意错误出现的行数，再到源代码中指定位置改错
 
@@ -316,7 +316,7 @@ public class Test {
 
             **注释内容可以被JDK提供的工具javadoc所解析，生成一套以网页文件形式体现的该程序的说明文档。**
 
-            ![](https://img-blog.csdnimg.cn/img_convert/43b57bf97c3e6b2cd0db6e35d5d06a34.png)
+            ![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/43b57bf97c3e6b2cd0db6e35d5d06a34.png)
 
 *   **提高了代码的阅读性；调试程序的重要方法。**
 

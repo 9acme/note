@@ -3,7 +3,7 @@
 *   Java 8 (又称为jdk 1.8) 是Java 语言开发的一个主要版本。
 *   Java 8 是oracle公司于2014年3月发布，可以看成是自Java 5 以来最具革命性的版本。Java 8为Java语言、编译器、类库、开发工具与JVM带来了大量新特性。
 
-![](https://img-blog.csdnimg.cn/img_convert/873337fa3d817235541f830b76bfc87e.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/873337fa3d817235541f830b76bfc87e.png)
 
 ## 02、Java8新特性的好处
 
@@ -862,7 +862,7 @@ public class MethodRefTest {
  */
 ```
 
-![](https://img-blog.csdnimg.cn/img_convert/c4f4c62e55b8182fa7c99cd15a0d7de0.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/c4f4c62e55b8182fa7c99cd15a0d7de0.png)
 
 ### 7.2、Stream的实例化
 
@@ -1479,8 +1479,8 @@ public class StreamAPITest3 {
 >
 > `Collectors`实用类提供了很多静态方法，可以方便地创建常见收集器实例，具体方法与实例如下表：
 
-![](https://img-blog.csdnimg.cn/img_convert/bd29b1fd138291421630d2d542675cf7.png)
-![](https://img-blog.csdnimg.cn/img_convert/0d4c3b7ce571549e8940d8c9e8192df1.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/bd29b1fd138291421630d2d542675cf7.png)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/javase/0d4c3b7ce571549e8940d8c9e8192df1.png)
 
 ## 08、Optional类
 

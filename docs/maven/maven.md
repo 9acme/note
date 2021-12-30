@@ -1,4 +1,4 @@
-## 0、目录概述![](https://img-blog.csdnimg.cn/67fbd3aba6274db082ef87a8e0cc0183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![目录概述](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/67fbd3aba6274db082ef87a8e0cc0183.png)
 
 ## 1、Maven概述
 
@@ -39,7 +39,7 @@ Maven的作用我们可以分成三类：
 
 （3）统一开发结构：提供标准的，统一的项目开发结构，如下图所示：
 
-![](https://img-blog.csdnimg.cn/9f02fedb61c2423fa4f9bdb399cea31a.png#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/9f02fedb61c2423fa4f9bdb399cea31a.png#pic_center)
 
 各目录存放资源类型说明：
 
@@ -62,16 +62,16 @@ Maven的作用我们可以分成三类：
 
 官网：[Maven官网](https://maven.apache.org/)
 
-![](https://img-blog.csdnimg.cn/e1c3db1cb7684619b01d64a9dd5be733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/e1c3db1cb7684619b01d64a9dd5be733.png)
 
 ### 2.2、旧版下载
 
 旧版本下载步骤：我们以3.6.1版本为例
 
-![](https://img-blog.csdnimg.cn/dddc0b11b46e42b8902f7282d8058c33.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/dddc0b11b46e42b8902f7282d8058c33.png)
 
 点击 sources
-![](https://img-blog.csdnimg.cn/1e34955255654c088c174d5053aba350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/1e34955255654c088c174d5053aba350.png)
 
 ### 2.3、安装
 
@@ -81,7 +81,7 @@ maven是一个绿色软件，解压即安装，非常容易，
 
 解压完成后我们可以查看一下maven自己的一个目录结构如下
 
-![](https://img-blog.csdnimg.cn/00eaf8b28666420e86a00a8c84c8c1a5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/00eaf8b28666420e86a00a8c84c8c1a5.png)
 
 各目录结构说明：
 
@@ -107,7 +107,7 @@ lib：maven运行所需库的存放目录
 *   之后在命令行窗口中输入`mvn -version`
 *   测试Maven是否安装成功，保证必须配置完毕！
 
-![](https://img-blog.csdnimg.cn/7a2b7a6fc2c2422092f9c32314f37c08.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/7a2b7a6fc2c2422092f9c32314f37c08.png)
 
 环境变量配置好之后需要测试环境配置结果，我们需要在DOS命令窗口下输入以下命令查看输出
 
@@ -115,7 +115,7 @@ lib：maven运行所需库的存放目录
 mvn -v
 ```
 
-![](https://img-blog.csdnimg.cn/2d5fce2942ca425094e003d5d69af35e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/2d5fce2942ca425094e003d5d69af35e.png)
 
 如果能够看到输出的maven的版本信息代表配置成功
 
@@ -124,7 +124,7 @@ mvn -v
 *   国内建议使用阿里云的镜像(可以百度搜 `maven 阿里云镜像`,也可以打开下方链接)
 *   [阿里云链接直达](https://maven.aliyun.com/mvn/guide)
 
-![](https://img-blog.csdnimg.cn/90e2f590a90d440bad05ce3f3dc3c1d0.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/90e2f590a90d440bad05ce3f3dc3c1d0.png)
 
 *   在`settings.xml`里面的`mirrors`标签里面导入
 
@@ -141,7 +141,7 @@ mvn -v
 
 在Maven -bin 的同级目录下建立一个文件夹 `maven-repo`
 
-![](https://img-blog.csdnimg.cn/db3ac822ac61416f8f08404fda65f219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/db3ac822ac61416f8f08404fda65f219.png)
 
 **建立一个本地仓库**：localRepository
 
@@ -157,7 +157,7 @@ mvn -v
 
 仓库：用于存储资源，主要是各种jar包
 
-![](https://img-blog.csdnimg.cn/075884d223d44ae3815e345994628aa1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/075884d223d44ae3815e345994628aa1.png)
 
 关于仓库，我们前面讲到了有三种：本地仓库，私服，中央仓库，其中私服和中央仓库都属于远程仓库
 
@@ -226,20 +226,20 @@ maven坐标的主要组成如下：
 2.  创建一个`MavenWeb`项目
 
 
-![](https://img-blog.csdnimg.cn/4eaf003668d64c0ca71892888ce8e395.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/4eaf003668d64c0ca71892888ce8e395.png)
 
-![](https://img-blog.csdnimg.cn/6f7eaa04ceca4520b6004ecc486b073d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/6f7eaa04ceca4520b6004ecc486b073d.png)
 
 1.  创建完成等待项目初始化完成
 
-![](https://img-blog.csdnimg.cn/563597b8003249eda79b8b7cd7dcdbd6.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/563597b8003249eda79b8b7cd7dcdbd6.png)
 
-![](https://img-blog.csdnimg.cn/dea557c93c4e49528d1565161ad34c5d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/dea557c93c4e49528d1565161ad34c5d.png)
 
 1.  观察maven仓库中多了什么东西？
 2.  注意：IDEA项目创建成功后，看一眼Maven的配置
 
-![](https://img-blog.csdnimg.cn/dee18f7eaa9148d2843ee9f90d4b7ecc.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/dee18f7eaa9148d2843ee9f90d4b7ecc.png)
 
 到这里，Maven在IDEA中的配置和使用就OK了!
 
@@ -247,23 +247,23 @@ maven坐标的主要组成如下：
 
 我们在创建的`MavenWeb` 项目的 main 目录下创建 java，resources
 
-![](https://img-blog.csdnimg.cn/4b52903ef02e4feaa4795772453b096a.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/4b52903ef02e4feaa4795772453b096a.png)
 
 1.  鼠标悬停在java文件夹，右键
 
-![](https://img-blog.csdnimg.cn/cf10e7f736924a01bae907c891cfd2a8.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/cf10e7f736924a01bae907c891cfd2a8.png)
 
 1.  resources 也同样标记
 
-![](https://img-blog.csdnimg.cn/ae972e194f8d41508094333d096e0ba1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/ae972e194f8d41508094333d096e0ba1.png)
 
 创建`MavenWeb` 项目**我们需要手动去补全目录，并且要对补全的目录进行标记，切记**
 
 ## 5、创建一个普通的Maven项目
 
-![](https://img-blog.csdnimg.cn/f580ae38abe44b53b96a3d6c78837cd0.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/f580ae38abe44b53b96a3d6c78837cd0.png)
 
-![](https://img-blog.csdnimg.cn/d5cc4d3d2ac14093a0d9e45fd6527b49.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/d5cc4d3d2ac14093a0d9e45fd6527b49.png)
 
 ### 5.1、IDEA配置Tomcat
 
@@ -276,9 +276,9 @@ maven坐标的主要组成如下：
 *   找到 org.apache.tomcat.maven
 
 
-![](https://img-blog.csdnimg.cn/d35ff4f1184d43c890538cd2bafbfbe1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/d35ff4f1184d43c890538cd2bafbfbe1.png)
 
-![](https://img-blog.csdnimg.cn/0679096af57a4dffb206b7d6a9c974c1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/0679096af57a4dffb206b7d6a9c974c1.png)
 
 我们使用2.1版本的，相对来说稳定一些
 
@@ -307,11 +307,11 @@ maven坐标的主要组成如下：
 
 插件配置好后，在IDEA右侧`maven-project`操作面板上可以看到该插件，并且可以利用该插件启动项目
 
-![](https://img-blog.csdnimg.cn/a6c69c57ce84480aafb284a75d92f2f6.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/a6c69c57ce84480aafb284a75d92f2f6.png)
 
 运行后该插件会给我们一个可运行地址：
 
-![](https://img-blog.csdnimg.cn/56f6a100c32047a4afc51a9ec7bc35e1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/56f6a100c32047a4afc51a9ec7bc35e1.png)
 
 ### 5.2、pom文件
 
@@ -433,7 +433,7 @@ pom.xml 是Maven的核心配置文件
 
 （3）特殊优先：当同级配置了相同资源的不同版本时，后配置的覆盖先配置的
 
-![](https://img-blog.csdnimg.cn/93e1f7931cd143a39200b453fe8cc534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/93e1f7931cd143a39200b453fe8cc534.png)
 
 以一个项目为根，直接依赖称为1度资源，直接依赖的直接依赖称为2度资源，直接依赖的直接依赖的直接依赖称为3度资源。
 
@@ -491,7 +491,7 @@ pom.xml 是Maven的核心配置文件
 
 这四种取值与范围的对应情况如下：
 
-![](https://img-blog.csdnimg.cn/a10a5e1b71fe4889a6906f87b7878fbe.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/a10a5e1b71fe4889a6906f87b7878fbe.png)
 
 ## 7、Maven生命周期与插件
 
@@ -518,7 +518,7 @@ default：核心工作，例如编译，测试，打包，部署等
 
 这里面的事件非常的多，如下图
 
-![](https://img-blog.csdnimg.cn/f3e17822127a45a883774c43a3d17996.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/f3e17822127a45a883774c43a3d17996.png)
 
 **对于default生命周期，每个事件在执行之前都会将之前的所有事件依次执行一遍**
 
@@ -568,7 +568,7 @@ site：产生报告，发布站点等
 
 在IDEA右侧`maven-project`操作面板上可以看到
 
-![](https://img-blog.csdnimg.cn/6213f35e5cfa4adb80af4ad410de8d3e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/6213f35e5cfa4adb80af4ad410de8d3e.png)
 
 这样在IDEA左侧 target目录下就会有我们的源码包
 
@@ -576,11 +576,11 @@ site：产生报告，发布站点等
 
 1.  **每次创建Maven项目都要配置Maven版本的解决办法**
 
-![](https://img-blog.csdnimg.cn/ce9ac0fdcd8b4eaaae1181701b369b40.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/ce9ac0fdcd8b4eaaae1181701b369b40.png)
 
 进行maven全局配置
 
-![](https://img-blog.csdnimg.cn/2f020cc2a5a0409d8e2ad5566c0a6634.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/2f020cc2a5a0409d8e2ad5566c0a6634.png)
 
 1.  **maven默认web项目中的web.xml版本问题**
 
@@ -615,7 +615,7 @@ maven由于它的约定大于配置，我们之后可能遇到我们写的配置
 *   java目录下的properties并没有被打包，resources目录下的properties被打包了，这就是我们说的我们写的配置文件，无法被导出或者生效
 
 
-![](https://img-blog.csdnimg.cn/8e0653ea106742c2b830db1d9b8e8fda.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](https://cdn.jsdelivr.net/gh/9acme/assets@note/maven/8e0653ea106742c2b830db1d9b8e8fda.png)
 
 解决方案：
 
