@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2. Redis高级 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/css/0.styles.a4590749.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/app.14fc004d.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/2.566dfaa9.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/78.e44cdf03.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/10.81b842ee.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/11.ebfeb9f7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/12.f87cec0f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/13.d1ce78de.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/14.634d8798.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/15.849a5476.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/16.1f6789c6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/17.d72ae9a1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/18.a7d1bb6a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/19.18fab812.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/20.391e1774.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/21.344ff4ef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/22.478aa888.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/23.60bd51e8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/24.82e238c3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/25.20a14ce0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/26.e116a93c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/27.b5fad048.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/28.2e734899.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/29.49ab50a4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/3.335f6690.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/30.13900cdb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/31.f9eab52c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/32.5682fe77.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/33.b8e2439b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/34.25e28d58.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/35.3f068eb1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/36.9820c049.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/37.4ce8e76f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/38.96891aad.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/39.cd3b4e19.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/4.c6f2dbcb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/40.93d39d6b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/41.69f658c5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/42.fe8735cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/43.93f5a671.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/44.71dde7cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/45.da5a1197.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/46.24fd1618.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/47.75cb5bcd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/48.fafb59cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/49.7db241d8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/5.15b5abea.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/50.3009775e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/51.97e4f202.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/52.19933c3a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/53.0a0b0d46.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/54.b5bd901e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/55.5dcba331.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/56.7115c596.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/57.8538d355.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/58.95801003.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/59.b40f4cd4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/6.a6b9faac.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/60.91a78e87.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/61.159c0a0b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/62.f28d6c75.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/63.d22fc0d0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/64.2cfd8f97.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/65.4afcd57b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/66.451cfc39.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/67.3d4fe828.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/68.6ec7d33c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/69.09279bf4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/7.7a8d11a5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/70.9e615b20.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/71.fdb09aa2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/72.72d8deef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/73.bc251e4e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/74.14797ed5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/75.63a55a44.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/76.623ca41c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/77.c403ce03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/79.bd840209.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/8.9ecafd55.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/80.573518cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/81.457e9bbc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/82.1e7e05be.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/83.c4783015.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/84.f8083dc0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/85.432a5967.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/9.6a351eab.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/css/0.styles.a4590749.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/typescript/typescript.html" class="sidebar-link">typescript</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自定义工具库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>发布NPM包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>mysql</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>java</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/javaWeb/javaWeb.html" class="sidebar-link">javaWeb</a></li><li><a href="/dist/jdbc/jdbc.html" class="sidebar-link">JDBC</a></li><li><a href="/dist/spring/spring.html" class="sidebar-link">spring</a></li><li><a href="/dist/springMVC/springMVC.html" class="sidebar-link">springMVC</a></li><li><a href="/dist/mybatis/mybatis.html" class="sidebar-link">mybatis</a></li><li><a href="/dist/maven/maven.html" class="sidebar-link">maven</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>redis</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/redis/1_redis基础.html" class="sidebar-link">基础</a></li><li><a href="/dist/redis/2_redis高级.html" class="active sidebar-link">高级</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-1-redis-linux安装" class="sidebar-link">2.1 Redis Linux安装</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-2-持久化" class="sidebar-link">2.2 持久化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-2-1-持久化简介" class="sidebar-link">2.2.1 持久化简介</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-2-2-rdb" class="sidebar-link">2.2.2 RDB</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-2-3-aof" class="sidebar-link">2.2.3 AOF</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-2-4-rdb与aof区别" class="sidebar-link">2.2.4 RDB与AOF区别</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-2-5-持久化应用场景" class="sidebar-link">2.2.5 持久化应用场景</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-3-事务" class="sidebar-link">2.3 事务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-3-1-事务简介" class="sidebar-link">2.3.1 事务简介</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-3-2-事务基本操作" class="sidebar-link">2.3.2 事务基本操作</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-3-3-锁" class="sidebar-link">2.3.3 锁</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#tips-18" class="sidebar-link">Tips 18：</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#tips-19" class="sidebar-link">Tips 19</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-4-删除策略" class="sidebar-link">2.4 删除策略</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-4-1-过期数据" class="sidebar-link">2.4.1 过期数据</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-4-2-数据删除策略" class="sidebar-link">2.4.2 数据删除策略</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-4-3-逐出算法" class="sidebar-link">2.4.3 逐出算法</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-5-redis-conf" class="sidebar-link">2.5 redis.conf</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-6-高级数据类型" class="sidebar-link">2.6 高级数据类型</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-6-1-bitmaps" class="sidebar-link">2.6.1 Bitmaps</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#tips-21" class="sidebar-link">Tips 21:</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-6-2-hyperloglog" class="sidebar-link">2.6.2 HyperLogLog</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#_2-6-3-geo" class="sidebar-link">2.6.3 GEO</a></li><li class="sidebar-sub-header"><a href="/dist/redis/2_redis高级.html#tips-23" class="sidebar-link">Tips 23:</a></li></ul></li></ul></li><li><a href="/dist/redis/3_redis集群.html" class="sidebar-link">集群</a></li><li><a href="/dist/redis/4_企业级解决方案.html" class="sidebar-link">企业级解决方案</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_2-redis高级"><a href="#_2-redis高级" class="header-anchor">#</a> 2. Redis高级</h1> <h2 id="_2-1-redis-linux安装"><a href="#_2-1-redis-linux安装" class="header-anchor">#</a> 2.1 Redis Linux安装</h2> <h4 id="_047-linux安装redis"><a href="#_047-linux安装redis" class="header-anchor">#</a> 047-Linux安装redis</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">CentOS7</span>安装<span class="token class-name">Redis</span>
+	下载安装包
+		wget http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>download<span class="token punctuation">.</span>redis<span class="token punctuation">.</span>io<span class="token operator">/</span>releases<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token operator">?</span><span class="token punctuation">.</span>?<span class="token punctuation">.</span>?<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
+	解压
+		tar <span class="token operator">-</span>zxvf 文件名<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
+	编译
+		make
+	安装
+		make install
+</code></pre></div><h4 id="_048-指定端口启动服务"><a href="#_048-指定端口启动服务" class="header-anchor">#</a> 048-指定端口启动服务</h4> <div class="language-java extra-class"><pre class="language-java"><code>redis<span class="token operator">-</span>server <span class="token operator">--</span>port <span class="token number">6380</span>
+redis<span class="token operator">-</span>cli <span class="token operator">-</span>p <span class="token number">6380</span>
+</code></pre></div><h4 id="_049-指定配置文件启动服务"><a href="#_049-指定配置文件启动服务" class="header-anchor">#</a> 049-指定配置文件启动服务</h4> <div class="language-java extra-class"><pre class="language-java"><code>过滤掉注释信息、过滤掉空白行，只留下有用的代码
+	cat redis<span class="token punctuation">.</span>conf<span class="token operator">|</span>grep <span class="token operator">-</span>v <span class="token string">&quot;#&quot;</span> <span class="token operator">|</span>grep <span class="token operator">-</span>v <span class="token string">&quot;^$&quot;</span>
+	cat redis<span class="token punctuation">.</span>conf <span class="token operator">|</span>grep <span class="token operator">-</span>v <span class="token string">&quot;#&quot;</span> <span class="token operator">|</span>grep <span class="token operator">-</span>v <span class="token string">&quot;^$&quot;</span> <span class="token operator">&gt;</span> redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>我们的配置文件内容如下：redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+
+	port <span class="token number">6379</span>
+
+	# 以守护进程方式启动，后台启动，启动时不在终端上打印日志信息
+	daemonize yes
+
+	# 生成的日志文件的名字
+	logfile <span class="token string">&quot;6379.log&quot;</span>
+
+	# 生成的日志文件，放在哪个位置
+	dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>log6379Data
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>以配置文件方式启动
+	redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6379.</span>conf 	<span class="token comment">//启动redis-server</span>
+	redis<span class="token operator">-</span>cli <span class="token operator">-</span>p <span class="token number">6379</span>		<span class="token comment">//client连接server</span>
+	ps <span class="token operator">-</span>ef <span class="token operator">|</span>grep redis<span class="token operator">-</span>  	<span class="token comment">//查看redis-开头的所有进程</span>
+	kill <span class="token operator">-</span>s <span class="token number">9</span> 进程号			<span class="token comment">//杀死redis-server进程</span>
+</code></pre></div><h4 id="_050-配置文件启动目录管理"><a href="#_050-配置文件启动目录管理" class="header-anchor">#</a> 050-配置文件启动目录管理</h4> <div class="language-java extra-class"><pre class="language-java"><code>把redis<span class="token operator">-</span><span class="token number">6379.</span>conf文件，放到专门的目录下方便管理 ， 放到conf文件夹下
+	<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>想再启动一个redis<span class="token operator">-</span>server：redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+
+	port <span class="token number">6380</span>
+
+	# 以守护进程方式启动，后台启动，启动时不在终端上打印日志信息
+	daemonize yes
+
+	# 生成的日志文件的名字
+	logfile <span class="token string">&quot;6380.log&quot;</span>
+
+	# 生成的日志文件，放在哪个位置
+	dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> log6379Data<span class="token punctuation">]</span># redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6380.</span>conf
+<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> log6379Data<span class="token punctuation">]</span># ps aux<span class="token operator">|</span>grep redis
+root      <span class="token number">10560</span>  <span class="token number">0.2</span>  <span class="token number">0.2</span> <span class="token number">153892</span>  <span class="token number">2180</span> <span class="token operator">?</span>        <span class="token class-name">Ssl</span>  <span class="token number">22</span><span class="token operator">:</span><span class="token number">58</span>   <span class="token number">0</span><span class="token operator">:</span><span class="token number">00</span> redis<span class="token operator">-</span>server <span class="token operator">*</span><span class="token operator">:</span><span class="token number">6380</span>
+root      <span class="token number">10566</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span> <span class="token number">112712</span>   <span class="token number">964</span> pts<span class="token operator">/</span><span class="token number">1</span>    <span class="token class-name">S</span><span class="token operator">+</span>   <span class="token number">22</span><span class="token operator">:</span><span class="token number">58</span>   <span class="token number">0</span><span class="token operator">:</span><span class="token number">00</span> grep <span class="token operator">--</span>color<span class="token operator">=</span>auto redis
+<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> log6379Data<span class="token punctuation">]</span># redis<span class="token operator">-</span>cli <span class="token operator">-</span>p <span class="token number">6380</span>		<span class="token comment">//client连接server</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+	<span class="token class-name">Redis</span>服务启动
+		默认配互启动
+			redis<span class="token operator">-</span>server
+			redis<span class="token operator">-</span>server <span class="token operator">--</span>port <span class="token number">6379</span>
+			redis<span class="token operator">-</span>server <span class="token operator">--</span>port <span class="token number">6380</span>……
+		指定配置文件启动
+			redis<span class="token operator">-</span>server redis<span class="token punctuation">.</span>conf
+			redis<span class="token operator">-</span>server redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+			redis<span class="token operator">-</span>server redis<span class="token operator">-</span><span class="token number">6380.</span>conf
+			redis<span class="token operator">-</span>server conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6379</span> cont
+			redis<span class="token operator">-</span>server conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6380.</span>conf……
+	<span class="token class-name">Redis</span>客户端连接
+		默认连接
+			redis<span class="token operator">-</span>cli
+		连接指定服务器
+			redis<span class="token operator">-</span>cli <span class="token operator">-</span>h <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span>
+			redis<span class="token operator">-</span>cli <span class="token operator">-</span>p <span class="token number">6379</span>
+			redis<span class="token operator">-</span>cli <span class="token operator">-</span>h <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span> <span class="token operator">-</span>p <span class="token number">6379</span>
+
+配置文件模板：redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+
+	# 设置当前服务器启动端口
+	port <span class="token number">6379</span>
+
+	# 以守护进程方式启动，使用本启动方式，redis讲义服务的形式存在，日志将不再打印到命令窗口
+	daemonize yes
+
+	# 设定日志文件名，便于查阅
+	logfile <span class="token string">&quot;6379.log&quot;</span>
+
+	# 设定当前服务文件保存的位置，包含日志文件、持久化文件等
+	dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>log6379Data
+</code></pre></div><h2 id="_2-2-持久化"><a href="#_2-2-持久化" class="header-anchor">#</a> 2.2 持久化</h2> <h3 id="_2-2-1-持久化简介"><a href="#_2-2-1-持久化简介" class="header-anchor">#</a> 2.2.1 持久化简介</h3> <h4 id="_051-持久化-持久化简介"><a href="#_051-持久化-持久化简介" class="header-anchor">#</a> 051-持久化-持久化简介</h4> <div class="language-java extra-class"><pre class="language-java"><code>持久化简介
+	<span class="token number">1.</span> 意外的断电、软件崩溃
+	<span class="token number">2.</span> “自动备份”：其实就是将内存中的数据和硬盘中的数据做了一个关联
+什么是持久化
+	利用永久性存储介质将数据进行保存，在特定的时间将保存的数据进行恢复的工作机制称为持久化
+为什么要进行持久化
+	防止数据的意外丢失，确保数据安全性
+持久化过程保存什么
+	将当前数据状态进行保存，快照形式，存储数据结果，存储格式简单，关注点在数据  			数据<span class="token punctuation">(</span>快照<span class="token punctuation">)</span>  RDB
+	将数据的操作过程进行保存，日志形式，存储操作过程，存储格式复杂，关注点在数据的操作过程	过程<span class="token punctuation">(</span>日志<span class="token punctuation">)</span>  AOF
+</code></pre></div><h3 id="_2-2-2-rdb"><a href="#_2-2-2-rdb" class="header-anchor">#</a> 2.2.2 RDB</h3> <h4 id="_052-持久化-save指令"><a href="#_052-持久化-save指令" class="header-anchor">#</a> 052-持久化-save指令</h4> <div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式
+	谁、什么时间、干什么事情
+命令执行
+	谁：redis操作者（用户）
+	什么时间：即时（随时进行）
+	干什么事情：保存数据
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式—save指令
+命令
+	save
+作用
+	手动执行一次保存操作
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> keys <span class="token operator">*</span>
+<span class="token punctuation">(</span>empty list or set<span class="token punctuation">)</span>
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> set name zhangsan
+OK
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> save <span class="token comment">//手动执行保存指令</span>
+OK
+
+<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> logData<span class="token punctuation">]</span># pwd
+<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData <span class="token comment">//在设置好的文件保存目录下</span>
+<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> logData<span class="token punctuation">]</span># ll
+total <span class="token number">8</span>
+<span class="token operator">-</span>rw<span class="token operator">-</span>r<span class="token operator">--</span>r<span class="token operator">--</span><span class="token punctuation">.</span> <span class="token number">1</span> root root <span class="token number">1455</span> <span class="token class-name">Apr</span>  <span class="token number">5</span> <span class="token number">13</span><span class="token operator">:</span><span class="token number">54</span> <span class="token number">6379.l</span>og
+<span class="token operator">-</span>rw<span class="token operator">-</span>r<span class="token operator">--</span>r<span class="token operator">--</span><span class="token punctuation">.</span> <span class="token number">1</span> root root  <span class="token number">112</span> <span class="token class-name">Apr</span>  <span class="token number">5</span> <span class="token number">13</span><span class="token operator">:</span><span class="token number">54</span> dump<span class="token punctuation">.</span>rdb
+
+XXX<span class="token punctuation">.</span>rdb就是持久化文件，保存了当前的快照信息
+</code></pre></div><h4 id="_053-持久化-rdb相关配置"><a href="#_053-持久化-rdb相关配置" class="header-anchor">#</a> 053-持久化-RDB相关配置</h4> <div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式—save指令相关配置
+	dbfilename dump<span class="token punctuation">.</span>rdb
+		说明：设置本地数据库文件名，默认值为 dump<span class="token punctuation">.</span>rdb
+		经验：通常设为 dump<span class="token operator">-</span>端口号<span class="token punctuation">.</span>rdb
+	dir
+		说明：设置存储<span class="token punctuation">.</span>rdb文件的路径
+		经验：通常设置成存储空间较大的目录中，目录名称 data
+	rdbcompression yes
+		说明：设置存储至本地数据库时是否压缩数据，默认为yes，采用LF压缩
+		经验：通常默认为开启状态，如果设置为no，可以节省CPU运行时间，但会使存储的文件变大（巨大）
+	rdbchecksum yes
+		说明：设置是否进行RDB文件格式校验，该校验过程在写文件和读文件过程均进行
+		经验：通常默认为开启状态，如果设置为no，可以节约读写性过程约<span class="token number">10</span><span class="token operator">%</span>时消耗，但是存储<span class="token operator">/</span>恢复的数据有一定的损坏风险
+</code></pre></div><p>更改后的redis-6379.conf文件内容如下</p> <div class="language-java extra-class"><pre class="language-java"><code># 设置当前服务器启动端口
+port <span class="token number">6379</span>
+
+# 以守护进程方式启动，使用本启动方式，redis讲义服务的形式存在，日志将不再打印到命令窗口
+daemonize yes
+
+# 设定日志文件名，便于查阅
+logfile <span class="token string">&quot;6379.log&quot;</span>
+
+# 设定当前服务文件保存的位置，包含日志文件、持久化文件等
+dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+# 设置 <span class="token punctuation">.</span>rdb文件名 <span class="token punctuation">(</span>RDB持久化文件名<span class="token punctuation">)</span>
+dbfilename dump<span class="token operator">-</span><span class="token number">6379.</span>rdb
+
+# 开启压缩<span class="token punctuation">(</span>持久化文件<span class="token punctuation">)</span>
+rdbcompression yes
+
+# 开启加载检测
+rdbchecksum yes
+</code></pre></div><h4 id="_054-持久化-数据恢复过程演示"><a href="#_054-持久化-数据恢复过程演示" class="header-anchor">#</a> 054-持久化-数据恢复过程演示</h4> <div class="language-java extra-class"><pre class="language-java"><code>启动服务
+客户端连接服务端，并发送指令，并save
+
+关闭服务端
+启动客户端，启动服务端，并连接
+keys <span class="token operator">*</span>
+发下，上一次存储的数据，都已经加载上来了<span class="token punctuation">(</span>服务启动的时候，加载了<span class="token punctuation">.</span>rdb里的数据<span class="token punctuation">)</span>
+</code></pre></div><h4 id="_055-持久化-save指令工作原理"><a href="#_055-持久化-save指令工作原理" class="header-anchor">#</a> 055-持久化-save指令工作原理</h4> <div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式<span class="token operator">-</span>save指令工作原理
+
+注意：
+	save指令的执行会阻塞当前<span class="token class-name">Redis</span>服务器，直到当前RDB过程完成为止，有可能会造成长时间阻塞，线上环境不建议使用。
+	<span class="token operator">--</span><span class="token operator">&gt;</span> 线上环境中不建议使用save这种指令，因为很拉服务器的性能效率，有可能造成长时间的阻塞
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200405144629553.png" alt=""></p> <h4 id="_056-持久化-bgsave指令与工作原理"><a href="#_056-持久化-bgsave指令与工作原理" class="header-anchor">#</a> 056-持久化-bgsave指令与工作原理</h4> <div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式
+	数据量过大，单线程执行方式造成效率过低，如何处理？
+后台执行
+	谁：redis操作者（用户）发起指令；reds服务器控制指令执行
+	什么时间：即时（发起）；合理的时间（执行）
+	干什么事情：保存数据
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式— bgsave指令
+命令
+	bgsave
+	注释：bg<span class="token operator">-</span>background
+作用
+	手动启动后台保存操作，但不是立即执行
+</code></pre></div><p>RDB启动方式— bgsave指令工作原理</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> bgsave
+<span class="token class-name">Background</span> saving started
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020040514595481.png" alt="">
+查看我们的日志文件
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200405150402629.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>注意：
+	bgsave命令是针对save阻塞问题做的优化，<span class="token punctuation">(</span>save是马上执行，并且加入到任务执行序列中<span class="token punctuation">)</span>
+	<span class="token class-name">Redis</span>内部所有涉及到RDB操作都来用bgsave的方式，save命令可以放弃使用
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式 — bgsave指令相关配置
+	dbfilenane dump<span class="token punctuation">.</span>rdb
+	dir
+	rdbcompression yes
+	rdbchecksum yes
+	stop<span class="token operator">-</span>writes<span class="token operator">-</span>on<span class="token operator">-</span>bgsave<span class="token operator">-</span>error yes
+		说明：后台存储过程中如果出现错误现象，是否停止保存操作
+		经验：通常默认为开启状态
+</code></pre></div><p>redis-6379.conf配置文件 更新后</p> <div class="language-java extra-class"><pre class="language-java"><code>	# 设置当前服务器启动端口
+	port <span class="token number">6379</span>
+
+	# 以守护进程方式启动，使用本启动方式，redis讲义服务的形式存在，日志将不再打印到命令窗口
+	daemonize yes
+
+	# 设定日志文件名，便于查阅
+	logfile <span class="token string">&quot;6379.log&quot;</span>
+
+	# 设定当前服务文件保存的位置，包含日志文件、持久化文件等
+	dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+	# 设置 <span class="token punctuation">.</span>rdb文件名 <span class="token punctuation">(</span>RDB持久化文件名<span class="token punctuation">)</span>
+	dbfilename dump<span class="token operator">-</span><span class="token number">6379.</span>rdb
+
+	# 开启压缩<span class="token punctuation">(</span>持久化文件<span class="token punctuation">)</span>
+	rdbcompression yes
+
+	# 开启加载检测
+	rdbchecksum yes
+
+	# bgsave后台存储过程中，如果出现错误现象，是否停止保存操作
+	stop<span class="token operator">-</span>writes<span class="token operator">-</span>on<span class="token operator">-</span>bgsave<span class="token operator">-</span>error yes
+</code></pre></div><h4 id="_057-持久化-save配置与工作原理"><a href="#_057-持久化-save配置与工作原理" class="header-anchor">#</a> 057-持久化-save配置与工作原理</h4> <div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式
+	反复执行保存指令，忘记了怎么办？不知道数据产生了多少变化，何时保存？
+自动执行
+	谁：redis服务器发起指令（基于条件）
+	什么时间：满足条件
+	干什么事情：保存数据
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>RDB启动方式—save配置
+	配置
+		save second changes
+	作用
+		满足 限定second的时间范围内 key的变化数量 达到 指定changes数量 即进行持久化
+	参数
+		second：监控时间范国
+		changes：监控key的变化量
+	位置
+		在conf文件中进行配置
+	范例
+		save <span class="token number">900</span> <span class="token number">1</span>
+		save <span class="token number">300</span> <span class="token number">10</span>
+		save <span class="token number">60</span> <span class="token number">10000</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200405153058755.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>注意：
+	save配要根据实际业务情兄进行设置，频度过高或过低都会出现性能问题，结果可能是灾难性的
+	save配置中对于second与changes设置通常具有互补对应关系，尽量不要设置成包含性关系
+	save配置启动后执行的是bgsave操作
+</code></pre></div><p>redis-6379.conf</p> <div class="language-java extra-class"><pre class="language-java"><code>	# 设置当前服务器启动端口
+	port <span class="token number">6379</span>
+
+	# 以守护进程方式启动，使用本启动方式，redis讲义服务的形式存在，日志将不再打印到命令窗口
+	daemonize yes
+
+	# 设定日志文件名，便于查阅
+	logfile <span class="token string">&quot;6379.log&quot;</span>
+
+	# 设定当前服务文件保存的位置，包含日志文件、持久化文件等
+	dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+	# 设置 <span class="token punctuation">.</span>rdb文件名 <span class="token punctuation">(</span>RDB持久化文件名<span class="token punctuation">)</span>
+	dbfilename dump<span class="token operator">-</span><span class="token number">6379.</span>rdb
+
+	# 开启压缩<span class="token punctuation">(</span>持久化文件<span class="token punctuation">)</span>
+	rdbcompression yes
+
+	# 开启加载检测
+	rdbchecksum yes
+
+	# bgsave后台存储过程中，如果出现错误现象，是否停止保存操作
+	stop<span class="token operator">-</span>writes<span class="token operator">-</span>on<span class="token operator">-</span>bgsave<span class="token operator">-</span>error yes
+
+	# 指定时间内，key的更改达到指定的数量，<span class="token class-name">Redis</span>自动进行gbsave操作
+	# 此处设置的是每<span class="token number">300</span>s发生<span class="token number">10</span>次变化，就进行一次bgsave
+	#save <span class="token number">900</span> <span class="token number">1</span>
+	save <span class="token number">300</span> <span class="token number">10</span>
+	#save <span class="token number">60</span> <span class="token number">10000</span>
+</code></pre></div><h4 id="_058-持久化-rdb三种启动方式对比与优缺点分析"><a href="#_058-持久化-rdb三种启动方式对比与优缺点分析" class="header-anchor">#</a> 058-持久化-RDB三种启动方式对比与优缺点分析</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020040515384687.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>rdb特殊启动形式
+	全复制
+		在主从复制中详细讲解
+	服务器运行过程中重启
+		debug reload
+	关闭服务器时指定保有数据
+		shutdown save <span class="token comment">//可以关闭redis-server</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>RDB优点
+	RDB是一个紧凑压缩的二进制文件，存效率较高
+	RDB内部存储的是redis在某个时间点的数据快照，非常适合用于数据备份，全量复制等场景
+	RDB恢复数据的速度要比AOF快很多
+	应用：服务器中每<span class="token class-name">X</span>小时执行bgsave备份，并将RDB文件拷贝到远程机器中，用于灾难恢复
+RDB缺点
+	RDB方式无论是执行指令还是利用五，无法到实时持久化，具有较大的可能性丢失数据
+	bgsave指令每次运行要执行fork操作创建子进程，要牺牲掉一些性能
+	<span class="token class-name">Redis</span>的众多版本中未进行RDB文件格式的版本统一，有可能出现各版本服务之间数据格式无法兼容现象
+</code></pre></div><h3 id="_2-2-3-aof"><a href="#_2-2-3-aof" class="header-anchor">#</a> 2.2.3 AOF</h3> <h4 id="_059-持久化-aof简介"><a href="#_059-持久化-aof简介" class="header-anchor">#</a> 059-持久化-AOF简介</h4> <div class="language-java extra-class"><pre class="language-java"><code>RDB存储的弊端
+	存储数据量较大，效率较低
+		基于快照思想，每次读写都是全部据，当数据量巨大时，效率非常低
+	大数据量下的IO性能较低
+	基于fok创建子进程，内存产生额外消耗
+	宕机带来的数据丢失冈脸
+解决思路
+	不写全数据，仅记录部分数据
+	改记录数据为记录操作过程
+	对所有操作均进行记录，排除丢失数据的风险
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>AOF概念
+
+	<span class="token function">AOF</span><span class="token punctuation">(</span>append only file<span class="token punctuation">)</span>持久化：以独立日志的方式记录每次写命令，
+	重启时再重新执行AOF文件中的命令，达到恢复数据的目的。
+	与RDB相比可以简单描述为 改记录数据 为 记录数据产生的过程
+
+	AOF的主要作用是解决了数据持久化的实时性，目前已经是<span class="token class-name">Redis</span>持久化的主流方式
+</code></pre></div><h4 id="_060-持久化-aof持久化策略基本操作"><a href="#_060-持久化-aof持久化策略基本操作" class="header-anchor">#</a> 060-持久化-AOF持久化策略基本操作</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200405170350709.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200405181138897.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200405185724672.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>AOF写数据三种策略（appendfsync）
+	<span class="token function">always</span><span class="token punctuation">(</span>每次<span class="token punctuation">)</span>
+		每次写入操作均同步到AOF文件中，数据零误差，性能较低，不建议使用
+	<span class="token function">everysec</span><span class="token punctuation">(</span>每秒<span class="token punctuation">)</span>
+		毎秒将缓冲区中的指令同步到AOF文件中，数据准确性铰高，性能铰高，建议使用，也是默认配置
+		在系统突然宕机的情况下丢失<span class="token number">1</span>秒内的数据
+	<span class="token function">no</span><span class="token punctuation">(</span>系统控制<span class="token punctuation">)</span>
+		由操作系统控制每次同步到AOF文件的周期，整体过程不可控
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>AOF功能开启
+	配置
+		appendonly yes<span class="token operator">|</span>no
+	作用
+		是否开启AOF持久化功能，默认为不开启状态
+	配置
+		appendfsync always<span class="token operator">|</span>everysec<span class="token operator">|</span>no
+	作用
+		AOF写数据策略
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>AOF相关配置
+	配置
+		appendfilename filename
+	作用
+		AOF持久化文件名，默认文件名末 appendonly<span class="token punctuation">.</span>aof，建议配置为 appendonly<span class="token operator">-</span>端口号<span class="token punctuation">.</span>aof
+	配置
+		dir
+	作用
+		AOF持久化文件保存路径，与RDB持久化文件保持一致即可
+</code></pre></div><p>redis-6379.conf</p> <div class="language-java extra-class"><pre class="language-java"><code>####################################################
+# 设置当前服务器启动端口
+port <span class="token number">6379</span>
+
+# 以守护进程方式启动，使用本启动方式，redis讲义服务的形式存在，日志将不再打印到命令窗口
+daemonize yes
+
+# 设定日志文件名，便于查阅
+logfile <span class="token string">&quot;6379.log&quot;</span>
+
+# 设定当前服务文件保存的位置，包含日志文件、持久化文件等
+dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+####################################################
+# 设置 <span class="token punctuation">.</span>rdb文件名 <span class="token punctuation">(</span>RDB持久化文件名<span class="token punctuation">)</span>
+dbfilename dump<span class="token operator">-</span><span class="token number">6379.</span>rdb
+
+# 开启压缩<span class="token punctuation">(</span>持久化文件<span class="token punctuation">)</span>
+rdbcompression yes
+
+# 开启加载检测
+rdbchecksum yes
+
+####################################################
+# bgsave后台存储过程中，如果出现错误现象，是否停止保存操作
+stop<span class="token operator">-</span>writes<span class="token operator">-</span>on<span class="token operator">-</span>bgsave<span class="token operator">-</span>error yes
+
+# 指定时间内，key的更改达到指定的数量，<span class="token class-name">Redis</span>自动进行gbsave操作
+# 此处设置的是每<span class="token number">300</span>s发生<span class="token number">10</span>次变化，就进行一次bgsave
+save <span class="token number">900</span> <span class="token number">1</span>
+save <span class="token number">300</span> <span class="token number">10</span>
+save <span class="token number">60</span> <span class="token number">10000</span>
+
+####################################################
+# 开启对AOF的支持
+appendonly yes
+
+# 指定AOF写数据的策略
+appendfsync everysec
+
+# 设置AOF持久化文件名
+appendfilename appendonly<span class="token operator">-</span><span class="token number">6379.</span>aof
+
+####################################################
+</code></pre></div><h4 id="_061-持久化-aof重写概念与命令执行"><a href="#_061-持久化-aof重写概念与命令执行" class="header-anchor">#</a> 061-持久化-AOF重写概念与命令执行</h4> <div class="language-java extra-class"><pre class="language-java"><code>AOF写数据遇到的问题
+	如果连续执行如下指令该如何处理
+		<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> set name zs
+		<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> set name <span class="token class-name">Is</span>
+		<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> set name wv <span class="token comment">//只有这一次最终生效 --&gt; 127.0.0.1:6379&gt; set name ww</span>
+		<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> incr num
+		<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> <span class="token class-name">Incr</span> nun
+		<span class="token number">127</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> <span class="token class-name">Incr</span> nun    <span class="token comment">//假设num刚开始不存在--&gt; 127.0.0.1:6379&gt; set nun3</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>AOF重写
+	随着命令不断写入AOF，文件会越来越大，为了解决这个问题，<span class="token class-name">Reds</span>引入了AOF重写机制压缩文件体积。
+	AOF文件重写是将<span class="token class-name">Redi</span>进程内的数据转化为写命令同步到新AOF文件的过程，简单说就是将对同一个数
+	据的若干个条命令执行结果转化成最终结果数据对应的指令进行记录。
+AOF重写作用
+	降低磁盘占用量，提高磁盘利用率
+	提高持久化效率，降低寺久化写时间，提高<span class="token class-name">O</span>性能
+	降低数据恢复用时，提高数据恢复效率
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>AOF重写规则
+	进程内已超时的数据不再写入文件
+	忽略无效指令，重写时使用进程内数据直接生成，这样新的AOF文件只保留最终数据的写入命令
+		如del key1、 hdel key2、 srem key3、 set key4111、 set key4222等
+	对同一数据的多条写命令合并为一条命令
+		如 <span class="token class-name">Push</span> list1 a、 <span class="token class-name">Push</span> list1 b、 <span class="token class-name">Push</span> list1 c可以转化为：<span class="token class-name">Push</span> list1 a b c
+		为防止数据量过大造成客户端缓冲区溢出，对list、set、hash、zset等类型，每条指令最多写入<span class="token number">64</span>个元素
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>AOF重写方式
+	手动写
+		bgrewriteaof
+	自动重写
+		auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>min<span class="token operator">-</span>size size
+		auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>percentage percentage
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406161450575.png" alt=""></p> <h4 id="_062-持久化-aof自动重写配置"><a href="#_062-持久化-aof自动重写配置" class="header-anchor">#</a> 062-持久化-AOF自动重写配置</h4> <div class="language-java extra-class"><pre class="language-java"><code>AOF自动重写方式
+	自动重写触发条件设置
+		auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>min<span class="token operator">-</span>size 	 size 		<span class="token comment">//配置的：aof自动重写的临界值</span>
+		auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>percentage  percent	<span class="token comment">//：aof自动重写的百分比</span>
+	自动重写触发比对参数（运行指令 info <span class="token class-name">Persistence</span>获取具体信息）
+		aof_current_size  <span class="token comment">//aof缓存中，当前已经缓存了多少 ，当大于size时，就进行重写</span>
+		aof base size
+	自动重写触发条件
+		aof_current_size<span class="token operator">&gt;</span>auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>min<span class="token operator">-</span>size
+		<span class="token punctuation">(</span> <span class="token punctuation">(</span>aof_current_size<span class="token operator">-</span>aof_base_size<span class="token punctuation">)</span> <span class="token operator">/</span> aof_base_size <span class="token punctuation">)</span>  <span class="token operator">&gt;</span> auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>percentage
+
+AOF自动重写方式
+	自动重写触发条件设置：auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>min<span class="token operator">-</span>size size <span class="token comment">//配置的：aof自动重写的临界值</span>
+	自动重写触发比对参数：aof_current_size               <span class="token comment">//aof缓存中，当前已经缓存了多少 ，当大于size时，就进行重写</span>
+	自动重写触发条件：aof_current_size<span class="token operator">&gt;</span>auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>min<span class="token operator">-</span>size <span class="token comment">//当缓存大于size时，就进行重写</span>
+AOF自动重写方式
+	自动重写触发条件设置：auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>percentage  percent	<span class="token comment">//：aof自动重写的百分比</span>
+	自动重写触发比对参数：aof_base_size
+	自动重写触发条件：<span class="token punctuation">(</span> <span class="token punctuation">(</span>aof_current_size<span class="token operator">-</span>aof_base_size<span class="token punctuation">)</span> <span class="token operator">/</span> aof_base_size <span class="token punctuation">)</span>  <span class="token operator">&gt;</span> auto<span class="token operator">-</span>aof<span class="token operator">-</span>rewrite<span class="token operator">-</span>percentage
+</code></pre></div><h4 id="_063-持久化-aof重写工作原理"><a href="#_063-持久化-aof重写工作原理" class="header-anchor">#</a> 063-持久化-AOF重写工作原理</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406164353511.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406164409758.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406164945942.png" alt=""></p> <h3 id="_2-2-4-rdb与aof区别"><a href="#_2-2-4-rdb与aof区别" class="header-anchor">#</a> 2.2.4 RDB与AOF区别</h3> <h4 id="_064-持久化-rdb与aof方案比对"><a href="#_064-持久化-rdb与aof方案比对" class="header-anchor">#</a> 064-持久化-RDB与AOF方案比对</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406165434983.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>RDB与AOF的选择之惑
+	对数据非常敏感，建议使用默认的AOF持久化方案
+		AOF持久化策略使用 everysecond，每秒钟 fsync一次。该策略 redis仍可以保持很好的处理性能，当出现问题时，最多丢失<span class="token number">0</span><span class="token operator">-</span><span class="token number">1</span>秒内的数据。
+		注意：由于AOF文件存储体积较大，且恢复速度较慢
+	数据呈现阶段有效性，建议使用RDB持久化方案
+		数据可以良好的做到阶段内无丢失（该阶段是开发者或运维人员手工维护的），且恢复速度较快，阶段点数据恢复通常采用RDB方案
+		注意：利用RDB实现紧凑的数据持久化会使 <span class="token class-name">Redis</span>降的很低
+	综合比对
+		RDB与AOF的选择实际上是在做一种权衡，每种都有利有弊
+		如不能承受数分钟以内的数据丢失，对业务数据非常敏感，选用AOF
+		如能承受数分钟以内的数据丟失，且追求大数据集的恢复度，选用RDB
+		灾难恢复选用RDB
+		双保险策略，同时开启RDB和AOF，重启后， <span class="token class-name">Redis</span>优先使用AOF来恢复数据，降低丟失数据的量
+</code></pre></div><h3 id="_2-2-5-持久化应用场景"><a href="#_2-2-5-持久化应用场景" class="header-anchor">#</a> 2.2.5 持久化应用场景</h3> <h4 id="_065-持久化-持久化应用场景分析"><a href="#_065-持久化-持久化应用场景分析" class="header-anchor">#</a> 065-持久化-持久化应用场景分析</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Tips1</span>：redis用于控制数据库表主键id，为数据库表主键ID提供生成策略，保障教据库表的主键唯一性
+	不建议使用持久化，因为可能导致ID重复
+	直接从数据库中找到最大的那个ID，然后从ID<span class="token operator">+</span><span class="token number">1</span>直接往下用就行了
+
+<span class="token class-name">Tips2</span>：redis控制数据的生命周期，通过数据是否失效控制业务行为，适用于所有具有时效性限定控制的操作
+
+<span class="token class-name">Tips3</span>：redis应用于各种结构型和非结构型高热度数据访问加速
+	不使用持久化
+
+<span class="token class-name">Tips4</span>：redis应用于购物车数据存储设计
+	不使用持久化
+
+<span class="token class-name">Tips5</span>：redis应用于抢购、限购类、限量发放优患卷、激活码等业务的数据存储设计
+	对于这种快速存储，快速消失的数据
+	建议使用持久化
+
+<span class="token class-name">Tips6</span>：redis应用于具有操作先后顺序的数据控制
+	对于这种临时的任务，如果量不是特别大的话，建议使用持久化
+
+<span class="token class-name">Tips7</span>：redis应用于最新消息展示
+	对于这种临时的任务，如果量不是特别大的话，建议使用持久化
+
+<span class="token class-name">Tips8</span>：redis应用于随机推荐类信息检索，例如热点歌单推荐，热点新闻推荐，热卖旅游线路，应用APP推荐，大<span class="token class-name">V</span>推荐等
+
+<span class="token class-name">Tips9</span>：redis应用于同类信息的关联搜索，一度关联搜索，深度关联搜索
+	从<span class="token class-name">MySQL</span>数据库里读取就行，不使用<span class="token class-name">Redis</span>持久化
+
+<span class="token class-name">Tips10</span>：redis应用于同类型不重复数据的合并、取交集操作
+
+<span class="token class-name">Tips11</span>：redis应用于同类型数据的快速去重
+
+<span class="token class-name">Tips12</span>：redis应用于基于黑名单与白名单设定的服务控制
+	黑名单：长期策略的话，数据库里肯定要存储
+	黑名单：不是长期策略，短期策略，建议使用<span class="token class-name">Redis</span>持久化
+	白名单：数据库里肯定有存储，一般不需要<span class="token class-name">Redis</span>持久化
+
+<span class="token class-name">Tips13</span>：redis应用于计数器组合排序功能对应的排名
+	建议<span class="token class-name">Redis</span>持久化
+
+<span class="token class-name">Tips14</span>：redis应用于定时任务执行顺序管理或任务过期管理
+
+<span class="token class-name">Tips15</span>：redis应用于及时任务<span class="token operator">/</span>消息队列执行管理
+	任务队列、消息队列：不建议使用
+
+<span class="token class-name">Tips16</span>：redis应用于按次结算的服务控制
+	不重要时，不使用
+	重要，使用
+
+<span class="token class-name">Tips17</span>：redis应用于基于时间顺序的数据操作，而不关注具体时间
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+	<span class="token class-name">Redis</span>持久化
+		什么是持久化
+		RDB
+			save 	<span class="token comment">//save指令</span>
+			bgsave 	<span class="token comment">//bgsave指令</span>
+			配置		<span class="token comment">//使用的是bgsave</span>
+		AOF
+			持久化写策略<span class="token comment">//三种：always second</span>
+			重写     <span class="token comment">//AOF文件会很大，所以要使用这种优化策略</span>
+</code></pre></div><h2 id="_2-3-事务"><a href="#_2-3-事务" class="header-anchor">#</a> 2.3 事务</h2> <h3 id="_2-3-1-事务简介"><a href="#_2-3-1-事务简介" class="header-anchor">#</a> 2.3.1 事务简介</h3> <h4 id="_066-事务-redis事务简介"><a href="#_066-事务-redis事务简介" class="header-anchor">#</a> 066-事务-redis事务简介</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406174100684.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>什么是事务
+	<span class="token class-name">Redis</span>执行指令过程中，多条连续执行的指令被干扰，打断，插队
+
+	<span class="token class-name">Redis</span>事务就是一个命令执行的队列，将一系列预定义命令，包装成一个整体（一个队列）。
+	当执行时，一次性按照添加顺序依次执行，中间不会被断或者干扰
+
+	一个队列中，一次性、顺序性、排他性的执行一系列命令
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406174312601.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406174325262.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406174408384.png" alt=""></p> <h3 id="_2-3-2-事务基本操作"><a href="#_2-3-2-事务基本操作" class="header-anchor">#</a> 2.3.2 事务基本操作</h3> <h4 id="_067-事务-事务的基本操作-定义-取消-执行"><a href="#_067-事务-事务的基本操作-定义-取消-执行" class="header-anchor">#</a> 067-事务-事务的基本操作（定义，取消，执行）</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406174842390.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>事务的基本操作
+	开启事务
+		multi
+		作用：设定事务的开启位置，此指令执行后，后续的所有指令均加入到事务中
+	执行事务
+		exec
+		作用：设定事务的结束位置，同时执行事务中所有的指令。与multi成对出现，成对使用
+
+	注意：加入事务的命令暂时进入到任务队列中，并没有立即执行，只有执行exec命令才开始执行
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>争事务定义过程中发现出了问题，怎么办？
+	取消事务
+		discard
+		作用：终止当前事务的定义，发生在multi之后，exec之前
+</code></pre></div><h4 id="_068-事务-事务的工作流程"><a href="#_068-事务-事务的工作流程" class="header-anchor">#</a> 068-事务-事务的工作流程</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406175855931.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406180404134.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406180428627.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020040618044545.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406180504231.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406180518129.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>当事务中遇到discard指令时
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406180633856.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406180642445.png" alt=""></p> <h4 id="_069-事务-事务操作的注意事项"><a href="#_069-事务-事务操作的注意事项" class="header-anchor">#</a> 069-事务-事务操作的注意事项</h4> <div class="language-java extra-class"><pre class="language-java"><code>定义事务的过程中，命令格式输入错误怎么办？
+	语法错误：命令书写格式有误
+	处理结果：如果定义的事务中所包含的命令存在语法错误，整体事务中所有命令均不会执行。包括那些语法正确的命令。
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>定义事务的过程中，命令执行出现错误怎么办？
+	运行错误：命令格式正确<span class="token punctuation">(</span>但是指令的语法错误<span class="token punctuation">)</span>，无法正确的执行。例对list进行incr操作
+	处理结果：能够正确运行的命令会执行，运行错误的命令不会被执行
+	注意：已经执行完毕的命令对应的数据不会自动回滚，需要程序员自己在代码中实现回滚。
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>手动进行事务回滚
+	记录操作过程中被影响的数据之前的状态
+		单数据：string
+		多数据：hash、list、set、zset
+	设置指令恢复所有的被修改的项
+		单数据：直接set（注意周边属性，例如时效）
+		多数据：修改对应值或整体克隆复制
+</code></pre></div><h3 id="_2-3-3-锁"><a href="#_2-3-3-锁" class="header-anchor">#</a> 2.3.3 锁</h3> <h4 id="_070-事务-锁"><a href="#_070-事务-锁" class="header-anchor">#</a> 070-事务-锁</h4> <div class="language-java extra-class"><pre class="language-java"><code>基于特定条件的事务执行
+	业务场景
+		天猫双<span class="token number">11</span>热卖过程中，对已经售罄的货物追加补货，<span class="token number">4</span>个业务员都有权限进行补货。
+		补货的操作可能是一系列的操作，牵扯到多个连续操作，如何保障不会重复操作？
+	业务分析
+		多个客户端有可能同时操作同一组数据，并且该数据一旦被操作修改后，将不适用于继续操作
+		在操作之前锁定要操作的数据，一旦发生变化，终止当前操作
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>基于特定条件的事务执行—锁
+	解决方案
+		对key添加监视锁，在执行exec前如果key发生了变化，终止事务执行
+			watch key1 key2……   <span class="token comment">//在开启事务之前去watch</span>
+		取消对所有key的监视
+			unwatch
+	watch指令监控的东西一旦发生改变，下面定义的事务就不会再执行了
+</code></pre></div><h3 id="tips-18"><a href="#tips-18" class="header-anchor">#</a> Tips 18：</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Tips</span> <span class="token number">18</span>：
+	redis应用于 基于状态控制的 批量任务执行
+</code></pre></div><h4 id="_071-事务-分布式锁"><a href="#_071-事务-分布式锁" class="header-anchor">#</a> 071-事务-分布式锁</h4> <div class="language-java extra-class"><pre class="language-java"><code>基于特定条件的事务执行
+	业务场景
+		天猫双<span class="token number">11</span>热卖过程中，对已经售罄的货物追加补货，且补货完成。客户购买热情高涨，<span class="token number">3</span>秒内将所有商
+		品购买完毕。本次补货已经将库存全部清空，如冋避免最后一件商品不被多人同时购买？【超卖问题】
+	业务分析
+		使用 watch监控一个key有没有改变已经不能解决问题，此处要监控的是具体数据
+		虽然 <span class="token class-name">Redis</span>是单线程的，但是多个客户端对同一数据同时进行操作时，如何避兔不被同时修改？
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>基于特定条件的事务执行—分布式锁
+	解决方案
+		使用 setnx设置一个公共锁
+			setnx lock<span class="token operator">-</span><span class="token class-name">Key</span> va⊥ue
+		利用setnx命令的返回值特征，有值则返回设置失败，无值则返回设置成功
+			对于返回设置成功的，拥有控制权，进行下一步的具体业务操作
+			对于返回设置失败的，不具有控制权，排队或等待
+		操作完毕通过del操作释放锁
+
+	注意：上述解决方案是一种设计概念，依赖规范<span class="token punctuation">(</span>大家操作的是同一把锁<span class="token punctuation">)</span>保障，具有风险性
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406221643360.png" alt=""></p> <h3 id="tips-19"><a href="#tips-19" class="header-anchor">#</a> Tips 19</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Tips</span> <span class="token number">19</span>
+	redis应用：基于分布式锁 对应的场景控制
+</code></pre></div><h4 id="_072-事务-死锁解决方案"><a href="#_072-事务-死锁解决方案" class="header-anchor">#</a> 072-事务-死锁解决方案</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406221854440.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200406221905255.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图：上着厕所的人，上锁了，但是睡着了，那外面等待的人得有多崩溃啊
+实际：上锁了，正用着呢，但是宕机了；或者忘记打开了
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>基于特定条件的事务执行
+	业务场景
+		依赖分布式锁的机制，某个用户操作时，对应的客户端宕机，且此时已经获取到锁。如何解决？
+	业务分析
+		由于锁操作由用户控制加锁解锁，必定会存在加锁后未解锁的风险
+		需要解锁操作不能仅依赖用户控制，系统級别要给出对应的保底处理方案
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>基于特定条件的事务执行—分布式锁改良
+	解决方案
+		使用 expire为锁key添加时间限定<span class="token operator">/</span>时效，到时不释放，放弃锁
+			expire lock<span class="token operator">-</span>key second
+			pexpire lock<span class="token operator">-</span>key milliseconds
+		由于操作通常都是微秒或毫秒级，因此该锁定时间不宜设置过大。具体时间需要业务测试后确认
+			例如：持有锁的操作最长执行时间<span class="token number">127</span>ms，最短执行时间<span class="token number">7</span>ms
+			测试百万次最长执行时间对应命令的最大耗时，测试百万次网络延迟平均耗时
+			锁时间设定推荐：最大耗时<span class="token operator">*</span><span class="token number">120</span><span class="token operator">%</span><span class="token operator">+</span>平均网络延迟<span class="token operator">*</span><span class="token number">110</span><span class="token operator">%</span>
+			如果业务最大耗时 <span class="token operator">&lt;&lt;</span> 网络平均延迟，<span class="token punctuation">(</span>通常为<span class="token number">2</span>个数量级<span class="token punctuation">)</span>，取其中单个耗时较长即可
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> set name <span class="token number">123</span>
+ok
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> setnx lock<span class="token operator">-</span>name <span class="token number">1</span>
+integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> expire lock<span class="token operator">-</span>name <span class="token number">20</span>
+integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> get name
+<span class="token string">&quot;123&quot;</span>
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span> del lock<span class="token operator">-</span>name
+integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span><span class="token operator">&gt;</span>
+</code></pre></div><h2 id="_2-4-删除策略"><a href="#_2-4-删除策略" class="header-anchor">#</a> 2.4 删除策略</h2> <h3 id="_2-4-1-过期数据"><a href="#_2-4-1-过期数据" class="header-anchor">#</a> 2.4.1 过期数据</h3> <h4 id="_073-删除策略-过期数据的概念"><a href="#_073-删除策略-过期数据的概念" class="header-anchor">#</a> 073-删除策略-过期数据的概念</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Redis</span>中的数据特征
+	<span class="token class-name">Redis</span>是一种内存级数据库，所有数据均存放在内存中，内存中的数据可以通过TTL指令获取其状态
+		XX：具有时效性的数据
+		<span class="token number">1</span>：永久有效的数据
+		<span class="token number">2</span>：已经过期的数据 或 被删除的数据 或 未定义的数据
+	过期的数据真的删除了吗？
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407093309614.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407093318815.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>过期数据删除策略
+	<span class="token number">1.</span>定时删除
+	<span class="token number">2.</span>惰性删除
+	<span class="token number">3.</span>定期删除
+</code></pre></div><h3 id="_2-4-2-数据删除策略"><a href="#_2-4-2-数据删除策略" class="header-anchor">#</a> 2.4.2 数据删除策略</h3> <h4 id="_074-删除策略-过期数据的底层存储结构"><a href="#_074-删除策略-过期数据的底层存储结构" class="header-anchor">#</a> 074-删除策略-过期数据的底层存储结构</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407093845423.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>过期数据删除策略的目标
+	在内存占用与CPU占用之间寻找一种平衡，
+	顾比失彼都会造成整体redis性能的下降，甚至引发服务器宕机或内存泄露
+</code></pre></div><h4 id="_075-删除策略-定时删除与惰性删除"><a href="#_075-删除策略-定时删除与惰性删除" class="header-anchor">#</a> 075-删除策略-定时删除与惰性删除</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407094639869.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020040709465084.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407094659838.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>过期数据删除策略
+	定时删除
+		创建一个定时器，当key设置有过期时间，且过期时间到达时，由定时器任务立即执行对键的删除操作
+		优点：节约内存，到时就删除，快速释放掉不必要的内存占用
+		缺点：CPU压力很大，无论CPU此时负载量多高，均占用CPU，会影响edis服务器响应时间和指令吞吐量
+		总结：用处理器性能换取存储空间<span class="token punctuation">(</span>拿时间换空间<span class="token punctuation">)</span><span class="token punctuation">(</span>即 拿CPU换内存<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407095219427.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407095231405.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407095241546.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407095255768.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>数据删除策略
+	惰性删除
+		数据到达过期时间，不做处理。等下次访问该数据时
+			如果未过期，返回数据
+			发现已过期，删除，返回不存在
+		优点：节约CPU性能，发现必须删除的时候才删除
+		缺点：内存压力很大，出现长期占用内存的数据
+		总结：用存储空间换取处理器性能<span class="token punctuation">(</span>拿空间换时间<span class="token punctuation">)</span><span class="token punctuation">(</span>即 拿内存换CPU<span class="token punctuation">)</span>
+</code></pre></div><h4 id="_076-删除策略-定期删除"><a href="#_076-删除策略-定期删除" class="header-anchor">#</a> 076-删除策略-定期删除</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407101130547.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>定期删除
+	周期性轮询 <span class="token class-name">Redis</span>库中的时效性数据，采用随机抽取的策略，利用过期数据占比的方式控制删除频度
+	特点<span class="token number">1</span>：CPU性能占用设置有峰值，检测频度可自定义设置
+	特点<span class="token number">2</span>：内存压力不是很大，长期占用内存的冷数据会被持续清理
+	总结：周期性抽查存储空间（随机抽查，重点抽查）
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>删除策略比对
+	<span class="token number">1.</span>定时删除
+		节约内存，无占用		不分时段占用CPU资源，频度高			拿时间换空间
+	<span class="token number">2.</span>惰性删除
+		内存占用严重			延时执行，CPU可利用率高				拿空间换时间
+	<span class="token number">3.</span>定期删除
+		内存定期随机清理		每秒花费固定的CPU资源维护内存		随机抽查，重点抽查
+</code></pre></div><h3 id="_2-4-3-逐出算法"><a href="#_2-4-3-逐出算法" class="header-anchor">#</a> 2.4.3 逐出算法</h3> <h4 id="_077-删除策略-逐出策略"><a href="#_077-删除策略-逐出策略" class="header-anchor">#</a> 077-删除策略-逐出策略</h4> <div class="language-java extra-class"><pre class="language-java"><code>逐出算法
+	新数据进入检测
+		当新数据进入redis时，如果内存不足怎么办？
+
+			<span class="token class-name">Redis</span>使用内存存储数据，在执行每一个命令前，会调用<span class="token function">freeMemoryIfNeeded</span><span class="token punctuation">(</span><span class="token punctuation">)</span>检测内存是否充足。
+			如果内存不满足新加入数据的最低存储要求，redis要临时删除一些数据为当前指令凊理存储空间。清理数据的策略称为逐出算法。
+
+			注意：逐出数据的过程不是<span class="token number">100</span><span class="token operator">%</span>能够清理出足够的可使用的内存空间，如果不成功则反复执行。
+			当对所有数据尝试完毕后，如果不能达到内存清理的要求，将出现错误信息。
+
+			（error）OOM command not allowed when used memory <span class="token operator">&gt;</span><span class="token string">'maxmemory'</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>影响数据逐出的相关配置
+	最大可使用内存
+		maxmemory
+		占用物理内存的比例，默认值为<span class="token number">0</span>，表示不限制。生产环境中根据需求设定，通常设置在<span class="token number">50</span><span class="token operator">%</span>以上
+	每次选取待删除数据的个数
+		maxmemory<span class="token operator">-</span>samples
+		选取数据时并不会全库扫描，导致严重的性能消耗，降低读写性能。因此采用随机获取数据的方式作为待检测删除数据
+	删除策略
+		maxmemory<span class="token operator">-</span>policy
+		达到最大內存后的，对被挑选出来的数据进行删除的策略
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>影响数据逐出的相关配置
+	检测易失数据（可能会过期的数据集 server<span class="token punctuation">.</span>db<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>expires）
+		<span class="token keyword">volatile</span><span class="token operator">-</span>lru：挑选最近最少使用的数据淘汰
+		<span class="token keyword">volatile</span><span class="token operator">-</span>lfu：挑选最近使用次数最少的数据淘汰
+		<span class="token keyword">volatile</span><span class="token operator">-</span>ttl：挑选将要过期的数据淘汰
+		<span class="token keyword">volatile</span><span class="token operator">-</span>random：任意选择数据匋汰
+
+		LRU<span class="token operator">:</span><span class="token class-name">Least</span> <span class="token class-name">Recently</span> <span class="token class-name">Used</span> <span class="token operator">--</span> 最近，<span class="token string">'最长时间没使用'</span>的<span class="token punctuation">(</span>规定时间内<span class="token punctuation">)</span>
+		LFU <span class="token class-name">Least</span> <span class="token class-name">Frequently</span> <span class="token class-name">Used</span><span class="token operator">-</span> 最近，<span class="token string">'最少使用次数'</span>的<span class="token punctuation">(</span>规定时间内<span class="token punctuation">)</span>
+
+	检测全库数据（所有数据集 server<span class="token punctuation">.</span>db<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>dict）
+		allkeys<span class="token operator">-</span>lru：挑选最近最少使用的数据淘汰
+		allkeys<span class="token operator">-</span>lfu：挑选最近使用次数最少的数据淘汰
+		allkeys<span class="token operator">-</span>random：任意选择数据淘汰
+	放弃数据驱逐
+		no<span class="token operator">-</span> eviction（驱逐）：禁止驱逐数据倨（redis4<span class="token punctuation">.</span><span class="token number">0</span>中默认策略），会引发错误OOM（<span class="token class-name">Out</span> <span class="token class-name">Of</span> <span class="token class-name">Memory</span>）
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>	<span class="token punctuation">.</span>conf配置文件中<span class="token operator">-</span>配置逐出策略
+		maxmemory<span class="token operator">-</span>policy <span class="token keyword">volatile</span><span class="token operator">-</span>lru
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>数据逐出策略配置依据
+	使用info命令输出监控信息，查询缓存hit和miss的次数，根据业务需求调优<span class="token class-name">Redis</span>配置
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Redis</span>删除策略
+	数据删除策略<span class="token punctuation">(</span>过期数据<span class="token punctuation">)</span>
+		定时刪除
+		惰性删除
+		定期删除
+	数据逐出策略<span class="token punctuation">(</span>时效性数据和永久性数据<span class="token punctuation">)</span>
+		<span class="token number">8</span>种策略
+
+	加速运行效率
+		减少无效的key的存储
+		为我们释放出一些更加有用的空间来
+		达到数据的快速操作与利用
+
+	平衡是你需要把握的核心操作
+</code></pre></div><h2 id="_2-5-redis-conf"><a href="#_2-5-redis-conf" class="header-anchor">#</a> 2.5 redis.conf</h2> <h4 id="_078-服务器配置-redis-conf配置"><a href="#_078-服务器配置-redis-conf配置" class="header-anchor">#</a> 078-服务器配置-redis.conf配置</h4> <div class="language-java extra-class"><pre class="language-java"><code>服务器基础配置
+	服务器端设定
+		设置服务器以守护进程的方式运行
+			daemonize yes<span class="token operator">|</span>no
+		绑定主机地址
+			bind <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span>
+		设置服务器端口号
+			port <span class="token number">6379</span>
+		设置数据库数量
+			databases <span class="token number">16</span>
+
+	日志配置
+		设置服务器以指定日志记录级别
+			loglevel debug<span class="token operator">|</span>verbose<span class="token operator">|</span>notice<span class="token operator">|</span>warning
+		日志记录文件名
+			<span class="token number">1</span>ogfi1e端囗号<span class="token number">.1</span>og
+		注意：日志级别
+				开发期设互为 verbose即可，
+				生产环境<span class="token punctuation">(</span>上线运行的<span class="token punctuation">)</span>中配互为 notice，简化日志输出量，降低写日志IO的频度
+
+	客户端配置
+		设置同一时间最大客户端连接数，默认无限制。当客户端连接到达上限， <span class="token class-name">Redis</span>会关闭新的连接，<span class="token number">0</span>表示不限制上限
+			maxclients <span class="token number">0</span>
+		客户端闲置等待最大时长，达到最大值后关闭连接。如需关闭该功能，设置为<span class="token number">0</span>。 <span class="token punctuation">(</span>多长时间不用，自动断掉与client的连接<span class="token punctuation">)</span>
+			timeout <span class="token number">300</span>
+
+	多服务器快捷配置
+		导入并加载指定配置文件信息，用于快速创建redis公共配置较多的redis实例配置文件，便于维护  <span class="token punctuation">(</span>有点类似于继承，用于加速配置<span class="token punctuation">)</span>
+		相对路径用的比较多，绝对路径用的少一些
+		主的配置文件，起一个特殊的名字；其他的用端口号起名字就行了
+			inc1ude  <span class="token operator">/</span>path<span class="token operator">/</span> server<span class="token operator">-</span>端口号<span class="token punctuation">.</span>conf
+</code></pre></div><p>redis-6379.conf</p> <div class="language-java extra-class"><pre class="language-java"><code>####################################################
+#绑定IP
+bind <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span>
+
+# 设置当前服务器启动端口
+port <span class="token number">6379</span>
+
+# 数据库个数
+databases <span class="token number">16</span>
+
+# 以守护进程方式启动，使用本启动方式，redis讲义服务的形式存在，日志将不再打印到命令窗口
+daemonize yes
+
+# 设定日志文件名，便于查阅
+logfile <span class="token string">&quot;6379.log&quot;</span>
+
+# 设定当前服务文件保存的位置，包含日志文件、持久化文件等
+dir <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+####################################################
+# 设置 <span class="token punctuation">.</span>rdb文件名 <span class="token punctuation">(</span>RDB持久化文件名<span class="token punctuation">)</span>
+dbfilename dump<span class="token operator">-</span><span class="token number">6379.</span>rdb
+
+# 开启压缩<span class="token punctuation">(</span>持久化文件<span class="token punctuation">)</span>
+rdbcompression yes
+
+# 开启加载检测
+rdbchecksum yes
+
+####################################################
+# bgsave后台存储过程中，如果出现错误现象，是否停止保存操作
+stop<span class="token operator">-</span>writes<span class="token operator">-</span>on<span class="token operator">-</span>bgsave<span class="token operator">-</span>error yes
+
+# 指定时间内，key的更改达到指定的数量，<span class="token class-name">Redis</span>自动进行gbsave操作
+# 此处设置的是每<span class="token number">300</span>s发生<span class="token number">10</span>次变化，就进行一次bgsave
+save <span class="token number">900</span> <span class="token number">1</span>
+save <span class="token number">300</span> <span class="token number">10</span>
+save <span class="token number">60</span> <span class="token number">10000</span>
+
+####################################################
+# 开启对AOF的支持
+appendonly yes
+
+# 指定AOF写数据的策略
+appendfsync everysec
+
+# 设置AOF持久化文件名
+appendfilename appendonly<span class="token operator">-</span><span class="token number">6379.</span>aof
+
+####################################################
+</code></pre></div><h2 id="_2-6-高级数据类型"><a href="#_2-6-高级数据类型" class="header-anchor">#</a> 2.6 高级数据类型</h2> <h3 id="_2-6-1-bitmaps"><a href="#_2-6-1-bitmaps" class="header-anchor">#</a> 2.6.1 Bitmaps</h3> <h4 id="_079-高级数据类型-bitmaps介绍与基本操作"><a href="#_079-高级数据类型-bitmaps介绍与基本操作" class="header-anchor">#</a> 079-高级数据类型-bitmaps介绍与基本操作</h4> <div class="language-java extra-class"><pre class="language-java"><code>bitmaps
+	并不是一个全新的数据类型
+	只是对string中存储对的数，进行二进制位<span class="token punctuation">(</span>即 以字节为单位进行操作<span class="token punctuation">)</span>操作的接口
+	作用：快速的做状态统计用的，用bit保存数据
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Bitmaps</span>类型的基础操作
+	获取指定key对应偏移量上的bit值
+		getbit key offset
+	设置指定key对应偏移量上的bit值，value只能是<span class="token number">1</span>或<span class="token number">0</span>
+		setbit key offset valuea
+</code></pre></div><h4 id="_080-高级数据类型-bitmaps扩展操作"><a href="#_080-高级数据类型-bitmaps扩展操作" class="header-anchor">#</a> 080-高级数据类型-bitmaps扩展操作</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Bitmaps</span>类型的扩展操作
+	业务场景
+	电影网站
+		统计每天某一部电影是否被点播
+		统计每天有多少部电被点播
+		统计每周<span class="token operator">/</span>月<span class="token operator">/</span>年有多少部电影被点播
+		统计年度哪部电彯没有被点播
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407182935472.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Bitmaps</span>类型的扩展操作
+	对指定key按位进行交、并、非、异或操作，并将结果保存到 deskey中
+		bitop operator deskey key1 <span class="token punctuation">[</span>key2<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+			operator 类型：
+				and：交
+				or：并
+				not：非
+				xor：异或
+			destkey：运算结果存放的地方
+	统计指定key中<span class="token number">1</span>的数量 <span class="token punctuation">(</span>不填范围，就是统计全部的<span class="token punctuation">)</span>
+		bitcount key <span class="token punctuation">[</span>start end<span class="token punctuation">]</span>
+</code></pre></div><h3 id="tips-21"><a href="#tips-21" class="header-anchor">#</a> Tips 21:</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Tips</span> <span class="token number">21</span><span class="token operator">:</span>
+	<span class="token class-name">Redis</span>应用于 信息状态统计
+</code></pre></div><h3 id="_2-6-2-hyperloglog"><a href="#_2-6-2-hyperloglog" class="header-anchor">#</a> 2.6.2 HyperLogLog</h3> <h4 id="_081-高级数据类型-hyperloglog"><a href="#_081-高级数据类型-hyperloglog" class="header-anchor">#</a> 081-高级数据类型-HyperLogLog</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">HyperLogLog</span>
+	作用：统计不重复数据的数量
+	作用：做基数统计的
+
+	比如：统计独立UV
+		原始方案：set
+			存储每个用户的id（字符串）
+		改进方案：<span class="token class-name">Bitmaps</span>
+			存储每个用户状态（bit）
+		全新的方案：<span class="token class-name">Hyperloglog</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>基数
+	基数就是数据集合去重后元素的个数
+	<span class="token class-name">HyperLogLog</span>是用来做基数统计的，运用了<span class="token class-name">LogLog</span>算法
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407184551242.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407184829590.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407184840233.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">HyperLogLog</span>类型的基本操作
+	添加数据
+		pfadd key element <span class="token punctuation">[</span>element <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+	统计数据
+		pfcount key <span class="token punctuation">[</span>key <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+	合并数据
+		pfmerge deskey sourcekey <span class="token punctuation">[</span>sourcekey<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Tips</span> <span class="token number">22</span><span class="token operator">:</span>
+	<span class="token class-name">Redis</span> 应用于独立信息统计
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">HyperLogLog</span>相关说明
+	用于进行基数统计，不是集合，不保存数据，只记录数量而不是具体数据
+	核心是基数估算算法，最终数值存在一定误差
+	误差范围：基数估计的结果是一个带有<span class="token number">0.81</span><span class="token operator">%</span>标准错误的近似值
+	耗空间极小，每个hyperloglog key占用了<span class="token number">12</span>K的内存用于标记基数
+	pfadd命令不是一次性分配<span class="token number">12</span>K内存使用，会随着基数的增加内存逐渐増大
+	pfmerge命令合并后占用的存储空间为<span class="token number">12</span>K，无论合并之前数据量多少
+</code></pre></div><h3 id="_2-6-3-geo"><a href="#_2-6-3-geo" class="header-anchor">#</a> 2.6.3 GEO</h3> <h4 id="_082-高级数据类型-geo"><a href="#_082-高级数据类型-geo" class="header-anchor">#</a> 082-高级数据类型-GEO</h4> <div class="language-java extra-class"><pre class="language-java"><code>	作用：根据点的位置<span class="token punctuation">(</span>经纬度<span class="token punctuation">)</span>，计算点之间的距离等
+	作用：做地理位置信息计算的
+
+	GEO类型的基本操作
+		添加坐标点
+			geoadd key longitude latitude member <span class="token punctuation">[</span>longitude latitude member <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+			       key 把这些点放到一个容器中
+			       longitude  latitude  经纬度信息
+			       member 这个点的名称
+		获取坐标点
+			geopos key member <span class="token punctuation">[</span>member <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+		计算坐标点距离
+			geodist key member member2 <span class="token punctuation">[</span>unit<span class="token punctuation">]</span>
+				unit：单位  m<span class="token operator">-</span>米 km<span class="token operator">-</span>千米
+
+		根据坐标求范围内的数据<span class="token punctuation">(</span>指定范围内有多少个点<span class="token punctuation">)</span>
+			georadius key longitude latitude radius m<span class="token operator">|</span>km<span class="token operator">|</span>ft<span class="token operator">|</span>mi <span class="token punctuation">[</span>withcoord<span class="token punctuation">]</span> <span class="token punctuation">[</span>withdist<span class="token punctuation">]</span> <span class="token punctuation">[</span>withhash<span class="token punctuation">]</span> <span class="token punctuation">[</span>count count<span class="token punctuation">]</span>
+		根据点求范围内数据
+			georadiusbymember key member radius m<span class="token operator">|</span>km<span class="token operator">|</span>ft<span class="token operator">|</span>mi <span class="token punctuation">[</span>withcoord<span class="token punctuation">]</span> <span class="token punctuation">[</span>withdist<span class="token punctuation">]</span> <span class="token punctuation">[</span>withhash<span class="token punctuation">]</span> <span class="token punctuation">[</span>count count<span class="token punctuation">]</span>
+		获取指定点对应的坐标hash值
+			geohash key member <span class="token punctuation">[</span>member<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="tips-23"><a href="#tips-23" class="header-anchor">#</a> Tips 23:</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Tips</span> <span class="token number">23</span><span class="token operator">:</span>
+	<span class="token class-name">Redis</span>应用于 地理位置计算
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/app.14fc004d.js" defer></script><script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/2.566dfaa9.js" defer></script><script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/78.e44cdf03.js" defer></script>
+  </body>
+</html>

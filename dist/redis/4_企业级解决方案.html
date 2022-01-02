@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>4.Redis企业级解决方案 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/css/0.styles.a4590749.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/app.14fc004d.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/2.566dfaa9.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/80.573518cc.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/10.81b842ee.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/11.ebfeb9f7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/12.f87cec0f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/13.d1ce78de.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/14.634d8798.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/15.849a5476.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/16.1f6789c6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/17.d72ae9a1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/18.a7d1bb6a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/19.18fab812.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/20.391e1774.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/21.344ff4ef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/22.478aa888.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/23.60bd51e8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/24.82e238c3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/25.20a14ce0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/26.e116a93c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/27.b5fad048.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/28.2e734899.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/29.49ab50a4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/3.335f6690.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/30.13900cdb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/31.f9eab52c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/32.5682fe77.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/33.b8e2439b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/34.25e28d58.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/35.3f068eb1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/36.9820c049.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/37.4ce8e76f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/38.96891aad.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/39.cd3b4e19.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/4.c6f2dbcb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/40.93d39d6b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/41.69f658c5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/42.fe8735cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/43.93f5a671.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/44.71dde7cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/45.da5a1197.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/46.24fd1618.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/47.75cb5bcd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/48.fafb59cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/49.7db241d8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/5.15b5abea.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/50.3009775e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/51.97e4f202.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/52.19933c3a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/53.0a0b0d46.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/54.b5bd901e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/55.5dcba331.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/56.7115c596.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/57.8538d355.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/58.95801003.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/59.b40f4cd4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/6.a6b9faac.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/60.91a78e87.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/61.159c0a0b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/62.f28d6c75.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/63.d22fc0d0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/64.2cfd8f97.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/65.4afcd57b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/66.451cfc39.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/67.3d4fe828.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/68.6ec7d33c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/69.09279bf4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/7.7a8d11a5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/70.9e615b20.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/71.fdb09aa2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/72.72d8deef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/73.bc251e4e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/74.14797ed5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/75.63a55a44.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/76.623ca41c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/77.c403ce03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/78.e44cdf03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/79.bd840209.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/8.9ecafd55.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/81.457e9bbc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/82.1e7e05be.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/83.c4783015.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/84.f8083dc0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/85.432a5967.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/9.6a351eab.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/css/0.styles.a4590749.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/typescript/typescript.html" class="sidebar-link">typescript</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自定义工具库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>发布NPM包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>mysql</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>java</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/javaWeb/javaWeb.html" class="sidebar-link">javaWeb</a></li><li><a href="/dist/jdbc/jdbc.html" class="sidebar-link">JDBC</a></li><li><a href="/dist/spring/spring.html" class="sidebar-link">spring</a></li><li><a href="/dist/springMVC/springMVC.html" class="sidebar-link">springMVC</a></li><li><a href="/dist/mybatis/mybatis.html" class="sidebar-link">mybatis</a></li><li><a href="/dist/maven/maven.html" class="sidebar-link">maven</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>redis</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/redis/1_redis基础.html" class="sidebar-link">基础</a></li><li><a href="/dist/redis/2_redis高级.html" class="sidebar-link">高级</a></li><li><a href="/dist/redis/3_redis集群.html" class="sidebar-link">集群</a></li><li><a href="/dist/redis/4_企业级解决方案.html" class="active sidebar-link">企业级解决方案</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_4-1-缓存预热" class="sidebar-link">4.1 缓存预热</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_107-企业级解决方案-缓存预热" class="sidebar-link">107-企业级解决方案-缓存预热</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_4-2-缓存雪崩" class="sidebar-link">4.2 缓存雪崩</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_108-企业级解决方案-缓存雪崩" class="sidebar-link">108-企业级解决方案-缓存雪崩</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_4-3-缓存击穿" class="sidebar-link">4.3 缓存击穿</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_109-企业级解决方案-缓存击穿" class="sidebar-link">109-企业级解决方案-缓存击穿</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_4-4-缓存穿透" class="sidebar-link">4.4 缓存穿透</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_110-企业级解决方案-缓存穿透" class="sidebar-link">110-企业级解决方案-缓存穿透</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_4-5-性能指标监控" class="sidebar-link">4.5 性能指标监控</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_111-企业级解决方案-性能指标监控" class="sidebar-link">111-企业级解决方案-性能指标监控</a></li><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#_112-企业级解决方案-性能指标监控命令" class="sidebar-link">112-企业级解决方案-性能指标监控命令</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/4_企业级解决方案.html#总结" class="sidebar-link">总结</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_4-redis企业级解决方案"><a href="#_4-redis企业级解决方案" class="header-anchor">#</a> 4.Redis企业级解决方案</h1> <h2 id="_4-1-缓存预热"><a href="#_4-1-缓存预热" class="header-anchor">#</a> 4.1 缓存预热</h2> <h3 id="_107-企业级解决方案-缓存预热"><a href="#_107-企业级解决方案-缓存预热" class="header-anchor">#</a> 107-企业级解决方案-缓存预热</h3> <div class="language-java extra-class"><pre class="language-java"><code>“宕机”
+	服务器启动后迅速宕机
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题排查<span class="token punctuation">(</span>服务刚启动时，缓存中没有数据<span class="token punctuation">)</span>
+<span class="token number">1.</span>请求数量较高
+<span class="token number">2.</span>主从之间数据吞吐量较大，数据同步操作频度较高
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>解决方案
+	前置准备工作：
+		<span class="token number">1.</span>日常例行统计数据访问记录，统计访问频度较高的热点数据
+		<span class="token number">2.</span>利用LRU数据删除策略，构建数据留存队列
+			例如：storm与kafka配合
+	准备工作：
+		<span class="token number">3.</span>将统计结果中的数据分类，根据级别，redis优先加载级别较高的热点数据
+		<span class="token number">4.</span>利用分布式多服务器同时进行数据读取，提速数据加载过程
+	实施：
+		<span class="token number">1.</span>使用脚本程序固定触发数据预热过程
+		<span class="token number">2.</span>如果条件允许，使用了CDN（内容分发网络），效果会更好
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+	缓存预热就是系统启动前，提前将相关的缓存数据直接加载到缓存系统。
+	避免在用户请求的时候，先查询数据库，然后再将数据缓存的问题！用户直接查询事先被预热的缓存数据！
+</code></pre></div><h2 id="_4-2-缓存雪崩"><a href="#_4-2-缓存雪崩" class="header-anchor">#</a> 4.2 缓存雪崩</h2> <h3 id="_108-企业级解决方案-缓存雪崩"><a href="#_108-企业级解决方案-缓存雪崩" class="header-anchor">#</a> 108-企业级解决方案-缓存雪崩</h3> <div class="language-java extra-class"><pre class="language-java"><code>数据库服务器崩溃（<span class="token number">1</span>）
+	<span class="token number">1.</span>系统平稳运行过程中，忽然数据库连接量激增
+	<span class="token number">2.</span>应用服务器无法及时处理请求
+	<span class="token number">3.</span>大量<span class="token number">408</span>，<span class="token number">500</span>错误页面出现
+	<span class="token number">4.</span>客户反复刷新页面获取数据
+	<span class="token number">5.</span>数据库崩溃
+	<span class="token number">6.</span>应用服务器崩溃
+	<span class="token number">7.</span>重启应用服务器无效
+	<span class="token number">8.</span>Redis服务器崩溃
+	<span class="token number">9.</span>Redis集群崩溃
+	<span class="token number">10.</span>重启数据库后再次被瞬间流量放倒
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题排查
+	<span class="token number">1.</span>在一个<span class="token string">'较短'</span>的时间内，缓存中<span class="token string">'较多'</span>的key<span class="token string">'集中过期'</span>
+	<span class="token number">2.</span>此周期内请求访问过期的数据，redis末命中，redis向数据库获取数据
+	<span class="token number">3.</span>数据库同时接收到大量的请求无法及时处理
+	<span class="token number">4.</span>Redis大量请求被积压，开始出现超时现象
+	<span class="token number">5.</span>数据库流量激增，数据库崩溃
+	<span class="token number">6.</span>重启后仍然面对缓存中无数据可用
+	<span class="token number">7.</span>Redis服务器资源被严重占用，<span class="token class-name">Redis</span>服务器崩溃
+	<span class="token number">8.</span>Redis集群呈现崩塌，集群瓦解
+	<span class="token number">9.</span>应用服务器无法及时得到数据响应请求，来自客户端的请求数量越来越多，应用服务器崩溃
+	<span class="token number">10.</span>应用服务器，redis，数据库全部重启，效果不理想
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题分析
+	短时间范围内
+	大量key集中过期
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>解决方案（道）<span class="token comment">//道：针对问题怎么去设计</span>
+	<span class="token number">1.</span>更多的页面静态化处理
+	<span class="token number">2.</span>构建多级缓存架构
+		<span class="token class-name">Nginx</span>缓存<span class="token operator">+</span>redis缓存<span class="token operator">+</span>ehcache缓存
+	<span class="token number">3.</span>检测<span class="token class-name">Mysql</span>严重耗时业务进行优化
+		对数据库的瓶颈排查：例如超时查询、耗时较高事务等
+	<span class="token number">4.</span>灾难预警机制
+		监控redis服务器性能指标
+			·CPU占用、CPU使用率
+			·内存容量
+			·查询平均响应时间
+			·线程数
+	<span class="token number">5.</span>限流、降级
+		短时间范围内牺牲一些客户体验，限制一部分请求访问，降低应用服务器压力，待业务低速运转后再逐步放开访问
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>解决方案（术）<span class="token comment">//术：针对问题具体动用哪些东西才会解决它</span>
+	<span class="token number">1.L</span>RU与LFU切换
+	<span class="token number">2.</span>数据有效期策略调整
+		根据业务数据有效期进行分类错峰，<span class="token class-name">A</span>类<span class="token number">90</span>分钟，<span class="token class-name">B</span>类<span class="token number">80</span>分钟，<span class="token class-name">C</span>类<span class="token number">70</span>分钟
+		过期时间使用固定时间<span class="token operator">+</span>随机值的形式，稀释集中到期的key的数量
+	<span class="token number">3.</span>超热数据使用永久key
+	<span class="token number">4.</span>定期维护（自动<span class="token operator">+</span>人工）
+		对即将过期数据做访问量分析，确认是否延时，配合访问量统计，做热点数据的延时
+	<span class="token number">5.</span>加锁
+		慎用！
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+	缓存雪崩就是瞬间过期数据量太大，导致对数据库服务器造成压力。
+	如能够有效避免过期时间集中，可以有效解决雪崩现象的出现（约<span class="token number">40</span><span class="token operator">%</span>），
+	配合其他策略一起使用，并监控服务器的运行数据，根据运行记录做快速调整。
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410184451617.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410184642472.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>客户端访问我们的系统的时候
+	通过<span class="token class-name">Nginx</span>服务器分发到我们的应用服务器
+		应用服务器去redis中查找缓存数据
+			命中，直接返回
+			如果没有在redis中命中，就去<span class="token class-name">MySQL</span>数据库中查找
+		如果大量的key集中过期，<span class="token class-name">Redis</span>中无法得到有效的命中，
+			应用服务器就会向<span class="token class-name">MySQL</span>数据库服务器发出大量的请求
+				这种情况下，<span class="token class-name">MySQL</span>数据库服务器压力就会很大
+					<span class="token punctuation">(</span>解决办法，把过期时间错开<span class="token punctuation">)</span>
+</code></pre></div><h2 id="_4-3-缓存击穿"><a href="#_4-3-缓存击穿" class="header-anchor">#</a> 4.3 缓存击穿</h2> <h3 id="_109-企业级解决方案-缓存击穿"><a href="#_109-企业级解决方案-缓存击穿" class="header-anchor">#</a> 109-企业级解决方案-缓存击穿</h3> <div class="language-java extra-class"><pre class="language-java"><code>数据库服务器崩溃（<span class="token number">2</span>）
+	<span class="token number">1.</span>系统平稳运行过程中
+	<span class="token number">2.</span>数据库连接量瞬间激增
+	<span class="token number">3.</span>Redis服务器无大量key过期
+	<span class="token number">4.</span>Redis内存平稳，无波动
+	<span class="token number">5.</span>Redis服务器CPU正常
+	<span class="token number">6.</span>数据库崩溃
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题排查
+	<span class="token number">1.</span>Redis中某个key过期，该key访问量巨大
+	<span class="token number">2.</span>多个数据请求从服务器直接压到<span class="token class-name">Redis</span>后，均末命中
+	<span class="token number">3.</span>Redis在短时间内发起了大量对数据库中同一数据的访问
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题分析
+	单个key高热数据
+	key过期
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>解决方案（术）
+	<span class="token number">1.</span>预先设定
+		以电商为例，每个商家根据店铺等级，指定若干款主打商品，在购物节期间，加大此类信息key的过期时长
+		注意：购物节不仅仅指当天，以及后续若干天，访问峰值呈现逐渐降低的趋势
+	<span class="token number">2.</span>现场调整
+		监控访问量，对自然流量激增的数据延长过期时间或设置为永久性key
+	<span class="token number">3.</span>后台刷新数据
+		启动定时任务，高峰期来临之前，刷新数据有效期，确保不丢失
+	<span class="token number">4.</span>二级缓存
+		设置不同的失效时间，保障不会被同时淘汰就行
+	<span class="token number">5.</span>加锁
+		分布式锁，防止被击穿，但是要注意也是性能瓶颈，慎重！。
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+	缓存击穿就是单个高热数据过期的瞬间，数据访问量较大，未命中redis后，发起了大量对同一数据的数据库访问，导致对数据库服务器造成压力。
+	应对策略应该在业务数据分析与预防方面进行，配合运行监控测试与即时调整策略，毕竟单个key的过期监控难度较高，配合雪崩处理策略即可。
+
+	与雪崩相比，它的数量变少了，是单个高热数据过期了
+	瞬间访问量比较大，没有命中以后，同时发起了对数据库的暴力访问
+	最终导致数据库崩溃
+
+	应对策略
+		预防为主，通过业务分析增加预防方案
+		同时配合着监控一块来做
+</code></pre></div><h2 id="_4-4-缓存穿透"><a href="#_4-4-缓存穿透" class="header-anchor">#</a> 4.4 缓存穿透</h2> <h3 id="_110-企业级解决方案-缓存穿透"><a href="#_110-企业级解决方案-缓存穿透" class="header-anchor">#</a> 110-企业级解决方案-缓存穿透</h3> <div class="language-java extra-class"><pre class="language-java"><code>数据库服务器崩溃（<span class="token number">3</span>）
+	<span class="token number">1.</span>系统平稳运行过程中
+	<span class="token number">2.</span>应用服务器流量随时间增量较大
+	<span class="token number">3.</span>Redis服务器命中率随时间逐步降低
+	<span class="token number">4.</span>Redis内存平稳，内存无压力
+	<span class="token number">5.</span>Redis服务器CPU占用激增
+	<span class="token number">6.</span>数据库服务器压力激增
+	<span class="token number">7.</span>数据库崩溃
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题排查
+	<span class="token number">1.</span>Redis中大面积出现末命中
+	<span class="token number">2.</span>出现非正常URL访问
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>问题分析
+	获取的数据在数据库中也不存在，数据库查询未得到对应数据
+	<span class="token class-name">Redis</span>获取到<span class="token keyword">null</span>数据未进行持久化，直接返回
+	下次此类数据到达重复上述过程
+	出现黑客攻击服务器
+	<span class="token comment">// 比较常见的情况是，黑客攻击，它在想办法穿透你的redis服务器，对你的数据库进行攻击</span>
+	<span class="token comment">// 这种攻击不是为了得到你的数据，是为了把你的数据库整瘫痪</span>
+	<span class="token comment">// 给你大量的无效URL访问，让你的服务器无法命中，然后给数据库带来一个较大的流量，最终把你的数据库整崩掉</span>
+
+	<span class="token comment">//非法的访问，错误的URL：大概率就是黑客攻击</span>
+	<span class="token comment">//这种情况就是以防灾为主</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>解决方案（术）
+	<span class="token number">1.</span>缓存<span class="token keyword">null</span>
+		对查询结果为<span class="token keyword">null</span>的数据进行缓存（长期使用，定期清理），设定短时限，例如<span class="token number">30</span><span class="token operator">-</span><span class="token number">60</span>秒，最高<span class="token number">5</span>分钟
+		<span class="token comment">// 不是一个有效的解决方案，只是一个用来缓解穿透的方案</span>
+		<span class="token comment">// 通常是临时开启这种东西的情况比较多一些</span>
+		<span class="token comment">// 应对比较low的攻击才有一点点效果</span>
+	<span class="token number">2.</span>白名单策略
+		提前预热各种分类数据id对应的bitmaps，id作为bitmaps的offset，相当于设置了数据白名单。
+			当加载正常数据时，放行，加载异常数据时直接拦截（效率偏低）
+		使用布隆过滤器（有关布隆过滤器的命中问题对当前状况可以忽略）
+	<span class="token number">3.</span>实施监控
+		实时监控redis命中率（业务正常范围时，通常会有一个波动值）与<span class="token keyword">null</span>数据的占比
+			非活动时段波动：通常检测<span class="token number">3</span><span class="token operator">-</span><span class="token number">5</span>倍，超过<span class="token number">5</span>倍纳入重点排查对象
+			活动时段波动：通常检测<span class="token number">10</span><span class="token operator">-</span><span class="token number">50</span>倍，超过<span class="token number">50</span>倍纳入重点排查对象
+		根据倍数不同，启动不同的排查流程。然后使用黑名单进行防控（运营）
+	<span class="token number">4.</span>key加密
+		问题出现后，临时启动防灾业务key，对key进行业务层传输加密服务，设定校验程序，过来的key校验
+		例如每天随机分配<span class="token number">60</span>个加密串，挑选<span class="token number">2</span>到<span class="token number">3</span>个，混淆到页面数据id中，发现访问key不满足规则，驳回数据访问
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+	缓存击穿，是指访问了不存在的数据，跳过了合法数据的redis数据缓存阶段，每次访问数据库，导致对数据库服务器造成压力。
+	通常此类数据的出现量是一个较低的值，当出现此类情况以毒攻毒，并及时报警。
+	应对策略应该在临时预案防范方面多做文章。
+
+	无论是黑名单还是白名单，都是对整体系统的压力，警报解除后尽快移除。
+</code></pre></div><h2 id="_4-5-性能指标监控"><a href="#_4-5-性能指标监控" class="header-anchor">#</a> 4.5 性能指标监控</h2> <h3 id="_111-企业级解决方案-性能指标监控"><a href="#_111-企业级解决方案-性能指标监控" class="header-anchor">#</a> 111-企业级解决方案-性能指标监控</h3> <div class="language-java extra-class"><pre class="language-java"><code>监控指标
+	性能指标：<span class="token class-name">Performance</span>
+	内存指标：<span class="token class-name">Memory</span>
+	基本活动指标：<span class="token class-name">Basic</span> activity
+	持久性指标：<span class="token class-name">Persistence</span>
+	错误指标：<span class="token class-name">Error</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410210137240.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410210341855.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410210531431.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020041021065069.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410211015610.png" alt=""></p> <h3 id="_112-企业级解决方案-性能指标监控命令"><a href="#_112-企业级解决方案-性能指标监控命令" class="header-anchor">#</a> 112-企业级解决方案-性能指标监控命令</h3> <div class="language-java extra-class"><pre class="language-java"><code>监控方式
+	·工具
+		·<span class="token class-name">Cloud</span> <span class="token class-name">Insight</span> <span class="token class-name">Redis</span>
+		·<span class="token class-name">Prometheus</span>
+		·<span class="token class-name">Redis</span><span class="token operator">-</span>stat
+		·<span class="token class-name">Redis</span><span class="token operator">-</span>faina
+		·<span class="token class-name">RedisLive</span>
+		·zabbix
+	·命令
+		·benchmark
+		·redis cli
+			·monitor
+			·showlog
+</code></pre></div><p>benchmark //进行压测的一个指令(在redis-cli外部使用)，不是redis内部的命令</p> <div class="language-java extra-class"><pre class="language-java"><code>benchmark <span class="token comment">//进行压测的一个指令</span>
+	·命令
+		redis<span class="token operator">-</span>benchmark <span class="token punctuation">[</span><span class="token operator">-</span>h<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span>p<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span>c<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span>n <span class="token operator">&lt;</span>requests<span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token operator">-</span>k<span class="token punctuation">]</span>
+	·范例<span class="token number">1</span>
+		redis<span class="token operator">-</span>benchmark
+		说明：<span class="token punctuation">(</span>默认情况下<span class="token punctuation">)</span><span class="token number">50</span>个连接，<span class="token number">10000</span>次请求对应的性能
+	·范例<span class="token number">2</span>
+		redis<span class="token operator">-</span>benchmark <span class="token operator">-</span>c <span class="token number">100</span> <span class="token operator">-</span>n <span class="token number">5000</span>
+		说明：<span class="token number">100</span>个连接，<span class="token number">5000</span>次请求对应的性能
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410211722817.png" alt=""></p> <p>monitor // 这是redis中的一个命令(在redis-cli内部使用)：打印服务器调试信息</p> <div class="language-java extra-class"><pre class="language-java"><code>monitor
+	打印服务器调试信息
+	<span class="token comment">// 对于初学者来说，可以帮助你理解redis内部整个执行过程,可以看到很多细微的变化</span>
+	<span class="token comment">// 针对线上的运行环境，执行这个东西，用它来调试，意义不是特别的大，能看到一些东西</span>
+</code></pre></div><p>slowlog // 这是redis中的一个命令(在redis-cli内部使用)：慢日志</p> <div class="language-java extra-class"><pre class="language-java"><code>slowlog <span class="token punctuation">[</span>operator<span class="token punctuation">]</span>
+	·get：获取慢查询日志
+	·len：获取慢查询日志条目数
+	·reset：重置慢查询日志
+·相关配置
+	slowlog<span class="token operator">-</span><span class="token number">1</span>og<span class="token operator">-</span>slower<span class="token operator">-</span>than <span class="token number">1000</span>	#设置慢查询的时间下限，单位：微妙
+	s1owlog<span class="token operator">-</span>max<span class="token operator">-</span><span class="token number">1</span>en <span class="token number">100</span>				#设置慢查询命令对应的日志显示长度，单位：命令数
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <div class="language-java extra-class"><pre class="language-java"><code>企业级解决方案
+	◆缓存预热 <span class="token comment">// 对缓存进行加载之前，先预热一下，防止刚开始就被挂掉</span>
+	◆缓存雪崩 <span class="token comment">// 在一个较短的时间内，大量的key集中失效</span>
+	◆缓存击穿 <span class="token comment">// 一个key失效，但是对它的请求太多，直接通过这一个key击穿过来到达了数据库服务器了</span>
+	◆缓存穿透 <span class="token comment">// 对应的访问数据是不存在的数据，导致redis无法命中，最终全部都压到数据库服务器那儿了</span>
+	<span class="token comment">// 每一种现象的解决方案是不太一样的，我们的解决方案是预防为主</span>
+	◆性能指标监控 <span class="token comment">// 五大监控指标</span>
+		◆工具 <span class="token comment">//</span>
+		◆命令 <span class="token comment">//</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/app.14fc004d.js" defer></script><script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/2.566dfaa9.js" defer></script><script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/80.573518cc.js" defer></script>
+  </body>
+</html>

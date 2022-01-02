@@ -146,6 +146,17 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         path: 'maven/maven.md'
+      },
+      {
+        title: 'redis',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: [
+          { title: '基础', path: 'redis/1_redis基础.md' },
+          { title: '高级', path: 'redis/2_redis高级.md' },
+          { title: '集群', path: 'redis/3_redis集群.md' },
+          { title: '企业级解决方案', path: 'redis/4_企业级解决方案.md' }
+        ]
       }
     ],
     // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接

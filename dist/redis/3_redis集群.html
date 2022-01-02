@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>3.Redis集群 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/css/0.styles.a4590749.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/app.14fc004d.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/2.566dfaa9.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/79.bd840209.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/10.81b842ee.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/11.ebfeb9f7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/12.f87cec0f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/13.d1ce78de.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/14.634d8798.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/15.849a5476.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/16.1f6789c6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/17.d72ae9a1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/18.a7d1bb6a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/19.18fab812.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/20.391e1774.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/21.344ff4ef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/22.478aa888.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/23.60bd51e8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/24.82e238c3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/25.20a14ce0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/26.e116a93c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/27.b5fad048.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/28.2e734899.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/29.49ab50a4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/3.335f6690.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/30.13900cdb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/31.f9eab52c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/32.5682fe77.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/33.b8e2439b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/34.25e28d58.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/35.3f068eb1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/36.9820c049.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/37.4ce8e76f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/38.96891aad.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/39.cd3b4e19.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/4.c6f2dbcb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/40.93d39d6b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/41.69f658c5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/42.fe8735cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/43.93f5a671.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/44.71dde7cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/45.da5a1197.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/46.24fd1618.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/47.75cb5bcd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/48.fafb59cb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/49.7db241d8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/5.15b5abea.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/50.3009775e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/51.97e4f202.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/52.19933c3a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/53.0a0b0d46.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/54.b5bd901e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/55.5dcba331.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/56.7115c596.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/57.8538d355.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/58.95801003.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/59.b40f4cd4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/6.a6b9faac.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/60.91a78e87.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/61.159c0a0b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/62.f28d6c75.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/63.d22fc0d0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/64.2cfd8f97.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/65.4afcd57b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/66.451cfc39.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/67.3d4fe828.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/68.6ec7d33c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/69.09279bf4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/7.7a8d11a5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/70.9e615b20.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/71.fdb09aa2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/72.72d8deef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/73.bc251e4e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/74.14797ed5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/75.63a55a44.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/76.623ca41c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/77.c403ce03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/78.e44cdf03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/8.9ecafd55.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/80.573518cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/81.457e9bbc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/82.1e7e05be.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/83.c4783015.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/84.f8083dc0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/85.432a5967.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/9.6a351eab.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/css/0.styles.a4590749.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dist/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/typescript/typescript.html" class="sidebar-link">typescript</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自定义工具库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>发布NPM包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>mysql</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>java</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dist/javaWeb/javaWeb.html" class="sidebar-link">javaWeb</a></li><li><a href="/dist/jdbc/jdbc.html" class="sidebar-link">JDBC</a></li><li><a href="/dist/spring/spring.html" class="sidebar-link">spring</a></li><li><a href="/dist/springMVC/springMVC.html" class="sidebar-link">springMVC</a></li><li><a href="/dist/mybatis/mybatis.html" class="sidebar-link">mybatis</a></li><li><a href="/dist/maven/maven.html" class="sidebar-link">maven</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>redis</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dist/redis/1_redis基础.html" class="sidebar-link">基础</a></li><li><a href="/dist/redis/2_redis高级.html" class="sidebar-link">高级</a></li><li><a href="/dist/redis/3_redis集群.html" class="active sidebar-link">集群</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-1-主从复制" class="sidebar-link">3.1 主从复制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-1-1-主从复制简介" class="sidebar-link">3.1.1 主从复制简介</a></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-1-2-主从复制工作流程" class="sidebar-link">3.1.2 主从复制工作流程</a></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-1-3-主从复制常见问题" class="sidebar-link">3.1.3 主从复制常见问题</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-2-哨兵模式" class="sidebar-link">3.2 哨兵模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-2-1-哨兵简介" class="sidebar-link">3.2.1 哨兵简介</a></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-2-2-启用哨兵模式" class="sidebar-link">3.2.2 启用哨兵模式</a></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-2-3-哨兵工作原理" class="sidebar-link">3.2.3 哨兵工作原理</a></li></ul></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-3-集群" class="sidebar-link">3.3 集群</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-3-1-集群简介" class="sidebar-link">3.3.1 集群简介</a></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-3-2-redis集群结构设计" class="sidebar-link">3.3.2 Redis集群结构设计</a></li><li class="sidebar-sub-header"><a href="/dist/redis/3_redis集群.html#_3-3-3-cluster集群结构搭建" class="sidebar-link">3.3.3 cluster集群结构搭建</a></li></ul></li></ul></li><li><a href="/dist/redis/4_企业级解决方案.html" class="sidebar-link">企业级解决方案</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_3-redis集群"><a href="#_3-redis集群" class="header-anchor">#</a> 3.Redis集群</h1> <h2 id="_3-1-主从复制"><a href="#_3-1-主从复制" class="header-anchor">#</a> 3.1 主从复制</h2> <h3 id="_3-1-1-主从复制简介"><a href="#_3-1-1-主从复制简介" class="header-anchor">#</a> 3.1.1 主从复制简介</h3> <h4 id="_083-主从复制-主从复制简介"><a href="#_083-主从复制-主从复制简介" class="header-anchor">#</a> 083-主从复制-主从复制简介</h4> <div class="language-java extra-class"><pre class="language-java"><code>互联网“三高”架构
+	高并发
+	高性能
+	高可用
+服务器的可用性：
+				一年的时间<span class="token punctuation">(</span>秒数<span class="token punctuation">)</span> <span class="token operator">-</span> 一年总的宕机时间<span class="token punctuation">(</span>秒数<span class="token punctuation">)</span>
+			<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>  <span class="token operator">*</span><span class="token number">100</span><span class="token operator">%</span> <span class="token operator">=</span> ？
+			          一年的时间<span class="token punctuation">(</span>秒数<span class="token punctuation">)</span>
+	业界可用性目标<span class="token number">5</span>个<span class="token number">9</span>，即<span class="token number">99.999</span><span class="token operator">%</span>，即服务器年宕机时长低于<span class="token number">315</span>秒，约<span class="token number">5.25</span>分钟
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>你的“ <span class="token class-name">Redis</span>&quot;是否高可用
+	单机redis的风险与问题
+		问题<span class="token number">1</span>机器故障
+			现象：硬盘故障、系统崩溃
+			质：数据丢失，很可能对业务造成灾难性打击
+			结论：基本上会放弃使用 redis
+		问题<span class="token number">2</span>容量瓶颈
+			现象：内存不足，从<span class="token number">16</span>G升级到<span class="token number">64</span>G，从<span class="token number">64</span>G升级到<span class="token number">128</span>G，无限升级内存
+			本质：穷，硬件条件跟不上
+			结论：放弃使用 redis
+		结论<span class="token operator">:</span>
+			为了避免单点<span class="token class-name">Redis</span>服务器故障，准备多台服务器，互相连通。将数据复制多个副本
+			保存在不同的服务器上，<span class="token string">'连接在一起'</span>，并保证数据是<span class="token string">'同步'</span>的。即使有其中一台服务器
+			宕机，其他服务器依然可以继续提供服务，实现 <span class="token class-name">Redis</span>的高可用，同时实现数据<span class="token string">'冗余备份'</span>
+</code></pre></div><p>多台服务器连接方案</p> <div class="language-java extra-class"><pre class="language-java"><code>多台服务器连接方案：使用这种方式，就可以实现高可用
+	提供数据方：master
+		主服务器，主节点，主库
+		主客户端
+	接收数据方：slave
+		从服务器，从节点，从库
+		从客户端
+	需要解决的问题
+		数据同步
+	核心工作：
+		master的数据复制到save中
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020040720080215.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407201419342.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>由主计算机向从计算机复制数据，这就是这一章要讲的内容：主从复制
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>主从复制
+	主从复制即将master中的数据即时、有效的复制到slave中
+	特征：一个master可以拥有多个slave，一个slave只对应一个master
+	职责
+		master：
+			写数据
+			执行写操作时，将出现变化的数据自动同步到slave
+			读数据（可忽略）
+		slave
+			读数据
+			写数据（禁止）
+</code></pre></div><h4 id="_084-主从复制-主从复制的作用"><a href="#_084-主从复制-主从复制的作用" class="header-anchor">#</a> 084-主从复制-主从复制的作用</h4> <p>高可用集群
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407204032912.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407204044145.png" alt="">
+多个maste(master集群)，用到了下面的哨兵
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407204437822.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>主从复制的作用
+	读写分离：
+		master写、 slave读，提高服务器的读写负载能力
+	负载均衡：
+		基于主从结构，配合读写分离，由slave分担master的负载，并根据需求的变化，改变
+		slave的数量，通过多个从节点分担数据读取负载，大大提高<span class="token class-name">Redis</span>服务器并发量与数据吞吐量
+	故障恢复：
+		当master出现问题的时候，由slave提供服务，实现快速的故障恢复
+	数据冗余：
+		实现数据热备份，是持久化之外的一种数据冗余方式
+	高可用基石：
+		基于主从复制，构建哨兵模式与集群，实现<span class="token class-name">Redis</span>的高可用方案
+</code></pre></div><h3 id="_3-1-2-主从复制工作流程"><a href="#_3-1-2-主从复制工作流程" class="header-anchor">#</a> 3.1.2 主从复制工作流程</h3> <h4 id="_085-主从复制-主从复制的三个阶段"><a href="#_085-主从复制-主从复制的三个阶段" class="header-anchor">#</a> 085-主从复制-主从复制的三个阶段</h4> <div class="language-java extra-class"><pre class="language-java"><code>主从复制工作流程
+	总述
+		主从复制过程大体可以分为<span class="token number">3</span>个阶段
+			建立连接阶段（即准备阶段）
+			数据同步阶段
+			命令传播阶段
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407232502344.png" alt=""></p> <h4 id="_086-主从复制-工作流程-1-建立连接阶段"><a href="#_086-主从复制-工作流程-1-建立连接阶段" class="header-anchor">#</a> 086-主从复制-工作流程（1）建立连接阶段</h4> <div class="language-java extra-class"><pre class="language-java"><code>主从复制工作流程
+	阶段一：建立连接阶段
+		建立s1ave到master的连接，使master能够识别slave，并保存slave端口号
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>	建立连接阶段工作流程
+		步骤<span class="token number">1</span>：设置master的地址和端口，保存master信息 <span class="token comment">//1 2 3</span>
+		步骤<span class="token number">2</span>：建立socket连接                      <span class="token comment">//4</span>
+		步骤<span class="token number">3</span>：发送ping命令<span class="token punctuation">(</span>定时器任务<span class="token punctuation">)</span>              <span class="token comment">//5 6 检测是否断开连接</span>
+		步骤<span class="token number">4</span>：身份验证                            <span class="token comment">//7 8</span>
+		步骤<span class="token number">5</span>：发送slave端口信息                    <span class="token comment">//9 10</span>
+		至此，主从连接成功！
+
+	最终达到的状态
+		slave：
+			保存master的地址和端口
+		master：
+			保存slave的端口
+		总体：
+			它们之间创建了连接的socket，用它来完成信息的交换
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200407233835854.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Redis</span>一般不对外提供服务<span class="token operator">/</span>功能，外界是看不到它的；都是内网访问，所以说即使不加身份验证也没关系
+</code></pre></div><h4 id="_087-主从复制-搭建主从结构"><a href="#_087-主从复制-搭建主从结构" class="header-anchor">#</a> 087-主从复制-搭建主从结构</h4> <div class="language-java extra-class"><pre class="language-java"><code>主从复制工作流程
+	主从连接（slave连接master）
+		方式一：客户端发送命令
+			slaveof <span class="token generics"><span class="token punctuation">&lt;</span>masterip<span class="token punctuation">&gt;</span></span> <span class="token generics"><span class="token punctuation">&lt;</span>masterport<span class="token punctuation">&gt;</span></span>
+		方式二：启动服务器参数
+			redis<span class="token operator">-</span>server <span class="token operator">--</span>slaveof <span class="token generics"><span class="token punctuation">&lt;</span>masterip<span class="token punctuation">&gt;</span></span> <span class="token generics"><span class="token punctuation">&lt;</span>masterport<span class="token punctuation">&gt;</span></span>
+		方式三：服务器配置
+			slaveof <span class="token generics"><span class="token punctuation">&lt;</span>masterip<span class="token punctuation">&gt;</span></span> <span class="token generics"><span class="token punctuation">&lt;</span>masterport<span class="token punctuation">&gt;</span></span>
+
+		slave系统信息
+			master_link_down_since_seconds
+			masterhost
+			masterport
+		master系统信息
+			slave_listening_port（多个）
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>	主从断开连接
+		客户端发送命令
+			slaveof no one
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>	授权访问
+		master<span class="token string">'配置文件'</span>设置密码		<span class="token comment">//在配置文件中设置密码</span>
+			requirepass <span class="token generics"><span class="token punctuation">&lt;</span>password<span class="token punctuation">&gt;</span></span>
+		master客户端发送命令设置密码	<span class="token comment">//master已经启动了，想加密码，就在master它的client中通过指令设置密码</span>
+			config set requirepass <span class="token generics"><span class="token punctuation">&lt;</span>password<span class="token punctuation">&gt;</span></span>
+			config get requirepass
+
+		<span class="token comment">//一旦master设置了密码，slave想访问时，slave必须挂上密码</span>
+
+
+		slave客户端发送命令设置密码<span class="token comment">//指令里加上密码，来获得master的授权</span>
+			auth <span class="token operator">&lt;</span>password
+
+		slave配置文件设置密码		<span class="token comment">//配置文件里加上密码，来获得master的授权</span>
+			auth <span class="token generics"><span class="token punctuation">&lt;</span>password<span class="token punctuation">&gt;</span></span>
+
+		启动客户端设置密码			<span class="token comment">//访问带密码的master时，必须挂上密码，来获得master的授权</span>
+			redis<span class="token operator">-</span>cli  <span class="token operator">-</span>a  <span class="token generics"><span class="token punctuation">&lt;</span>pas sword<span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="_088-主从复制-工作流程-2-数据同步阶段-简"><a href="#_088-主从复制-工作流程-2-数据同步阶段-简" class="header-anchor">#</a> 088-主从复制-工作流程（2）数据同步阶段（简）</h4> <div class="language-java extra-class"><pre class="language-java"><code>这个阶段：slave找master要数据，master把数据给它
+最终达到的结果：slave与master数据同步
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>主从复制工作流程
+	阶段二：数据同步阶段工作流程
+		在s1ave初次连接 master后，复制 master中的所有数据到s1ave
+		将s1ave的数据库状态更新成 master当前的数据库状态
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>主从复制工作流程
+	数据同步阶段工作流程 <span class="token comment">//全量复制+部分复制</span>
+		步骤<span class="token number">1</span>：请求同步数据
+		步骤<span class="token number">2</span>：创建RDB同步数据
+		步骤<span class="token number">3</span>：恢复RDB同步数据
+		步骤<span class="token number">4</span>：请求部分同步数据
+		步骤<span class="token number">5</span>：恢复部分同步数据
+		至此，数据同步工作完成！
+	状态
+		slave：
+			具有 master端全部数据，包含RDB过程接收的数据
+		master：
+			保存save当前数据同步的位置
+	总体：
+		它们之间完成了数据克隆
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408151204227.png" alt=""></p> <h4 id="_089-主从复制-数据同步阶段注意事项"><a href="#_089-主从复制-数据同步阶段注意事项" class="header-anchor">#</a> 089-主从复制-数据同步阶段注意事项</h4> <div class="language-java extra-class"><pre class="language-java"><code>数据同步阶段 master说明
+	<span class="token number">1.</span>如果 master数据量巨大，数据同步阶段应避开流量高峰期，避兔造成 master阻塞，影响业务正常执行
+	<span class="token number">2.</span>复制缓冲区大小设定不合理，会导致数据溢出。如进行全量复制周期太长，进行部分复制时发现数据已经存
+	  在丢失的情况，必须进行第二次全量复制，致使s1ave陷入死循环状态
+	  		repl<span class="token operator">-</span>backlog<span class="token operator">-</span>size  <span class="token number">1</span>mb
+	<span class="token number">3.</span> master单机内存占用主机内存的比例不应过大，建议使用<span class="token number">50</span><span class="token operator">%</span><span class="token operator">-</span><span class="token number">70</span><span class="token operator">%</span>的内存，留下<span class="token number">30</span><span class="token operator">%</span><span class="token operator">-</span><span class="token number">50</span><span class="token operator">%</span>的内存用于执行 bgsave命令和创建复制缓冲区
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/202004081536191.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>数据同步阶段slave说明
+	<span class="token number">1.</span>为避免s1ave进行全量复制、部分复制时服务器响应阻塞或数据不同步，建议关闭此期间的对外服务
+		slave<span class="token operator">-</span>serve<span class="token operator">-</span>stale<span class="token operator">-</span>data yes<span class="token operator">|</span>no
+	<span class="token number">2.</span>数据同步阶段， master发送给 slave信息可以理解 master是s1ave的一个客户端，主动向s1ave发送命令
+	<span class="token number">3.</span>多个s1ave同时对 master请求数据同步， master发送的RDB文件增多，会对带宽造成巨大冲击，
+	  如果master带宽不足，因此数据同步霱要根据业务务需求，适量错峰
+	<span class="token number">4.</span>s1ave过多时，建议调整拓扑结构，由一主多从结构变为树状结构，中间的节点既是master，也是s1ave。
+	  注意使用树状结构时，由于层级深度，导致深度越高的s1ave与最顶层 master间数据同步延迟较大，数据一致性变差，应谨慎选择
+</code></pre></div><h4 id="_090-主从复制-运行id-runid"><a href="#_090-主从复制-运行id-runid" class="header-anchor">#</a> 090-主从复制-运行id(runid)</h4> <div class="language-java extra-class"><pre class="language-java"><code>主从复制工作流程
+	阶段三：命令传播阶段
+		当 master数据库状态被修改后，导致主从服器数椐库状态不一致，此时需要让主从数据同步到一致的状态，同步的动作称为<span class="token string">'命令传播'</span>
+		master将接收到的数据变更命令发送给slave<span class="token punctuation">,</span>slave接收命令后执行命令
+
+	命令传播阶段的部分复制
+		命令传播阶段出现了断网现象
+			网络闪断闪连 		忽略
+			短时间网络中断 	部分复制
+			长时间网络中断		全量复制
+
+	部分复制的三个核心要素
+		服务器的<span class="token string">'运行id(run id)'</span>
+		主服务器的<span class="token string">'复制积压缓冲区'</span>
+		主从服务器的<span class="token string">'复制偏移量'</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>服务器运行<span class="token function">ID</span><span class="token punctuation">(</span>run id<span class="token punctuation">)</span>
+	概念：
+		服务器运行ID是每台服务器每次运行的身份识别码，一台服务器多次运行可以生成多个运行id
+	组成：
+		运行id由<span class="token number">40</span>位字符组成，是一个随机的十六进制字符
+		例如：fdc9ff13b9bbaab28db42b3d50f852bb5e3fcdce
+	作用：
+		运行id被用于在服务器间进行传输，识别身份
+		如果想两次操作均对同一台服务器进行，必须毎次操作携带对应的运行id，用于对方识别
+	实现方式：
+		运行id在每台服务器启动时自动生成的，
+		master在首次连接s1ave时，会将自己的运行ID发送给s1ave<span class="token punctuation">,</span>
+		slave保存此ID，通过 info server命令，可以查看节点的run id
+</code></pre></div><h4 id="_091-主从复制-复制缓冲区与偏移量"><a href="#_091-主从复制-复制缓冲区与偏移量" class="header-anchor">#</a> 091-主从复制-复制缓冲区与偏移量</h4> <div class="language-java extra-class"><pre class="language-java"><code>复制缓冲区
+	概念：
+		复制缓冲区，又名复制积压缓中区，是一个先进先出（FFO）的队列，用于存储服务器执行过的命令，
+		每次传播命令，master都会将传播的命令记录下来，并存储在复制缓冲区
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408161008491.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>复制缓冲区内部工作原理
+	组成：
+		偏移量
+		字节值
+	工作原理：
+		通过offset区分不同的slave当前数据传播的差异
+		master记录已发送的信息对应的offset
+		slave记录已接受的信息对应的offset
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408161651752.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>复制缓冲区
+	概念：
+		复制缓冲区，又名复制积压缓冲区，是一个先进先出（FIFO）的队列，用于存储服务器执行过的命令，
+		每次传播命令， master都会将传播的命令记录下来，并存储在复制缓冲区
+			复制缓冲区默认数据存储空间大小是<span class="token number">1</span>M，由于存储空问大小是固定的，
+			当入队元素的数量大于队列长度时，最先入队的元素会被弹出，而新元素会被放入队列
+	由来：
+		每台服务器启动时，如果开启有AOF或被连接成为 master节点，即创建复制缓冲区
+	作用：
+		用于保存 master收到的所有指令（仅指那些 会影响数据变更的指令，例set<span class="token punctuation">,</span> select）
+	数据来源：
+		当 master接收到主客户端的指令时，除了将指令执行，会将该指令存储到缓冲区中
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>主从服务器复制偏移量（ offset）
+	概念：
+		一个数字，描述复制缓中区中的指令字节位置
+	分类：
+		master复制偏移量：记录发送给所有s1ave的指令字节对应的位置（多个）
+		slave 复制偏移量：记录s1ave接收 master发送过来的指令字节对应的位置（个）
+	数据来源：
+		maste发送一次记录一次
+	作用：
+		同步信息，比对 master与s1ave的差异，当s1ave断线后，恢复数据使用
+</code></pre></div><h4 id="_092-主从复制-工作流程-2-数据同步与命令传播阶段-全"><a href="#_092-主从复制-工作流程-2-数据同步与命令传播阶段-全" class="header-anchor">#</a> 092-主从复制-工作流程（2）数据同步与命令传播阶段（全）</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408171944949.png" alt=""></p> <h4 id="_093-主从复制-心跳机制与命令传播阶段工作流程"><a href="#_093-主从复制-心跳机制与命令传播阶段工作流程" class="header-anchor">#</a> 093-主从复制-心跳机制与命令传播阶段工作流程</h4> <div class="language-java extra-class"><pre class="language-java"><code>心跳机制：进入命令传播阶段候，master与slave间需要进行信息交换，使用心跳机制进行维护，实现双方连接保持在线
+	master心跳：<span class="token comment">//master的心跳，只是为了判断slave是否还连接着</span>
+		指令：ping
+		周期：由repl<span class="token operator">-</span>ping<span class="token operator">-</span>slave<span class="token operator">-</span>period决定，默认<span class="token number">10</span>秒
+		作用：判断slave是否在线
+		查询：INFO replication   				获取slave最后一次连接时间间隔，lag项维持在<span class="token number">0</span>或<span class="token number">1</span>视为正常
+	slave心跳任务：<span class="token comment">//slave的心跳 1为了获取数据 2判断master是否还连接着自己</span>
+		指令：REPLCONF ACK<span class="token punctuation">{</span>offset<span class="token punctuation">}</span>
+		周期：<span class="token number">1</span>秒
+		作用<span class="token number">1</span>：汇报save自己的复制偏移量，获取最新的数据变更指令
+		作用<span class="token number">2</span>：判断 master是否在线
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>心跳阶段注意事项
+	当slave多数掉线，或延迟过高时，master为保障数据稳定性，将拒绝所有信息同步操作
+		min<span class="token operator">-</span>slaves<span class="token operator">-</span><span class="token keyword">to</span><span class="token operator">-</span>write <span class="token number">2</span>
+		min<span class="token operator">-</span>slaves<span class="token operator">-</span>max<span class="token operator">-</span>lag <span class="token number">8</span>
+			slave数量少于<span class="token number">2</span>个，或者所有 slave的延迟都大于等于<span class="token number">10</span>秒时，强制关闭master向slave的写功能，停止数据同步
+		slave数量由：slave发送REPLCONF ACK命令做确认
+		slave延迟由：slave发送 REPLCONF ACK命令做确认
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408173434905.png" alt=""></p> <h3 id="_3-1-3-主从复制常见问题"><a href="#_3-1-3-主从复制常见问题" class="header-anchor">#</a> 3.1.3 主从复制常见问题</h3> <h4 id="_094-主从复制-常见问题-1"><a href="#_094-主从复制-常见问题-1" class="header-anchor">#</a> 094-主从复制-常见问题（1）</h4> <div class="language-java extra-class"><pre class="language-java"><code>频繁的全量复制（<span class="token number">1</span>）
+	伴随着系统的运行， master的数据量会越来越大，一旦master重启，runid将发生变化，会导致全部s1ave的全量复制操作
+
+	内部优化调整方案：
+		<span class="token number">1.</span> master内部创建master_rep1id变量，使用runid相同的策略生成，长度<span class="token number">41</span>位，并发送给所有slave
+		<span class="token number">2.</span>在master关闭时执行命令 shutdown save，进行RDB持久化，将runid与 offset保存到RDB文件中
+				repl<span class="token operator">-</span>id
+				repl <span class="token operator">-</span>offset
+			通过 redis<span class="token operator">-</span>check<span class="token operator">-</span>rdb命令可以查看该信息
+		<span class="token number">2.</span> master重启后加载RDB文件，恢复数据
+			重启后，将RDB文件中保存的rep1<span class="token operator">-</span>id与rep1<span class="token operator">-</span>offset加载到内存中
+				master_repl_id     <span class="token operator">=</span> repl<span class="token operator">-</span>id
+				master_repl_offset <span class="token operator">=</span> repl<span class="token operator">-</span>offset
+			通过info命令可以查看该信息
+		作用<span class="token operator">:</span>
+			本机保存上次runid，重启后恢复该值，使所有slave认为还是之前的master
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>频繁的全量复制（<span class="token number">2</span>）
+	问题现象
+		网络环境不佳，出现网络中断，s1ave不提供服务
+	问题原因
+		复制缓冲区过小，断网后s1ave的offset越界，触发全量复制
+	最终结果
+		slave反复进行全量复制（导致无法对外提供服务，看起来好像是slave不干活了，实际上它是在忙着进行全量复制）
+	解决方案
+		修改复制缓冲区大小
+			repl<span class="token operator">-</span>backlog<span class="token operator">-</span>size
+	建议设置如下
+		<span class="token number">1.</span>测算从master到s1ave的重连平均时长 second
+		<span class="token number">2.</span>获 master平均每秒产生写命令数据总量 write_size_per_second
+		<span class="token number">3.</span>最优复制缓冲区空间 <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> second <span class="token operator">*</span> write_size_per_second
+</code></pre></div><h4 id="_095-主从复制-常见问题-2"><a href="#_095-主从复制-常见问题-2" class="header-anchor">#</a> 095-主从复制-常见问题（2）</h4> <div class="language-java extra-class"><pre class="language-java"><code>频繁的网络中断（<span class="token number">1</span>）
+	问题现象
+		master的CPU占用过高或s1ave频繁断开连接
+	问题原因
+		s1ave每<span class="token number">1</span>秒发送REPLCONF ACK命令到master
+		当s1ave接到了慢查询时<span class="token punctuation">(</span>keys<span class="token operator">*</span>， geta1l等<span class="token punctuation">)</span>，会大量占用CPU性能
+		master每<span class="token number">1</span>秒调用复制定时函数 <span class="token function">replicationCron</span><span class="token punctuation">(</span><span class="token punctuation">)</span>，比对s1ave发现长时间没有进行响应
+	最终结果
+		master各种资源（输出缓冲区、带宽、连接等）被严重占用
+	解决方案
+		通过设置合理的超时时间，确认是否释放slave
+			rep1<span class="token operator">-</span>timeout
+			该参数定义了超时时间的阈值（默认<span class="token number">60</span>秒），超过该值，释放s1ave
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>频繁的网络中断（<span class="token number">2</span>）
+	问题现象
+		s1ave与 master连接断开
+	问题原因
+		master发送ping指令频度较低
+		master设定超时时间较短
+		ping指令在网络中存在丢包
+	解决方案
+		提高ping指令发送的频度
+			repl<span class="token operator">-</span>ping<span class="token operator">-</span>slave<span class="token operator">-</span>period
+			超时时间rep1<span class="token operator">-</span>time的时间至少是ping指令频度的<span class="token number">5</span>到<span class="token number">10</span>倍，否则s1ave很容易判定超时
+</code></pre></div><h4 id="_096-主从复制-常见问题-3"><a href="#_096-主从复制-常见问题-3" class="header-anchor">#</a> 096-主从复制-常见问题（3）</h4> <div class="language-java extra-class"><pre class="language-java"><code>数据不一致
+	问题现象
+		多个s1ave获取相同数据不同步
+	问题原因
+		网络信息不同步，数据发送有延迟
+	解决方案
+		优化主从间的网络环境，通常放置在同一个机房部署，如使用可里云等云服努器时要注意此现象
+		监控主从节点延迟<span class="token punctuation">(</span>通过 offset<span class="token punctuation">)</span>判断，如果 slave延迟过大，暂时屏蔽程序对该slave的数据访问
+			slave<span class="token operator">-</span>serve<span class="token operator">-</span>stale<span class="token operator">-</span>data yes<span class="token operator">|</span>no <span class="token comment">//这个选项开启以后，专门供调试使用，不对外提供服务</span>
+			开启后仅响应 info、 slaveof等少数命令（慎用，除非对数据一致性要求很高）
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>主从复制：总结
+	主从复制
+		什么是主从复制
+		主从复制工作流程
+			三个阶段：
+				连接阶段、数据同步阶段、命令传播阶段
+				复制分全量复制和部分复制
+			三个核心：
+				部分复制分三个核心：runid、 复制积压缓存区、复制偏移量
+			心跳机制
+				维护着日常的数据传输
+		常见问题
+</code></pre></div><h2 id="_3-2-哨兵模式"><a href="#_3-2-哨兵模式" class="header-anchor">#</a> 3.2 哨兵模式</h2> <h3 id="_3-2-1-哨兵简介"><a href="#_3-2-1-哨兵简介" class="header-anchor">#</a> 3.2.1 哨兵简介</h3> <h4 id="_097-哨兵-哨兵简介"><a href="#_097-哨兵-哨兵简介" class="header-anchor">#</a> 097-哨兵-哨兵简介</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408184705176.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>	将宕机的 master下线
+	找一个slave作为 master
+	通知所有的save连接新的 master
+	启动新的 master<span class="token operator">-</span>与save
+	全量复制<span class="token operator">*</span><span class="token class-name">N</span><span class="token operator">+</span>部分复制<span class="token operator">*</span><span class="token class-name">N</span><span class="token punctuation">(</span>配置的不好的话<span class="token punctuation">)</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>	谁来确认 master宕机了
+	找—个主？怎么找法？
+	修改配置后，原始的主恢复了怎么办？
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200408190049413.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>哨兵简介
+	哨兵
+		哨兵<span class="token punctuation">(</span>sentinel<span class="token punctuation">)</span>是—个分布式系统，用于对主从结构中的每台服务器进行<span class="token string">'监控'</span>，
+		当岀现故障时通过投票机制<span class="token string">'选择'</span>新的master并将所有slave连接到新的master。
+			监控：监控它们干活
+			选择：出问题谁来做master
+
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>哨兵的作用
+	监控
+		不断的检查master和slave是否正常运行。
+		master存活检测、 master与save运行情兄检测
+	通知（提醒）
+		当被监控的服务器出现问题时，向其他（哨兵间，客户端）发送通知。
+	自动故障转移
+		断开master与slave连接，选取一个slave作为master，将其他slave连接到新的 master，并告知客户端新的服务器地址
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>注意：
+	哨兵也是一台redis服务器，只是不提供数据服务
+	通常哨兵配置数量为单数<span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_3-2-2-启用哨兵模式"><a href="#_3-2-2-启用哨兵模式" class="header-anchor">#</a> 3.2.2 启用哨兵模式</h3> <h4 id="_098-哨兵-哨兵结构搭建"><a href="#_098-哨兵-哨兵结构搭建" class="header-anchor">#</a> 098-哨兵-哨兵结构搭建</h4> <div class="language-java extra-class"><pre class="language-java"><code>启用哨兵模式
+	配置哨兵
+		配置一拖二的主从结构
+		配置三个哨兵（配置相同，端囗不同）
+			参看 sentinel<span class="token punctuation">.</span> conf
+		启动哨兵
+		redis<span class="token operator">-</span> sentinel1 sentinel1<span class="token operator">-</span>端口号<span class="token punctuation">.</span>conf
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>复制文件，同时把文件中的<span class="token number">26379</span>改成<span class="token number">26380</span>
+sed <span class="token string">'s/26379/26380/g'</span> <span class="token punctuation">.</span><span class="token punctuation">.</span>/sentinel<span class="token operator">-</span><span class="token number">26379.</span>conf <span class="token operator">&gt;</span>  <span class="token punctuation">.</span><span class="token punctuation">.</span>/sentinel<span class="token operator">-</span><span class="token number">26380.</span>conf
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>启动顺序：
+	先启主机，再启从机，最后启哨兵
+
+	redis<span class="token operator">-</span>server  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6379.</span>conf
+	redis<span class="token operator">-</span>server  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6380.</span>conf
+	redis<span class="token operator">-</span>server  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">6381.</span>conf
+
+	redis<span class="token operator">-</span>sentinel <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>sentinel<span class="token operator">-</span><span class="token number">26379.</span>conf<span class="token comment">//启动哨兵1</span>
+	redis<span class="token operator">-</span>cli  <span class="token operator">-</span>p <span class="token number">26379</span><span class="token comment">//启动哨兵1的client</span>
+
+
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>##########################哨兵的配置文件 sentinel<span class="token operator">-</span><span class="token number">26379.</span>conf##########################
+# 哨兵本身也是一个服务，它对外也有一个服务端口，通常是<span class="token number">2</span><span class="token operator">+</span><span class="token number">6379</span>
+port <span class="token number">26380</span>
+
+# 把哨兵设置为守护进程方式启动，在此不使用它，我们需要看日志文件
+daemonize no
+
+pidfile <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>run<span class="token operator">/</span>redis<span class="token operator">-</span>sentinel<span class="token punctuation">.</span>pid
+logfile <span class="token string">&quot;&quot;</span>
+
+# 哨兵的信息存储在哪里
+dir  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>logData
+
+# <span class="token function">mymaster</span><span class="token punctuation">(</span>自定义的名称<span class="token punctuation">)</span> ：检测的master，本处为 <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span> <span class="token number">6379</span>
+# <span class="token number">2</span> ：<span class="token number">2</span>个哨兵认定master挂了，那么master就挂了；通常设定为哨兵数量的一半加一
+sentinel monitor mymaster <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span> <span class="token number">6379</span> <span class="token number">2</span>
+
+# 主机master多长时间没响应，认定它挂了，此处是<span class="token function">30s</span><span class="token punctuation">(</span><span class="token number">30</span>秒认定主机下线<span class="token punctuation">)</span>
+sentinel down<span class="token operator">-</span>after<span class="token operator">-</span>milliseconds mymaster <span class="token number">30000</span>
+
+# 新的master上任以后，在进行数据同步以后，一次有多少个开始同步<span class="token punctuation">(</span>越小，对服务器性能压力越小<span class="token punctuation">)</span>
+# 压力越小速度越慢，压力越大 速度越快
+# 说白了就是，有几条线开始用时进行数据同步
+sentinel parallel<span class="token operator">-</span>syncs mymaster <span class="token number">1</span>
+
+# 多长时间内同步完成算有效，即超过这个时间同步没完成算超时<span class="token punctuation">(</span><span class="token number">3</span>分钟认定同步超时<span class="token punctuation">)</span>
+sentinel failover<span class="token operator">-</span>timeout mymaster <span class="token number">180000</span>
+
+sentinel deny<span class="token operator">-</span>scripts<span class="token operator">-</span>reconfig yes
+
+</code></pre></div><ol><li>一个master，两个slave
+三个哨兵</li> <li>使用Ctrl+C停掉master
+然后图片中的哨兵，选举6381为master
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409155713549.png" alt=""></li></ol> <h3 id="_3-2-3-哨兵工作原理"><a href="#_3-2-3-哨兵工作原理" class="header-anchor">#</a> 3.2.3 哨兵工作原理</h3> <h4 id="_099-哨兵-工作原理-1"><a href="#_099-哨兵-工作原理-1" class="header-anchor">#</a> 099-哨兵-工作原理（1）</h4> <div class="language-java extra-class"><pre class="language-java"><code>哨兵工作原理：主从切换
+	哨兵在进行主从切换过程中经历三个阶段
+		<span class="token number">1.</span>监控
+		<span class="token number">2.</span>通知
+		<span class="token number">3.</span>故障转移
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>阶段一：监控阶段
+	用于同步各个节点的状态信息
+		获取各个 sentinel的状态（是否在线）
+		获取 master的状态
+			master属性
+				runid
+				role<span class="token operator">:</span>master
+			各个save的详细信息
+		获取所有slave的状态（根据 master中的 <span class="token class-name">Slave</span>信息）
+			slave属性
+				runid
+				role<span class="token operator">:</span>slave
+				master_host<span class="token punctuation">,</span> master_port
+				offset
+				<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409162530601.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409163354867.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>sentine
+	会向master、slave、其他sentinel要信息，
+	通过info要信息，
+	并与master和slave建立CMD通道<span class="token punctuation">(</span>每一个sentinel都会和任意一个master和slave建立CMD通道<span class="token punctuation">)</span>，便于以后的信息流动
+sentinel之间直接会建立一个publish和subscribe通道，进行信息同步
+</code></pre></div><h4 id="_100-哨兵-工作原理-2"><a href="#_100-哨兵-工作原理-2" class="header-anchor">#</a> 100-哨兵-工作原理（2）</h4> <div class="language-java extra-class"><pre class="language-java"><code>哨兵工作原理
+	阶段二：通知阶段<span class="token punctuation">(</span>信息的长期维护阶段<span class="token punctuation">)</span><span class="token punctuation">(</span>维护一个长期的信息对等<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409164151768.png" alt=""></p> <h4 id="_101-哨兵-工作原理-3"><a href="#_101-哨兵-工作原理-3" class="header-anchor">#</a> 101-哨兵-工作原理（3）</h4> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409165201628.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	一个sentinel向master和slave发送hello指令，收到正常回复，确认它们都正常工作
+	然后就会在sentinel的局域网内部，告诉大家它们都正常工作
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409165328175.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图：
+	当一个sentinel发现master挂了时，就不停的向master发送hello，但是master没反应
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409195806449.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	这个时候，这个sentinel就认为 这个master挂掉了，
+		会把flags置为SRI_S_DOWN 即主观下线
+		同时向局域网内的其他sentinel说，这个master下线了
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409200228808.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	这个时候，其他的sentinel就会去确认，这个master是否真的下线了
+		<span class="token punctuation">(</span>各自向master发送hello，并等待回复<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409200244558.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409200257425.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	这时候sentinel们，根据返回来的信息，进行投票，最终投票决定master是否下线
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409200308194.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	投票的数目 <span class="token operator">&gt;</span> sentinel的一半时，就都认为master下线了
+		会把flags置为SRI_O_DOWN 即客观下线
+		一旦进入到客观下线阶段，开始进入下一环节：清理队伍
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>主观下线：一台sentinel认为master挂了
+客观下线：超过半数以上的sentinel认为master挂了
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>下图
+	sentinel中选一个头目，去执行清理队伍的任务
+	它们会去竞选谁去当这个头目：通过投票机制
+		谁先到达，它就会把票投给谁
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409201654924.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409201446335.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>参与竞选的sentinel会发送的信息包括：
+	挂的ip和port
+	自己参与竞选的次数
+	自己的runid
+如果没有决出胜负：再来一轮，同时竞选次数加一
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409204001319.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409204016657.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>sentinel选出了头目以后，
+	这个头目就根据自己的四大原则，
+	从备选服务器中，筛选出一个master
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409221142699.png" alt="">
+上图：原则1 - 在线的
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409205128889.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409205505205.png" alt="">
+上图：原则2 - 响应慢的
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020040922315578.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409223629880.png" alt="">
+上图：原则3 - 与原master断开时间久的//即 与原master离得最近的
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409223929565.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409224037629.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>阶段三：故障转移阶段
+	服务器列表中挑选备选master
+		<span class="token number">1.</span>在线的
+		<span class="token number">2.</span>响应慢的
+		<span class="token number">3.</span>与原master断开时间久的<span class="token comment">//即 与原master离得最近的</span>
+		<span class="token number">4.</span>优先原则
+			优先级
+			offset
+			runid
+	发送指令（sentinel）
+		向新的master发送slaveof no one		<span class="token comment">//让新的master与上一个master打开从属关系</span>
+		向其他slave发送slaveof新masterIP端口	<span class="token comment">//让其他的slave都连接、隶属于这个新的master的IP和Port</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>总结
+
+哨兵工作原理
+	阶段三：故障转移阶段
+		·监控
+			同步信息<span class="token comment">//识别对方</span>
+		·通知
+			保持联通<span class="token comment">//保持信息对称</span>
+		·故障转移
+			发现问题
+			竞选负责人
+			优选新master
+			新master上任，其他slave切换master，原master作为slave故障回复后连接
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409230804728.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>下图
+	现在重新启动原来的master
+	在哨兵sentinel的界面，可以看到，它转换为slave，slaveof于这个新的master
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200409231029327.png" alt=""></p> <h2 id="_3-3-集群"><a href="#_3-3-集群" class="header-anchor">#</a> 3.3 集群</h2> <h3 id="_3-3-1-集群简介"><a href="#_3-3-1-集群简介" class="header-anchor">#</a> 3.3.1 集群简介</h3> <h4 id="_102-集群-集群简介"><a href="#_102-集群-集群简介" class="header-anchor">#</a> 102-集群-集群简介</h4> <div class="language-java extra-class"><pre class="language-java"><code>现状问题
+	业务发展过程中遇到的峰值瓶颈
+		redis提供的服务OPS可以达到<span class="token number">10</span>万<span class="token operator">/</span>秒，当前业务OPS已经达到<span class="token number">20</span>万<span class="token operator">/</span>秒
+		内存单机容量达到<span class="token number">256</span>G，当前业务需求内存容量<span class="token number">1</span>T
+	使用集群的方式可以快速解决上述问题
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410092257248.png" alt="">
+一主一从</p> <p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410092314646.png" alt="">
+多主多从</p> <div class="language-java extra-class"><pre class="language-java"><code>集群架构
+	集群就是使用网络将若干台计算机连通起来，并提供统一的管理方式，使其对外呈现单机的服务效果
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410092612193.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>集群作用
+	分散单台服务器的访问压力，实现负载均衡
+	分散单台服务器的存储压力，实现可扩展性
+	降低单台服务器宕机带来的业务灾难
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410092941837.png" alt=""></p> <h3 id="_3-3-2-redis集群结构设计"><a href="#_3-3-2-redis集群结构设计" class="header-anchor">#</a> 3.3.2 Redis集群结构设计</h3> <h4 id="_103-集群-集群存储结构设计"><a href="#_103-集群-集群存储结构设计" class="header-anchor">#</a> 103-集群-集群存储结构设计</h4> <h5 id="_1-数据存储设计"><a href="#_1-数据存储设计" class="header-anchor">#</a> 1.数据存储设计</h5> <div class="language-java extra-class"><pre class="language-java"><code>集群存储结构设计
+	<span class="token number">1.</span>数据存储设计
+	<span class="token number">2.</span>集群内部通讯设计
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410101936101.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	数据通过算法计算，计算出保存的位置
+
+	每一份存储空间，称为一个槽
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410102216704.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410102227256.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410102553383.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	增强可扩展性
+		增加了新的存储空间<span class="token punctuation">(</span>存储节点<span class="token punctuation">)</span>时
+		就会从原来的每个存储空间里面分出来一部分，存到新增加的这个存储空间
+
+		所谓的增节点和去节点，就是改变这些槽的存储位置
+
+		一个机器持有一定的槽，
+			当加机器的时候，把它的槽分一部分给新的机器
+			去机器的话，把它的槽，给其他的机器<span class="token punctuation">(</span>存储节点<span class="token punctuation">)</span>
+</code></pre></div><h5 id="_2-集群内部通讯设计"><a href="#_2-集群内部通讯设计" class="header-anchor">#</a> 2.集群内部通讯设计</h5> <div class="language-java extra-class"><pre class="language-java"><code>三个存储机器
+	它们之间互联
+		谁存储着什么东西，大家心里都一清二楚
+		也就是说，它们心里都有一个账本，记录着各个计算机里面存储的槽<span class="token punctuation">(</span>存储空间<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410105521335.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>总结
+	槽用来区分数据内部的存储空间
+	key通过算法运算以后，确定它存储的位置
+		查找数据时，要么一次命中 要么两次命中，提高访问性能
+</code></pre></div><h3 id="_3-3-3-cluster集群结构搭建"><a href="#_3-3-3-cluster集群结构搭建" class="header-anchor">#</a> 3.3.3 cluster集群结构搭建</h3> <h4 id="_104-集群-cluster集群搭建"><a href="#_104-集群-cluster集群搭建" class="header-anchor">#</a> 104-集群-cluster集群搭建</h4> <div class="language-bash extra-class"><pre class="language-bash"><code>cluster集群结构搭建
+	cluster的conf配置
+		·设置加入cluster，成为其中的节点
+			cluster-enabled yeslno
+		·cluster配置文件名，该文件属于自动生成，仅用于快速查找文件并查询文件内容
+			cluster-config-file <span class="token operator">&lt;</span>filename<span class="token operator">&gt;</span>
+		·节点服务响应超时时间，用于判定该节点是否下线或切换为从节点
+			cluster-node-timeout <span class="token operator">&lt;</span>milliseconds<span class="token operator">&gt;</span>
+		·master连接的slave最小数量
+			cluster-migration-barrier <span class="token operator">&lt;</span>count<span class="token operator">&gt;</span>
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">##########################哨兵的配置文件 sentinel-26379.conf##########################</span>
+<span class="token comment"># 哨兵本身也是一个服务，它对外也有一个服务端口，通常是2+6379</span>
+port <span class="token number">26380</span>
+
+<span class="token comment"># 把哨兵设置为守护进程方式启动，在此不使用它，我们需要看日志文件</span>
+daemonize no
+
+pidfile /var/run/redis-sentinel.pid
+logfile <span class="token string">&quot;&quot;</span>
+
+<span class="token comment"># 哨兵的信息存储在哪里</span>
+<span class="token function">dir</span>  /usr/local/redis-5.0.6/conf/logData
+
+<span class="token comment"># mymaster(自定义的名称) ：检测的master，本处为 127.0.0.1 6379</span>
+<span class="token comment"># 2 ：2个哨兵认定master挂了，那么master就挂了；通常设定为哨兵数量的一半加一</span>
+sentinel monitor mymaster <span class="token number">127.0</span>.0.1 <span class="token number">6379</span> <span class="token number">2</span>
+
+<span class="token comment"># 主机master多长时间没响应，认定它挂了，此处是30s(30秒认定主机下线)</span>
+sentinel down-after-milliseconds mymaster <span class="token number">30000</span>
+
+<span class="token comment"># 新的master上任以后，在进行数据同步以后，一次有多少个开始同步(越小，对服务器性能压力越小)</span>
+<span class="token comment"># 压力越小速度越慢，压力越大 速度越快</span>
+<span class="token comment"># 说白了就是，有几条线开始用时进行数据同步</span>
+sentinel parallel-syncs mymaster <span class="token number">1</span>
+
+<span class="token comment"># 多长时间内同步完成算有效，即超过这个时间同步没完成算超时(3分钟认定同步超时)</span>
+sentinel failover-timeout mymaster <span class="token number">180000</span>
+
+sentinel deny-scripts-reconfig <span class="token function">yes</span>
+
+<span class="token comment">################# 开启cluster集群</span>
+<span class="token comment"># 开启cluster，这样才能成为集群中的节点</span>
+cluster-enabled <span class="token function">yes</span>
+<span class="token comment"># 配置文件的名字</span>
+cluster-config-file nodes-6379.conf
+<span class="token comment"># 这个节点下线的时间，（此处演示，设为10s）</span>
+cluster-node-timeout <span class="token number">10000</span>
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sed</span> <span class="token string">&quot;s/6379/6380/g&quot;</span> redis-cluster-6379.conf <span class="token operator">&gt;</span> redis-cluster-6380.conf
+<span class="token punctuation">..</span>.
+<span class="token function">sed</span> <span class="token string">&quot;s/6379/6384/g&quot;</span> redis-cluster-6379.conf <span class="token operator">&gt;</span> redis-cluster-6384.conf
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>开一个三主三从的集群结构
+	master1 <span class="token operator">--</span> redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span>cluster<span class="token operator">-</span><span class="token number">6379.</span>conf
+	master2 <span class="token operator">--</span> redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span>cluster<span class="token operator">-</span><span class="token number">6380.</span>conf
+	master3 <span class="token operator">--</span> redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span>cluster<span class="token operator">-</span><span class="token number">6381.</span>conf
+	slave4  <span class="token operator">--</span> redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span>cluster<span class="token operator">-</span><span class="token number">6382.</span>conf
+	slave5  <span class="token operator">--</span> redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span>cluster<span class="token operator">-</span><span class="token number">6383.</span>conf
+	slave6  <span class="token operator">--</span> redis<span class="token operator">-</span>server <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>conf<span class="token operator">/</span>redis<span class="token operator">-</span>cluster<span class="token operator">-</span><span class="token number">6384.</span>conf
+
+	主命令操作客户端<span class="token operator">--</span>大量命令都在这个client中进行操作
+	master1<span class="token operator">-</span>client
+	slave1<span class="token operator">-</span>client
+	机动客户端<span class="token operator">--</span>需要看其他master和slave客户端时，就用这个机动客户端去看
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410113954230.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>上图
+	查看各个服务器是否都启动了
+	下面，我们来把这些节点连接在一起
+		需要用到redis<span class="token operator">/</span>src目录下的一个redis命令：redis<span class="token operator">-</span>trib<span class="token punctuation">.</span>rb
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410114341175.png" alt=""></p> <div class="language-java extra-class"><pre class="language-java"><code>			使用redis<span class="token operator">-</span>trib<span class="token punctuation">.</span>rb，需要安装：ruby、gem
+				yum install ruby
+				yum install gem
+
+					<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> src<span class="token punctuation">]</span># ruby <span class="token operator">-</span>v
+					ruby <span class="token number">2.0</span><span class="token number">.0</span>p648 <span class="token punctuation">(</span><span class="token number">2015</span><span class="token operator">-</span><span class="token number">12</span><span class="token operator">-</span><span class="token number">16</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>x86_64<span class="token operator">-</span>linux<span class="token punctuation">]</span>
+
+					<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> src<span class="token punctuation">]</span># gem <span class="token operator">-</span>v
+					<span class="token number">2.0</span><span class="token number">.14</span><span class="token number">.1</span>
+					<span class="token punctuation">[</span>root<span class="token annotation punctuation">@lwh</span> src<span class="token punctuation">]</span>#
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>使用redis<span class="token operator">-</span>trib<span class="token punctuation">.</span>rb创建集群
+	cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>redis<span class="token operator">-</span><span class="token number">5.0</span><span class="token number">.6</span><span class="token operator">/</span>src<span class="token operator">/</span>
+	<span class="token punctuation">.</span>/redis<span class="token operator">-</span>trib<span class="token punctuation">.</span>rb  create <span class="token operator">--</span>replicas <span class="token number">1</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6380</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6381</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6382</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6383</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6384</span>
+
+# create<span class="token operator">:</span>创建集群
+# <span class="token operator">--</span>replicas <span class="token number">1</span> <span class="token operator">:</span> 指定内部结构，<span class="token number">1</span>代表一个master连接一个slave ，<span class="token number">2</span> 代表一个master连接两个slave <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+# <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6380</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6381</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6382</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6383</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6384</span><span class="token operator">:</span> 前面三个是master，后面三个是slave，它们会依次连接
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code># 执行：
+	<span class="token punctuation">.</span>/redis<span class="token operator">-</span>trib<span class="token punctuation">.</span>rb  create <span class="token operator">--</span>replicas <span class="token number">1</span>  <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6380</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6381</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6382</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6383</span>
+# 发现并没有执行成功，这是因为：
+	# <span class="token number">5.0</span>之后 trib<span class="token punctuation">.</span>rb 全部移植到了 redis<span class="token operator">-</span>cli <span class="token operator">--</span>cluster， 下面 ruby 和 gem 也不用下载
+# 根据提示：指令变为
+	redis<span class="token operator">-</span>cli <span class="token operator">--</span>cluster create <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6380</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6381</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6382</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6383</span> <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6384</span> <span class="token operator">--</span>cluster<span class="token operator">-</span>replicas <span class="token number">1</span>
+# 运行这行指令，发现master6379出错，利用fix指令进行修复
+#<span class="token punctuation">[</span>ERR<span class="token punctuation">]</span> <span class="token class-name">Not</span> all <span class="token number">16384</span> slots are covered by nodes<span class="token punctuation">.</span>
+	redis<span class="token operator">-</span>cli <span class="token operator">--</span>cluster fix  <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span>
+# 利用check指令，检查是否已经完全修复，可以看出，<span class="token number">16384</span>个槽都已经正常
+redis<span class="token operator">-</span>cli <span class="token operator">--</span>cluster check <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">6379</span>
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	<span class="token punctuation">[</span>OK<span class="token punctuation">]</span> <span class="token class-name">All</span> nodes agree about slots configuration<span class="token punctuation">.</span>
+	<span class="token operator">&gt;&gt;&gt;</span> <span class="token class-name">Check</span> <span class="token keyword">for</span> <span class="token keyword">open</span> <span class="token namespace">slots<span class="token punctuation">.</span></span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	<span class="token operator">&gt;&gt;&gt;</span> <span class="token class-name">Check</span> slots coverage<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	<span class="token punctuation">[</span>OK<span class="token punctuation">]</span> <span class="token class-name">All</span> <span class="token number">16384</span> slots covered<span class="token punctuation">.</span>
+</code></pre></div><p>正常的启动界面如下
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410125944444.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410125956673.png" alt=""></p> <h4 id="_105-集群-设置与获取数据"><a href="#_105-集群-设置与获取数据" class="header-anchor">#</a> 105-集群-设置与获取数据</h4> <div class="language-java extra-class"><pre class="language-java"><code>集群中：
+	数据的设置和获取
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/2020041013090832.png" alt="">
+上图的操作方式，太麻烦了；使用下图的方式操作即可解决
+<img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410131104117.png" alt=""> <img src="https://cdn.jsdelivr.net/gh/9acme/assets@note/redis/20200410131441292.png" alt=""></p> <h4 id="_106-集群-主从下线与主从切换"><a href="#_106-集群-主从下线与主从切换" class="header-anchor">#</a> 106-集群-主从下线与主从切换</h4> <div class="language-java extra-class"><pre class="language-java"><code>正常的操作，不是cluster最大的优势，它最大的优势是 出问题之后怎么办
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code>	cluster节点<span class="token punctuation">(</span>手动<span class="token punctuation">)</span>操作命令
+		·查看集群节点信息
+			cluster nodes
+		·进入一个从节点redis，切换其主节点
+			cluster replicate <span class="token operator">&lt;</span>master<span class="token operator">-</span>id<span class="token operator">&gt;</span>
+		·发现一个新节点，新增主节点
+			cluster meet ip<span class="token operator">:</span>port
+		·忽略一个没有solt的节点
+			cluster forget <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>
+		·手动故障转移
+			cluster failover
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/app.14fc004d.js" defer></script><script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/2.566dfaa9.js" defer></script><script src="https://cdn.jsdelivr.net/gh/9acme/note/dist/assets/js/79.bd840209.js" defer></script>
+  </body>
+</html>
